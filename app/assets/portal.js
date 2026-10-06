@@ -18,6 +18,8 @@
   const need = (document.currentScript && document.currentScript.dataset.module) || '';
   const never = () => new Promise(() => {});
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
+  // current page as 'inventory.html', also on hosts that drop '.html' from the address (Cloudflare: /inventory)
+  const pageName = () => { const f = location.pathname.split('/').pop() || 'index.html'; return /\.html$/.test(f) ? f : f + '.html'; };
   const head = document.head;
   const addHead = (tag, attrs) => { const el = document.createElement(tag); Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v)); head.appendChild(el); return el; };
 
@@ -271,7 +273,7 @@
   function drawBar() {
     const U = C.user, L = C.links;
     document.body.classList.add('ah');
-    const here = (location.pathname.split('/').pop() || 'index.html');
+    const here = pageName();
     const tabs = [['Home', L.home, 'home', true], ['Documents', L.documents, 'doc', !!U.docs_role], ['Inventory', L.inventory, 'box', !!U.inv_role],
                   ['Employees', L.employees, 'team', !!U.hr_role], ['Users & Access', L.access, 'key', U.is_admin]].filter(x => x[3]);
     const roles = [U.docs_role && `Documents: ${U.docs_role}`, U.inv_role && `Inventory: ${U.inv_role}`, U.hr_role && `Employees: ${U.hr_role}`, U.is_admin && 'Portal admin']
@@ -365,7 +367,7 @@
 
   window.PORTAL_READY = (async () => {
     const {data: {session}} = await sb.auth.getSession();
-    const here = (location.pathname.split('/').pop() || 'index.html') + location.hash;
+    const here = pageName() + location.hash;
     if (!session) { location.replace('login.html?next=' + encodeURIComponent(here)); return never(); }
     const {data: me, error} = await sb.from('portal_users').select('*').eq('id', session.user.id).maybeSingle();
     if (error) {
@@ -389,5 +391,5 @@
     return C.user;
   })();
 
-  sb.auth.onAuthStateChange(ev => { if (ev === 'SIGNED_OUT' && !/login\.html/.test(location.pathname)) location.replace('login.html'); });
+  sb.auth.onAuthStateChange(ev => { if (ev === 'SIGNED_OUT' && pageName() !== 'login.html') location.replace('login.html'); });
 })();
