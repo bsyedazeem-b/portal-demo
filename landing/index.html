@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business Portal — live demo</title>
+<meta name="description" content="Quotations, invoices with ZATCA QR, stock, attendance and payroll for any company. Try the live demo.">
+<link rel="icon" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;600&display=swap">
+<script src="assets/config.js"></script>
+<script src="demos.js"></script>
+<style>
+:root{--ink:#1B2730;--muted:#5F6E77;--line:#E3E8EC;--bg:#F6F8FA;--card:#fff;--r:14px;--max:1160px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font:16px/1.6 'IBM Plex Sans','IBM Plex Sans Arabic',system-ui,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{max-width:100%;display:block}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:10px;padding:13px 20px;font:600 15px/1 inherit;text-decoration:none;border:1px solid transparent;cursor:pointer;white-space:nowrap}
+.btn.main{background:var(--accent);color:#1B2730}
+.btn.main:hover{filter:brightness(.95)}
+.btn.line{border-color:rgba(255,255,255,.35);color:#fff}
+.btn.line:hover{background:rgba(255,255,255,.08)}
+.btn.dark{background:var(--brand);color:#fff}
+.btn svg{width:18px;height:18px}
+
+/* top */
+header.top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;gap:22px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:600;text-decoration:none}
+.logo img{height:32px;width:auto}
+header nav{display:flex;gap:22px;margin-left:auto;font-size:14.5px}
+header nav a{text-decoration:none;color:var(--muted)}
+header nav a:hover{color:var(--ink)}
+header .btn{padding:10px 16px;font-size:14px}
+@media (max-width:780px){header nav{display:none}header .btn{margin-left:auto}}
+
+/* hero */
+.hero{background:linear-gradient(160deg,var(--brand-deep) 0%,var(--brand) 70%);color:#fff;overflow:hidden;position:relative}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:40px 40px;mask-image:linear-gradient(180deg,#000 30%,transparent)}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1fr 1.15fr;gap:48px;align-items:center;padding-top:72px;padding-bottom:0}
+.eyebrow{display:inline-flex;gap:8px;align-items:center;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.75)}
+.eyebrow i{width:8px;height:8px;border-radius:50%;background:#3DDC84;box-shadow:0 0 0 4px rgba(61,220,132,.2)}
+.hero h1{font-size:clamp(34px,4.4vw,52px);line-height:1.08;margin:14px 0 18px;letter-spacing:-.02em;font-weight:600}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p.lead{font-size:18px;color:rgba(255,255,255,.82);margin:0 0 28px;max-width:30em}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.hero small{display:block;margin-top:14px;color:rgba(255,255,255,.6);font-size:13.5px}
+.shots{position:relative;align-self:end;margin-bottom:-2px}
+.browser{background:#fff;border-radius:12px 12px 0 0;box-shadow:0 30px 80px rgba(0,0,0,.35);overflow:hidden}
+.browser .bar{display:flex;gap:6px;padding:10px 12px;background:#EEF1F4}
+.browser .bar i{width:10px;height:10px;border-radius:50%;background:#CBD3DA}
+.phone{position:absolute;left:-46px;bottom:28px;width:28%;border:6px solid #111;border-radius:26px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.4);background:#111}
+.phone img{aspect-ratio:390/700;object-fit:cover;object-position:top}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr;padding-top:48px}.phone{left:auto;right:12px;width:30%}}
+
+/* facts */
+.facts{background:#fff;border-bottom:1px solid var(--line)}
+.facts ul{list-style:none;margin:0 auto;padding:22px 20px;display:flex;flex-wrap:wrap;gap:14px 34px;justify-content:center;max-width:var(--max)}
+.facts li{display:flex;align-items:center;gap:9px;font-size:14.5px;color:var(--muted)}
+.facts b{color:var(--ink);font-weight:600}
+.facts svg{width:18px;height:18px;color:var(--brand)}
+
+section{padding:84px 0}
+.sec-h{max-width:640px;margin-bottom:38px}
+.sec-h .k{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--brand);font-weight:600}
+.sec-h h2{font-size:clamp(26px,3vw,36px);line-height:1.15;margin:8px 0 10px;letter-spacing:-.01em;font-weight:600}
+.sec-h p{color:var(--muted);margin:0;font-size:17px}
+
+
+/* demo companies */
+.demos{padding-top:72px;padding-bottom:20px}
+.demo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.demo{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+.demo .head{display:flex;gap:14px;align-items:center;padding:22px 24px;color:#fff;background:linear-gradient(150deg,var(--d-deep),var(--d))}
+.demo .head img{width:52px;height:52px;flex:none;border-radius:12px;background:#fff;padding:6px}
+.demo .head b{display:block;font-size:19px;font-weight:600;line-height:1.25}
+.demo .head span{display:block;font-size:13px;opacity:.82}
+.demo .head .ind{display:inline-block;margin-bottom:4px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;background:rgba(255,255,255,.16);border-radius:99px;padding:2px 10px;opacity:1}
+.demo .body{padding:18px 24px 22px;display:flex;flex-direction:column;gap:14px;flex:1}
+.demo ul{margin:0;padding:0;list-style:none;font-size:14.5px}
+.demo li{padding:5px 0 5px 22px;position:relative;border-top:1px dashed var(--line)}
+.demo li:first-child{border-top:0}
+.demo li::before{content:'';position:absolute;left:2px;top:13px;width:9px;height:5px;border-left:2px solid var(--d);border-bottom:2px solid var(--d);transform:rotate(-45deg)}
+.demo .go{margin-top:auto;align-self:flex-start;background:var(--d);color:#fff}
+.demo .go[aria-disabled=true]{background:#E3E8EC;color:var(--muted);cursor:default}
+.demo-note{color:var(--muted);font-size:14.5px;margin:18px 0 0}
+
+/* modules */
+.mods{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.mod{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px}
+.mod .ic{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;color:#fff;margin-bottom:14px}
+.mod .ic svg{width:22px;height:22px}
+.mod h3{margin:0 0 6px;font-size:19px;font-weight:600}
+.mod p{margin:0 0 12px;color:var(--muted);font-size:15px}
+.mod ul{margin:0;padding:0;list-style:none;font-size:14.5px}
+.mod li{padding:5px 0 5px 22px;position:relative;border-top:1px dashed var(--line)}
+.mod li::before{content:'';position:absolute;left:2px;top:13px;width:9px;height:5px;border-left:2px solid var(--brand);border-bottom:2px solid var(--brand);transform:rotate(-45deg)}
+.mod.wide{grid-column:span 3;display:grid;grid-template-columns:auto 1fr 1fr;gap:10px 30px;align-items:start}
+.mod.wide ul{columns:2;column-gap:30px}
+.mod.wide li{break-inside:avoid}
+@media (max-width:900px){.mods{grid-template-columns:1fr}.mod.wide{grid-column:auto;display:block}.mod.wide ul{columns:1}}
+
+/* screens */
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
+.tabs button{border:1px solid var(--line);background:#fff;border-radius:99px;padding:8px 15px;font:500 14px inherit;color:var(--muted);cursor:pointer}
+.tabs button[aria-selected=true]{background:var(--brand);border-color:var(--brand);color:#fff}
+.stage{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:0 10px 40px rgba(20,40,60,.08)}
+.stage img{width:100%;aspect-ratio:1360/850;object-fit:cover;object-position:top}
+.stage p{margin:0;padding:14px 18px;border-top:1px solid var(--line);color:var(--muted);font-size:15px}
+
+/* pdfs */
+.pdfs{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.pdf{text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:transform .15s,box-shadow .15s}
+.pdf:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(20,40,60,.12)}
+.pdf img{aspect-ratio:210/297;object-fit:cover;object-position:top;border-bottom:1px solid var(--line)}
+.pdf span{display:block;padding:10px 12px;font-size:14px;font-weight:500}
+.pdf span small{display:block;color:var(--muted);font-weight:400;font-size:12.5px}
+@media (max-width:900px){.pdfs{grid-template-columns:repeat(2,1fr)}}
+
+/* white label */
+.wl{background:var(--brand-deep);color:#fff}
+.wl .sec-h .k{color:var(--accent)}.wl .sec-h p{color:rgba(255,255,255,.75)}
+.wl-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:36px;align-items:center}
+.wl pre{margin:0;background:rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:20px;overflow:auto;font:13.5px/1.7 'IBM Plex Mono',ui-monospace,Menlo,monospace;color:#DDE6EE}
+.wl pre .c{color:#8FA3B3}.wl pre .s{color:#F2C879}
+.wl ul{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+.wl li{display:flex;gap:12px}
+.wl li b{display:block}
+.wl li span{color:rgba(255,255,255,.72);font-size:15px}
+.wl li i{flex:none;width:30px;height:30px;border-radius:8px;background:rgba(255,255,255,.1);display:grid;place-items:center;font-style:normal;font-weight:600;color:var(--accent)}
+@media (max-width:900px){.wl-grid{grid-template-columns:1fr}}
+
+/* contact */
+.contact{background:#fff;border:1px solid var(--line);border-radius:18px;padding:40px;display:grid;grid-template-columns:1.4fr 1fr;gap:30px;align-items:center}
+.contact h2{margin:0 0 8px;font-size:30px;font-weight:600;letter-spacing:-.01em}
+.contact p{margin:0;color:var(--muted)}
+.contact .cta{justify-content:flex-end}
+.btn.wa{background:#25D366;color:#fff}
+.btn.ghost{border-color:var(--line);color:var(--ink);background:#fff}
+@media (max-width:900px){.contact{grid-template-columns:1fr;padding:28px}.contact .cta{justify-content:flex-start}}
+footer{padding:30px 0 40px;color:var(--muted);font-size:13.5px;text-align:center}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap">
+  <a class="logo" href="#"><img data-brand-logo alt=""><span id="pName">Business Portal</span></a>
+  <nav aria-label="Page"><a href="#demos">Demos</a><a href="#modules">Modules</a><a href="#screens">Screens</a><a href="#pdfs">Sample PDFs</a><a href="#brand">Your brand</a><a href="#contact">Contact</a></nav>
+  <a class="btn dark" href="#demos">Open live demo</a>
+</div></header>
+
+<section class="hero" style="padding:0">
+  <div class="wrap">
+    <div style="padding-bottom:72px">
+      <span class="eyebrow"><i></i>Live demo · no sign-up</span>
+      <h1>Run your business from <em>one link</em>.</h1>
+      <p class="lead" id="pTag">Quotations, invoices, stock and staff for any company, in one simple web app.</p>
+      <div class="cta">
+        <a class="btn main" href="#demos">Try a live demo
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn line" href="#pdfs">See sample PDFs</a>
+      </div>
+      <small>Pick a demo company below: no sign-up needed. All companies and data are invented and reset every night.</small>
+    </div>
+    <div class="shots" aria-hidden="true">
+      <div class="browser"><div class="bar"><i></i><i></i><i></i></div><img src="assets/shots/home.jpg" alt=""></div>
+      <div class="phone"><img src="assets/shots/phone.jpg" alt=""></div>
+    </div>
+  </div>
+</section>
+
+<div class="facts"><ul>
+  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5"/></svg><b>8</b> document types</li>
+  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16M4 12h10M4 19h7"/></svg>PDFs in <b>English + Arabic</b></li>
+  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM18 18h3v3"/></svg><b>ZATCA QR</b> on invoices</li>
+  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M12 18h.01"/></svg>Installs on <b>any phone</b></li>
+  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a4 4 0 0 1-4 4H7l-4 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></svg>Send by <b>WhatsApp</b></li>
+  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6z"/></svg><b>No server</b> to run or maintain</li>
+</ul></div>
+
+<section id="demos" class="demos"><div class="wrap">
+  <div class="sec-h"><span class="k">Live demos</span><h2>One portal, set up for different businesses</h2>
+    <p>Same software, different company: each demo has its own name, logo, colours, documents and sample data. Open the one closest to your business.</p></div>
+  <div class="demo-grid" id="demoList"></div>
+  <p class="demo-note">The demo login opens automatically. Kiosk PIN for every employee: <b>1234</b>. Change anything you like: the data resets every night.</p>
+</div></section>
+
+<section id="modules"><div class="wrap">
+  <div class="sec-h"><span class="k">Modules</span><h2>Everything the office, the store and the team need</h2>
+    <p>Each person sees only the sections you give them. Turn modules on or off per company.</p></div>
+  <div class="mods">
+    <article class="mod"><div class="ic" style="background:var(--brand)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg></div>
+      <h3>Documents</h3><p>Draft, approve, download and share. Numbers are given automatically.</p>
+      <ul><li>Quotations from your price list, turned into invoices in one click</li><li>Tax invoices with ZATCA QR, payments and receivables</li>
+        <li>Cash receipts linked to invoices</li><li>Delivery notes, job cards / work orders, material requests, purchase orders</li>
+        <li>Petty cash with period report, customer list (Zoho import)</li></ul></article>
+    <article class="mod"><div class="ic" style="background:var(--accent)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg></div>
+      <h3>Inventory</h3><p>Know what is in the store, without a spreadsheet.</p>
+      <ul><li>Stock in and out with the phone camera as a barcode scanner</li><li>Printable barcode labels</li>
+        <li>Stock counts with automatic adjustments</li><li>Low-stock alerts on the home page and phone</li><li>Suppliers and full movement history</li></ul></article>
+    <article class="mod"><div class="ic" style="background:#2E9E6A"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17.5" cy="9" r="2.5"/><path d="M16 14.2a5 5 0 0 1 6 4.8"/></svg></div>
+      <h3>Employees</h3><p>From check-in to the payslip.</p>
+      <ul><li>Check-in kiosk: staff check in and out with a PIN and photo</li><li>Attendance and automatic overtime (Friday at 2x)</li>
+        <li>Tasks, paid jobs, bonuses and deductions</li><li>Uniforms, devices and other items issued and returned</li><li>Payroll, salary advances and salary payments</li></ul></article>
+    <article class="mod wide"><div class="ic" style="background:#8A5CC2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/></svg></div>
+      <div><h3>And around it all</h3><p>The small things that make people use it every day.</p></div>
+      <ul><li>Home dashboard: who is in, what needs approval, who owes you money</li><li>Search across documents, products and employees</li>
+        <li>Phone notifications for approvals and low stock</li><li>One-click reminders to customers on WhatsApp</li>
+        <li>Excel export of everything, weekly automatic backup</li><li>Users and roles: manager, staff, storekeeper, viewer</li></ul></article>
+  </div>
+</div></section>
+
+<section id="screens" style="background:#fff;border-block:1px solid var(--line)"><div class="wrap">
+  <div class="sec-h"><span class="k">Screens</span><h2>Clean, fast and made for daily work</h2><p>Real screens from the live demo. Every company sees its own name, logo and colours.</p></div>
+  <div class="tabs" role="tablist" id="tabs"></div>
+  <figure class="stage" style="margin:0"><img id="shot" src="assets/shots/home.jpg" alt=""><p id="cap"></p></figure>
+</div></section>
+
+<section id="pdfs"><div class="wrap">
+  <div class="sec-h"><span class="k">Sample PDFs</span><h2>Documents your customers will take seriously</h2>
+    <p>Letterhead, stamp and QR on every page. Open any sample — these come straight out of the demo.</p></div>
+  <div class="pdfs" id="pdfList"></div>
+</div></section>
+
+<section class="wl" id="brand"><div class="wrap">
+  <div class="sec-h"><span class="k">Your brand</span><h2>It becomes your company's portal, not ours</h2>
+    <p>Name, logo, colours, letterhead and modules live in one settings file. Change it and every page, PDF and message follows.</p></div>
+  <div class="wl-grid">
+<pre aria-label="Example settings"><span class="c">// assets/config.js</span>
+window.BRAND = {
+  name:    <span class="s">'Your Company Name'</span>,
+  nameAr:  <span class="s">'اسم شركتكم'</span>,
+  vatNo:   <span class="s">'3XXXXXXXXXXXXX3'</span>,
+  colors:  {brand: <span class="s">'#2B4C7E'</span>, accent: <span class="s">'#E8A33D'</span>},
+  logo:    <span class="s">'assets/logo.svg'</span>,
+  modules: {documents: true, inventory: true,
+            employees: true, kiosk: false}
+};</pre>
+    <ul>
+      <li><i>1</i><div><b>Your letterhead and stamp</b><span>Drawn from your details, or use your own scanned letterhead and stamp.</span></div></li>
+      <li><i>2</i><div><b>Your own link</b><span>Runs on your domain, for example portal.yourcompany.com, and installs like an app.</span></div></li>
+      <li><i>3</i><div><b>Your data stays yours</b><span>A private database for your company only, with clear rules for who can see and change what.</span></div></li>
+      <li><i>4</i><div><b>Changes on request</b><span>New document types, fields or reports can be added for your workflow.</span></div></li>
+    </ul>
+  </div>
+</div></section>
+
+<section id="contact"><div class="wrap">
+  <div class="contact">
+    <div><h2>Want this for your company?</h2><p>Try the demo first, then message me with what your team does every day. Setup usually takes a few days.</p></div>
+    <div class="cta"><a class="btn wa" id="wa" href="#" target="_blank" rel="noopener">WhatsApp</a><a class="btn ghost" id="mail" href="#">Email</a><a class="btn dark" href="#demos">Live demo</a></div>
+  </div>
+</div></section>
+
+<footer>All companies, people, numbers and documents in the demo are invented for illustration. <span id="by"></span></footer>
+
+<script>
+(() => {
+  const P = window.PRODUCT || {}, $ = id => document.getElementById(id);
+  document.title = (P.name || 'Portal') + ' — live demo';
+  $('pName').textContent = P.name || 'Portal';
+  if (P.tagline) $('pTag').textContent = P.tagline;
+  $('wa').href = 'https://wa.me/' + String(P.whatsapp || '').replace(/\D/g, '') + '?text=' + encodeURIComponent(`Hi, I saw the ${P.name || 'portal'} demo and would like to know more.`);
+  $('mail').href = 'mailto:' + (P.email || '') + '?subject=' + encodeURIComponent((P.name || 'Portal') + ' for our company');
+  if (P.contactName) $('by').textContent = 'Built by ' + P.contactName + '.';
+
+  const SHOTS = [['home', 'Home', 'The day at a glance: who is in, what waits for approval, payments due and low stock.'],
+    ['invoices', 'Invoices', 'Tax invoices with ZATCA QR, payments, balances and overdue status.'],
+    ['quotation', 'Quotations', 'Quotations from the price list, turned into invoices in one click.'],
+    ['inventory', 'Inventory', 'Stock levels, barcode scanning, movements and low-stock alerts.'],
+    ['employees', 'Employees', 'Live shift board, attendance, overtime, tasks and payroll.'],
+    ['kiosk', 'Check-in kiosk', 'A tablet at the entrance: staff tap their name and enter a PIN to check in or out.'],
+    ['login', 'Sign in', 'Your logo and colours from the first screen.']];
+  const tabs = $('tabs');
+  SHOTS.forEach(([k, t, c], i) => {
+    const b = document.createElement('button'); b.type = 'button'; b.role = 'tab'; b.textContent = t; b.setAttribute('aria-selected', String(!i));
+    b.onclick = () => { tabs.querySelectorAll('button').forEach(x => x.setAttribute('aria-selected', String(x === b))); $('shot').src = `assets/shots/${k}.jpg`; $('shot').alt = t; $('cap').textContent = c; };
+    tabs.appendChild(b);
+  });
+  $('cap').textContent = SHOTS[0][2];
+
+  const DT = (window.PRODUCT && window.PRODUCT.demoText) || {};
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
+  const mixDark = (h, t) => '#' + [0, 2, 4].map(i => Math.round(parseInt(h.slice(1).substr(i, 2), 16) * (1 - t)).toString(16).padStart(2, '0')).join('');
+  $('demoList').innerHTML = (window.DEMOS || []).map(d => `<article class="demo" style="--d:${esc(d.brand)};--d-deep:${esc(mixDark(d.brand, .4))}">
+    <div class="head"><img src="${esc(d.logo)}" alt=""><div><span class="ind">${esc(d.industry)}</span><b>${esc(d.name)}</b><span>${esc(d.tagline)}</span></div></div>
+    <div class="body"><ul>${(DT[d.id] || []).map(x => `<li>${esc(x)}</li>`).join('')}</ul>
+      ${d.ready ? `<a class="btn go" href="${esc(d.link)}">Open ${esc(d.short || d.name)} demo
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>`
+               : `<span class="btn go" aria-disabled="true">Coming soon</span>`}</div></article>`).join('');
+
+
+  const PDFS = [['invoice', 'Tax Invoice', 'ZATCA QR, Arabic + English'], ['quotation', 'Quotation', 'With bank details'],
+    ['cash-receipt', 'Cash Receipt', 'Linked to the invoice'], ['delivery-note', 'Delivery Note', 'Driver and vehicle details'],
+    ['purchase-order', 'Purchase Order', 'From material requests'], ['job-card', 'Job Card', 'Work order with sign-offs'],
+    ['material-request', 'Material Request', 'Store requests'], ['petty-cash', 'Petty Cash Voucher', 'Running balance']];
+  $('pdfList').innerHTML = PDFS.map(([f, t, s]) => `<a class="pdf" href="samples/${f}.pdf" target="_blank" rel="noopener">
+    <img src="assets/shots/pdf-${f}.jpg" alt="" loading="lazy"><span>${t}<small>${s}</small></span></a>`).join('');
+})();
+</script>
+</body>
+</html>

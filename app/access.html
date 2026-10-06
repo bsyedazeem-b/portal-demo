@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Users &amp; Access | {portal}</title>
+<link rel="icon" href="assets/favicon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="assets/portal.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/config.js"></script>
+<script src="assets/portal.js" data-module="admin"></script>
+<script src="assets/export.js"></script>
+</head>
+<body>
+<div class="ahhead">
+  <h1>Users &amp; Access</h1>
+  <p>Decide which sections each user can open and what they can do inside them. "No access" = the section is hidden from that user.</p>
+</div>
+<main>
+  <div id="flash" class="flash" hidden role="status"></div>
+
+  <details class="card" id="newBox" style="margin:14px 0 20px">
+    <summary style="font-weight:600;color:var(--teal)">+ Add a new user</summary>
+    <form id="newForm" style="margin-top:14px">
+      <div class="form-grid">
+        <div class="field"><label for="n_full">Full name</label><input id="n_full" required></div>
+        <div class="field"><label for="n_user">User ID (login)</label><input id="n_user" required pattern="[a-z0-9._\-]{3,30}" autocapitalize="none" placeholder="ahmed"></div>
+        <div class="field"><label for="n_pw">Password (at least 8 characters)</label><input id="n_pw" minlength="8" required autocomplete="off"></div>
+        <div class="field"><label for="n_docs">Documents</label><select id="n_docs"></select></div>
+        <div class="field"><label for="n_inv">Inventory</label><select id="n_inv"></select></div>
+        <div class="field"><label for="n_hr">Employees</label><select id="n_hr"></select></div>
+        <div class="field"><label><input type="checkbox" id="n_admin"> Portal admin (Users &amp; Access)</label></div>
+      </div>
+      <button class="btn" id="n_btn">Create user</button>
+    </form>
+  </details>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>User</th><th>Documents</th><th>Inventory</th><th>Employees</th><th>Admin</th><th></th><th>Account</th></tr></thead>
+      <tbody id="rows"><tr><td colspan="7"><div class="ah-skel rows" role="status" aria-label="Loading"><i></i><i></i><i></i><i></i></div></td></tr></tbody>
+    </table>
+  </div>
+
+  <div class="card" id="exportBox" style="margin-top:22px"></div>
+  <div class="card" id="backupBox" style="margin-top:22px"></div>
+
+  <div class="card" style="margin-top:22px">
+    <h2>What the roles mean</h2>
+    <p><b>Documents:</b> manager = everything + approve / reopen + delete. staff = create documents, edit drafts, record payments. viewer = view and download only.</p>
+    <p><b>Inventory:</b> admin = everything + delete + stock count (adjust). storekeeper = products, suppliers, stock in / out. viewer = view only.</p>
+    <p><b>Employees:</b> admin = everything + salary + kiosk PIN + settings. supervisor = attendance, overtime hours, tasks (salary is hidden). viewer = view only (no salary).</p>
+  </div>
+</main>
+<script>
+const ROLES = {docs: ['manager', 'staff', 'viewer'], inv: ['admin', 'storekeeper', 'viewer'], hr: ['admin', 'supervisor', 'viewer']};
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
+const $ = s => document.querySelector(s);
+const sel = (m, v, id) => `<select ${id ? `id="${id}"` : `data-m="${m}"`} aria-label="${m} role"><option value="">No access</option>${
+  ROLES[m].map(r => `<option value="${r}"${r === v ? ' selected' : ''}>${r}</option>`).join('')}</select>`;
+let ME, USERS = [];
+
+function flash(text, ok) { const f = $('#flash'); f.textContent = text; f.className = 'flash' + (ok ? ' ok' : ''); f.hidden = false; f.scrollIntoView({block: 'nearest'}); }
+
+async function call(body) {
+  if (window.PORTAL_CONFIG.isDemo)
+    throw new Error('In the demo, adding users and changing roles or passwords is switched off, so the demo login keeps working for everyone.');
+  const {data, error} = await portalSb.functions.invoke('admin-users', {body});
+  if (error) {
+    let m = error.message;
+    try { const j = await error.context.json(); m = j.error || m; } catch (e) {}
+    if (/Failed to send|fetch/i.test(m)) m = 'Could not reach the Edge Function "admin-users". Check Supabase > Edge Functions > admin-users > Logs for the actual cause (README step 3).';
+    throw new Error(m);
+  }
+  if (data && data.error) throw new Error(data.error);
+  return data;
+}
+
+async function load() {
+  const {data, error} = await portalSb.from('portal_users').select('*').order('is_admin', {ascending: false}).order('username');
+  if (error) { $('#rows').innerHTML = `<tr><td colspan="7">${esc(error.message)}</td></tr>`; return; }
+  USERS = data;
+  $('#rows').innerHTML = data.map(u => `<tr data-id="${u.id}" class="${u.active ? '' : 'off'}">
+    <td><b>${esc(u.full_name || u.username)}</b><br><span class="muted">${esc(u.username)}</span></td>
+    <td>${sel('docs', u.docs_role)}</td><td>${sel('inv', u.inv_role)}</td><td>${sel('hr', u.hr_role)}</td>
+    <td><input type="checkbox" class="adm" ${u.is_admin ? 'checked' : ''} aria-label="Portal admin"></td>
+    <td><button class="btn small save">Save</button></td>
+    <td><details><summary>${u.active ? 'Active' : 'Blocked'} ▾</summary><div class="acts">
+      <form class="pw"><input minlength="8" placeholder="New password" required autocomplete="off"><button class="btn sec small">Set</button></form>
+      ${u.id === ME.id ? '' : `<button class="btn sec small blk">${u.active ? 'Block account' : 'Unblock account'}</button>
+      <button class="btn danger small del">Delete</button>`}
+    </div></details></td></tr>`).join('');
+}
+
+(async () => {
+  ME = await window.PORTAL_READY;
+  window.portalExport(ME); window.portalBackups();
+  $('#n_docs').outerHTML = sel('docs', '', 'n_docs'); $('#n_inv').outerHTML = sel('inv', '', 'n_inv'); $('#n_hr').outerHTML = sel('hr', '', 'n_hr');
+  await load();
+  if (window.PORTAL_CONFIG.isDemo) flash('Demo: you can look around here, but saving users, roles and passwords is switched off.', true);
+  else if (USERS.length < 2) $('#newBox').open = true;
+
+  $('#newForm').addEventListener('submit', async ev => {
+    ev.preventDefault(); const b = $('#n_btn'); b.disabled = true;
+    try {
+      await call({action: 'create', username: $('#n_user').value.trim().toLowerCase(), full_name: $('#n_full').value.trim(),
+                  password: $('#n_pw').value, docs_role: $('#n_docs').value || null, inv_role: $('#n_inv').value || null,
+                  hr_role: $('#n_hr').value || null, is_admin: $('#n_admin').checked});
+      flash(`User '${$('#n_user').value.trim().toLowerCase()}' created. They can now log in with this User ID and password.`, true);
+      ev.target.reset(); await load();
+    } catch (e) { flash('Could not create user: ' + e.message); }
+    b.disabled = false;
+  });
+
+  $('#rows').addEventListener('click', async ev => {
+    const tr = ev.target.closest('tr[data-id]'); if (!tr) return;
+    const id = tr.dataset.id, u = USERS.find(x => x.id === id);
+    try {
+      if (ev.target.classList.contains('save')) {
+        const role = m => tr.querySelector(`select[data-m="${m}"]`).value || null;
+        await call({action: 'update', id, full_name: u.full_name, docs_role: role('docs'), inv_role: role('inv'),
+                    hr_role: role('hr'), is_admin: tr.querySelector('.adm').checked});
+        flash('Access saved.', true); await load();
+      } else if (ev.target.classList.contains('blk')) {
+        await call({action: 'block', id, block: u.active});
+        flash(u.active ? 'Account blocked.' : 'Account unblocked.', true); await load();
+      } else if (ev.target.classList.contains('del')) {
+        if (!confirm(`Permanently delete ${u.username}?`)) return;
+        await call({action: 'delete', id}); flash('User deleted.', true); await load();
+      }
+    } catch (e) { flash('Action failed: ' + e.message); await load(); }   // show the real saved state again
+  });
+  $('#rows').addEventListener('submit', async ev => {
+    ev.preventDefault(); const tr = ev.target.closest('tr[data-id]'), inp = ev.target.querySelector('input');
+    try { await call({action: 'password', id: tr.dataset.id, password: inp.value}); inp.value = ''; flash('New password set.', true); }
+    catch (e) { flash('Password not changed: ' + e.message); }
+  });
+})();
+</script>
+</body>
+</html>

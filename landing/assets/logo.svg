@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Business Portal (product) mark: four tiles, one highlighted -->
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="#2B4C7E"/>
+  <rect x="14" y="14" width="16" height="16" rx="3.5" fill="#fff"/>
+  <rect x="34" y="14" width="16" height="16" rx="3.5" fill="#E8A33D"/>
+  <rect x="14" y="34" width="16" height="16" rx="3.5" fill="#fff"/>
+  <rect x="34" y="34" width="16" height="16" rx="3.5" fill="#fff" fill-opacity=".55"/>
+</svg>

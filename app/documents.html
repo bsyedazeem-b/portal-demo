@@ -1,0 +1,2006 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Documents | {portal}</title>
+<link rel="icon" href="assets/favicon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="assets/portal.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>/* QR Code Generator for JavaScript, (c) 2009 Kazuhiko Arase, MIT license (qrcode-generator 1.4.4) */
+var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],f={},c=function(t,r){o=function(t){for(var r=new Array(t),e=0;e<t;e+=1){r[e]=new Array(t);for(var n=0;n<t;n+=1)r[e][n]=null}return r}(i=4*e+17),l(0,0),l(i-7,0),l(0,i-7),s(),h(),d(t,r),e>=7&&v(t),null==a&&(a=p(e,n,u)),w(a,r)},l=function(t,r){for(var e=-1;e<=7;e+=1)if(!(t+e<=-1||i<=t+e))for(var n=-1;n<=7;n+=1)r+n<=-1||i<=r+n||(o[t+e][r+n]=0<=e&&e<=6&&(0==n||6==n)||0<=n&&n<=6&&(0==e||6==e)||2<=e&&e<=4&&2<=n&&n<=4)},h=function(){for(var t=8;t<i-8;t+=1)null==o[t][6]&&(o[t][6]=t%2==0);for(var r=8;r<i-8;r+=1)null==o[6][r]&&(o[6][r]=r%2==0)},s=function(){for(var t=B.getPatternPosition(e),r=0;r<t.length;r+=1)for(var n=0;n<t.length;n+=1){var i=t[r],a=t[n];if(null==o[i][a])for(var u=-2;u<=2;u+=1)for(var f=-2;f<=2;f+=1)o[i+u][a+f]=-2==u||2==u||-2==f||2==f||0==u&&0==f}},v=function(t){for(var r=B.getBCHTypeNumber(e),n=0;n<18;n+=1){var a=!t&&1==(r>>n&1);o[Math.floor(n/3)][n%3+i-8-3]=a}for(n=0;n<18;n+=1){a=!t&&1==(r>>n&1);o[n%3+i-8-3][Math.floor(n/3)]=a}},d=function(t,r){for(var e=n<<3|r,a=B.getBCHTypeInfo(e),u=0;u<15;u+=1){var f=!t&&1==(a>>u&1);u<6?o[u][8]=f:u<8?o[u+1][8]=f:o[i-15+u][8]=f}for(u=0;u<15;u+=1){f=!t&&1==(a>>u&1);u<8?o[8][i-u-1]=f:u<9?o[8][15-u-1+1]=f:o[8][15-u-1]=f}o[i-8][8]=!t},w=function(t,r){for(var e=-1,n=i-1,a=7,u=0,f=B.getMaskFunction(r),c=i-1;c>0;c-=2)for(6==c&&(c-=1);;){for(var g=0;g<2;g+=1)if(null==o[n][c-g]){var l=!1;u<t.length&&(l=1==(t[u]>>>a&1)),f(n,c-g)&&(l=!l),o[n][c-g]=l,-1==(a-=1)&&(u+=1,a=7)}if((n+=e)<0||i<=n){n-=e,e=-e;break}}},p=function(t,r,e){for(var n=A.getRSBlocks(t,r),o=b(),i=0;i<e.length;i+=1){var a=e[i];o.put(a.getMode(),4),o.put(a.getLength(),B.getLengthInBits(a.getMode(),t)),a.write(o)}var u=0;for(i=0;i<n.length;i+=1)u+=n[i].dataCount;if(o.getLengthInBits()>8*u)throw"code length overflow. ("+o.getLengthInBits()+">"+8*u+")";for(o.getLengthInBits()+4<=8*u&&o.put(0,4);o.getLengthInBits()%8!=0;)o.putBit(!1);for(;!(o.getLengthInBits()>=8*u||(o.put(236,8),o.getLengthInBits()>=8*u));)o.put(17,8);return function(t,r){for(var e=0,n=0,o=0,i=new Array(r.length),a=new Array(r.length),u=0;u<r.length;u+=1){var f=r[u].dataCount,c=r[u].totalCount-f;n=Math.max(n,f),o=Math.max(o,c),i[u]=new Array(f);for(var g=0;g<i[u].length;g+=1)i[u][g]=255&t.getBuffer()[g+e];e+=f;var l=B.getErrorCorrectPolynomial(c),h=k(i[u],l.getLength()-1).mod(l);for(a[u]=new Array(l.getLength()-1),g=0;g<a[u].length;g+=1){var s=g+h.getLength()-a[u].length;a[u][g]=s>=0?h.getAt(s):0}}var v=0;for(g=0;g<r.length;g+=1)v+=r[g].totalCount;var d=new Array(v),w=0;for(g=0;g<n;g+=1)for(u=0;u<r.length;u+=1)g<i[u].length&&(d[w]=i[u][g],w+=1);for(g=0;g<o;g+=1)for(u=0;u<r.length;u+=1)g<a[u].length&&(d[w]=a[u][g],w+=1);return d}(o,n)};f.addData=function(t,r){var e=null;switch(r=r||"Byte"){case"Numeric":e=M(t);break;case"Alphanumeric":e=x(t);break;case"Byte":e=m(t);break;case"Kanji":e=L(t);break;default:throw"mode:"+r}u.push(e),a=null},f.isDark=function(t,r){if(t<0||i<=t||r<0||i<=r)throw t+","+r;return o[t][r]},f.getModuleCount=function(){return i},f.make=function(){if(e<1){for(var t=1;t<40;t++){for(var r=A.getRSBlocks(t,n),o=b(),i=0;i<u.length;i++){var a=u[i];o.put(a.getMode(),4),o.put(a.getLength(),B.getLengthInBits(a.getMode(),t)),a.write(o)}var g=0;for(i=0;i<r.length;i++)g+=r[i].dataCount;if(o.getLengthInBits()<=8*g)break}e=t}c(!1,function(){for(var t=0,r=0,e=0;e<8;e+=1){c(!0,e);var n=B.getLostPoint(f);(0==e||t>n)&&(t=n,r=e)}return r}())},f.createTableTag=function(t,r){t=t||2;var e="";e+='<table style="',e+=" border-width: 0px; border-style: none;",e+=" border-collapse: collapse;",e+=" padding: 0px; margin: "+(r=void 0===r?4*t:r)+"px;",e+='">',e+="<tbody>";for(var n=0;n<f.getModuleCount();n+=1){e+="<tr>";for(var o=0;o<f.getModuleCount();o+=1)e+='<td style="',e+=" border-width: 0px; border-style: none;",e+=" border-collapse: collapse;",e+=" padding: 0px; margin: 0px;",e+=" width: "+t+"px;",e+=" height: "+t+"px;",e+=" background-color: ",e+=f.isDark(n,o)?"#000000":"#ffffff",e+=";",e+='"/>';e+="</tr>"}return e+="</tbody>",e+="</table>"},f.createSvgTag=function(t,r,e,n){var o={};"object"==typeof arguments[0]&&(t=(o=arguments[0]).cellSize,r=o.margin,e=o.alt,n=o.title),t=t||2,r=void 0===r?4*t:r,(e="string"==typeof e?{text:e}:e||{}).text=e.text||null,e.id=e.text?e.id||"qrcode-description":null,(n="string"==typeof n?{text:n}:n||{}).text=n.text||null,n.id=n.text?n.id||"qrcode-title":null;var i,a,u,c,g=f.getModuleCount()*t+2*r,l="";for(c="l"+t+",0 0,"+t+" -"+t+",0 0,-"+t+"z ",l+='<svg version="1.1" xmlns="http://www.w3.org/2000/svg"',l+=o.scalable?"":' width="'+g+'px" height="'+g+'px"',l+=' viewBox="0 0 '+g+" "+g+'" ',l+=' preserveAspectRatio="xMinYMin meet"',l+=n.text||e.text?' role="img" aria-labelledby="'+y([n.id,e.id].join(" ").trim())+'"':"",l+=">",l+=n.text?'<title id="'+y(n.id)+'">'+y(n.text)+"</title>":"",l+=e.text?'<description id="'+y(e.id)+'">'+y(e.text)+"</description>":"",l+='<rect width="100%" height="100%" fill="white" cx="0" cy="0"/>',l+='<path d="',a=0;a<f.getModuleCount();a+=1)for(u=a*t+r,i=0;i<f.getModuleCount();i+=1)f.isDark(a,i)&&(l+="M"+(i*t+r)+","+u+c);return l+='" stroke="transparent" fill="black"/>',l+="</svg>"},f.createDataURL=function(t,r){t=t||2,r=void 0===r?4*t:r;var e=f.getModuleCount()*t+2*r,n=r,o=e-r;return I(e,e,function(r,e){if(n<=r&&r<o&&n<=e&&e<o){var i=Math.floor((r-n)/t),a=Math.floor((e-n)/t);return f.isDark(a,i)?0:1}return 1})},f.createImgTag=function(t,r,e){t=t||2,r=void 0===r?4*t:r;var n=f.getModuleCount()*t+2*r,o="";return o+="<img",o+=' src="',o+=f.createDataURL(t,r),o+='"',o+=' width="',o+=n,o+='"',o+=' height="',o+=n,o+='"',e&&(o+=' alt="',o+=y(e),o+='"'),o+="/>"};var y=function(t){for(var r="",e=0;e<t.length;e+=1){var n=t.charAt(e);switch(n){case"<":r+="&lt;";break;case">":r+="&gt;";break;case"&":r+="&amp;";break;case'"':r+="&quot;";break;default:r+=n}}return r};return f.createASCII=function(t,r){if((t=t||1)<2)return function(t){t=void 0===t?2:t;var r,e,n,o,i,a=1*f.getModuleCount()+2*t,u=t,c=a-t,g={"██":"█","█ ":"▀"," █":"▄","  ":" "},l={"██":"▀","█ ":"▀"," █":" ","  ":" "},h="";for(r=0;r<a;r+=2){for(n=Math.floor((r-u)/1),o=Math.floor((r+1-u)/1),e=0;e<a;e+=1)i="█",u<=e&&e<c&&u<=r&&r<c&&f.isDark(n,Math.floor((e-u)/1))&&(i=" "),u<=e&&e<c&&u<=r+1&&r+1<c&&f.isDark(o,Math.floor((e-u)/1))?i+=" ":i+="█",h+=t<1&&r+1>=c?l[i]:g[i];h+="\n"}return a%2&&t>0?h.substring(0,h.length-a-1)+Array(a+1).join("▀"):h.substring(0,h.length-1)}(r);t-=1,r=void 0===r?2*t:r;var e,n,o,i,a=f.getModuleCount()*t+2*r,u=r,c=a-r,g=Array(t+1).join("██"),l=Array(t+1).join("  "),h="",s="";for(e=0;e<a;e+=1){for(o=Math.floor((e-u)/t),s="",n=0;n<a;n+=1)i=1,u<=n&&n<c&&u<=e&&e<c&&f.isDark(o,Math.floor((n-u)/t))&&(i=0),s+=i?g:l;for(o=0;o<t;o+=1)h+=s+"\n"}return h.substring(0,h.length-1)},f.renderTo2dContext=function(t,r){r=r||2;for(var e=f.getModuleCount(),n=0;n<e;n++)for(var o=0;o<e;o++)t.fillStyle=f.isDark(n,o)?"black":"white",t.fillRect(n*r,o*r,r,r)},f};t.stringToBytes=(t.stringToBytesFuncs={default:function(t){for(var r=[],e=0;e<t.length;e+=1){var n=t.charCodeAt(e);r.push(255&n)}return r}}).default,t.createStringToBytes=function(t,r){var e=function(){for(var e=S(t),n=function(){var t=e.read();if(-1==t)throw"eof";return t},o=0,i={};;){var a=e.read();if(-1==a)break;var u=n(),f=n()<<8|n();i[String.fromCharCode(a<<8|u)]=f,o+=1}if(o!=r)throw o+" != "+r;return i}(),n="?".charCodeAt(0);return function(t){for(var r=[],o=0;o<t.length;o+=1){var i=t.charCodeAt(o);if(i<128)r.push(i);else{var a=e[t.charAt(o)];"number"==typeof a?(255&a)==a?r.push(a):(r.push(a>>>8),r.push(255&a)):r.push(n)}}return r}};var r,e,n,o,i,a=1,u=2,f=4,c=8,g={L:1,M:0,Q:3,H:2},l=0,h=1,s=2,v=3,d=4,w=5,p=6,y=7,B=(r=[[],[6,18],[6,22],[6,26],[6,30],[6,34],[6,22,38],[6,24,42],[6,26,46],[6,28,50],[6,30,54],[6,32,58],[6,34,62],[6,26,46,66],[6,26,48,70],[6,26,50,74],[6,30,54,78],[6,30,56,82],[6,30,58,86],[6,34,62,90],[6,28,50,72,94],[6,26,50,74,98],[6,30,54,78,102],[6,28,54,80,106],[6,32,58,84,110],[6,30,58,86,114],[6,34,62,90,118],[6,26,50,74,98,122],[6,30,54,78,102,126],[6,26,52,78,104,130],[6,30,56,82,108,134],[6,34,60,86,112,138],[6,30,58,86,114,142],[6,34,62,90,118,146],[6,30,54,78,102,126,150],[6,24,50,76,102,128,154],[6,28,54,80,106,132,158],[6,32,58,84,110,136,162],[6,26,54,82,110,138,166],[6,30,58,86,114,142,170]],e=1335,n=7973,i=function(t){for(var r=0;0!=t;)r+=1,t>>>=1;return r},(o={}).getBCHTypeInfo=function(t){for(var r=t<<10;i(r)-i(e)>=0;)r^=e<<i(r)-i(e);return 21522^(t<<10|r)},o.getBCHTypeNumber=function(t){for(var r=t<<12;i(r)-i(n)>=0;)r^=n<<i(r)-i(n);return t<<12|r},o.getPatternPosition=function(t){return r[t-1]},o.getMaskFunction=function(t){switch(t){case l:return function(t,r){return(t+r)%2==0};case h:return function(t,r){return t%2==0};case s:return function(t,r){return r%3==0};case v:return function(t,r){return(t+r)%3==0};case d:return function(t,r){return(Math.floor(t/2)+Math.floor(r/3))%2==0};case w:return function(t,r){return t*r%2+t*r%3==0};case p:return function(t,r){return(t*r%2+t*r%3)%2==0};case y:return function(t,r){return(t*r%3+(t+r)%2)%2==0};default:throw"bad maskPattern:"+t}},o.getErrorCorrectPolynomial=function(t){for(var r=k([1],0),e=0;e<t;e+=1)r=r.multiply(k([1,C.gexp(e)],0));return r},o.getLengthInBits=function(t,r){if(1<=r&&r<10)switch(t){case a:return 10;case u:return 9;case f:case c:return 8;default:throw"mode:"+t}else if(r<27)switch(t){case a:return 12;case u:return 11;case f:return 16;case c:return 10;default:throw"mode:"+t}else{if(!(r<41))throw"type:"+r;switch(t){case a:return 14;case u:return 13;case f:return 16;case c:return 12;default:throw"mode:"+t}}},o.getLostPoint=function(t){for(var r=t.getModuleCount(),e=0,n=0;n<r;n+=1)for(var o=0;o<r;o+=1){for(var i=0,a=t.isDark(n,o),u=-1;u<=1;u+=1)if(!(n+u<0||r<=n+u))for(var f=-1;f<=1;f+=1)o+f<0||r<=o+f||0==u&&0==f||a==t.isDark(n+u,o+f)&&(i+=1);i>5&&(e+=3+i-5)}for(n=0;n<r-1;n+=1)for(o=0;o<r-1;o+=1){var c=0;t.isDark(n,o)&&(c+=1),t.isDark(n+1,o)&&(c+=1),t.isDark(n,o+1)&&(c+=1),t.isDark(n+1,o+1)&&(c+=1),0!=c&&4!=c||(e+=3)}for(n=0;n<r;n+=1)for(o=0;o<r-6;o+=1)t.isDark(n,o)&&!t.isDark(n,o+1)&&t.isDark(n,o+2)&&t.isDark(n,o+3)&&t.isDark(n,o+4)&&!t.isDark(n,o+5)&&t.isDark(n,o+6)&&(e+=40);for(o=0;o<r;o+=1)for(n=0;n<r-6;n+=1)t.isDark(n,o)&&!t.isDark(n+1,o)&&t.isDark(n+2,o)&&t.isDark(n+3,o)&&t.isDark(n+4,o)&&!t.isDark(n+5,o)&&t.isDark(n+6,o)&&(e+=40);var g=0;for(o=0;o<r;o+=1)for(n=0;n<r;n+=1)t.isDark(n,o)&&(g+=1);return e+=Math.abs(100*g/r/r-50)/5*10},o),C=function(){for(var t=new Array(256),r=new Array(256),e=0;e<8;e+=1)t[e]=1<<e;for(e=8;e<256;e+=1)t[e]=t[e-4]^t[e-5]^t[e-6]^t[e-8];for(e=0;e<255;e+=1)r[t[e]]=e;var n={glog:function(t){if(t<1)throw"glog("+t+")";return r[t]},gexp:function(r){for(;r<0;)r+=255;for(;r>=256;)r-=255;return t[r]}};return n}();function k(t,r){if(void 0===t.length)throw t.length+"/"+r;var e=function(){for(var e=0;e<t.length&&0==t[e];)e+=1;for(var n=new Array(t.length-e+r),o=0;o<t.length-e;o+=1)n[o]=t[o+e];return n}(),n={getAt:function(t){return e[t]},getLength:function(){return e.length},multiply:function(t){for(var r=new Array(n.getLength()+t.getLength()-1),e=0;e<n.getLength();e+=1)for(var o=0;o<t.getLength();o+=1)r[e+o]^=C.gexp(C.glog(n.getAt(e))+C.glog(t.getAt(o)));return k(r,0)},mod:function(t){if(n.getLength()-t.getLength()<0)return n;for(var r=C.glog(n.getAt(0))-C.glog(t.getAt(0)),e=new Array(n.getLength()),o=0;o<n.getLength();o+=1)e[o]=n.getAt(o);for(o=0;o<t.getLength();o+=1)e[o]^=C.gexp(C.glog(t.getAt(o))+r);return k(e,0).mod(t)}};return n}var A=function(){var t=[[1,26,19],[1,26,16],[1,26,13],[1,26,9],[1,44,34],[1,44,28],[1,44,22],[1,44,16],[1,70,55],[1,70,44],[2,35,17],[2,35,13],[1,100,80],[2,50,32],[2,50,24],[4,25,9],[1,134,108],[2,67,43],[2,33,15,2,34,16],[2,33,11,2,34,12],[2,86,68],[4,43,27],[4,43,19],[4,43,15],[2,98,78],[4,49,31],[2,32,14,4,33,15],[4,39,13,1,40,14],[2,121,97],[2,60,38,2,61,39],[4,40,18,2,41,19],[4,40,14,2,41,15],[2,146,116],[3,58,36,2,59,37],[4,36,16,4,37,17],[4,36,12,4,37,13],[2,86,68,2,87,69],[4,69,43,1,70,44],[6,43,19,2,44,20],[6,43,15,2,44,16],[4,101,81],[1,80,50,4,81,51],[4,50,22,4,51,23],[3,36,12,8,37,13],[2,116,92,2,117,93],[6,58,36,2,59,37],[4,46,20,6,47,21],[7,42,14,4,43,15],[4,133,107],[8,59,37,1,60,38],[8,44,20,4,45,21],[12,33,11,4,34,12],[3,145,115,1,146,116],[4,64,40,5,65,41],[11,36,16,5,37,17],[11,36,12,5,37,13],[5,109,87,1,110,88],[5,65,41,5,66,42],[5,54,24,7,55,25],[11,36,12,7,37,13],[5,122,98,1,123,99],[7,73,45,3,74,46],[15,43,19,2,44,20],[3,45,15,13,46,16],[1,135,107,5,136,108],[10,74,46,1,75,47],[1,50,22,15,51,23],[2,42,14,17,43,15],[5,150,120,1,151,121],[9,69,43,4,70,44],[17,50,22,1,51,23],[2,42,14,19,43,15],[3,141,113,4,142,114],[3,70,44,11,71,45],[17,47,21,4,48,22],[9,39,13,16,40,14],[3,135,107,5,136,108],[3,67,41,13,68,42],[15,54,24,5,55,25],[15,43,15,10,44,16],[4,144,116,4,145,117],[17,68,42],[17,50,22,6,51,23],[19,46,16,6,47,17],[2,139,111,7,140,112],[17,74,46],[7,54,24,16,55,25],[34,37,13],[4,151,121,5,152,122],[4,75,47,14,76,48],[11,54,24,14,55,25],[16,45,15,14,46,16],[6,147,117,4,148,118],[6,73,45,14,74,46],[11,54,24,16,55,25],[30,46,16,2,47,17],[8,132,106,4,133,107],[8,75,47,13,76,48],[7,54,24,22,55,25],[22,45,15,13,46,16],[10,142,114,2,143,115],[19,74,46,4,75,47],[28,50,22,6,51,23],[33,46,16,4,47,17],[8,152,122,4,153,123],[22,73,45,3,74,46],[8,53,23,26,54,24],[12,45,15,28,46,16],[3,147,117,10,148,118],[3,73,45,23,74,46],[4,54,24,31,55,25],[11,45,15,31,46,16],[7,146,116,7,147,117],[21,73,45,7,74,46],[1,53,23,37,54,24],[19,45,15,26,46,16],[5,145,115,10,146,116],[19,75,47,10,76,48],[15,54,24,25,55,25],[23,45,15,25,46,16],[13,145,115,3,146,116],[2,74,46,29,75,47],[42,54,24,1,55,25],[23,45,15,28,46,16],[17,145,115],[10,74,46,23,75,47],[10,54,24,35,55,25],[19,45,15,35,46,16],[17,145,115,1,146,116],[14,74,46,21,75,47],[29,54,24,19,55,25],[11,45,15,46,46,16],[13,145,115,6,146,116],[14,74,46,23,75,47],[44,54,24,7,55,25],[59,46,16,1,47,17],[12,151,121,7,152,122],[12,75,47,26,76,48],[39,54,24,14,55,25],[22,45,15,41,46,16],[6,151,121,14,152,122],[6,75,47,34,76,48],[46,54,24,10,55,25],[2,45,15,64,46,16],[17,152,122,4,153,123],[29,74,46,14,75,47],[49,54,24,10,55,25],[24,45,15,46,46,16],[4,152,122,18,153,123],[13,74,46,32,75,47],[48,54,24,14,55,25],[42,45,15,32,46,16],[20,147,117,4,148,118],[40,75,47,7,76,48],[43,54,24,22,55,25],[10,45,15,67,46,16],[19,148,118,6,149,119],[18,75,47,31,76,48],[34,54,24,34,55,25],[20,45,15,61,46,16]],r=function(t,r){var e={};return e.totalCount=t,e.dataCount=r,e},e={};return e.getRSBlocks=function(e,n){var o=function(r,e){switch(e){case g.L:return t[4*(r-1)+0];case g.M:return t[4*(r-1)+1];case g.Q:return t[4*(r-1)+2];case g.H:return t[4*(r-1)+3];default:return}}(e,n);if(void 0===o)throw"bad rs block @ typeNumber:"+e+"/errorCorrectionLevel:"+n;for(var i=o.length/3,a=[],u=0;u<i;u+=1)for(var f=o[3*u+0],c=o[3*u+1],l=o[3*u+2],h=0;h<f;h+=1)a.push(r(c,l));return a},e}(),b=function(){var t=[],r=0,e={getBuffer:function(){return t},getAt:function(r){var e=Math.floor(r/8);return 1==(t[e]>>>7-r%8&1)},put:function(t,r){for(var n=0;n<r;n+=1)e.putBit(1==(t>>>r-n-1&1))},getLengthInBits:function(){return r},putBit:function(e){var n=Math.floor(r/8);t.length<=n&&t.push(0),e&&(t[n]|=128>>>r%8),r+=1}};return e},M=function(t){var r=a,e=t,n={getMode:function(){return r},getLength:function(t){return e.length},write:function(t){for(var r=e,n=0;n+2<r.length;)t.put(o(r.substring(n,n+3)),10),n+=3;n<r.length&&(r.length-n==1?t.put(o(r.substring(n,n+1)),4):r.length-n==2&&t.put(o(r.substring(n,n+2)),7))}},o=function(t){for(var r=0,e=0;e<t.length;e+=1)r=10*r+i(t.charAt(e));return r},i=function(t){if("0"<=t&&t<="9")return t.charCodeAt(0)-"0".charCodeAt(0);throw"illegal char :"+t};return n},x=function(t){var r=u,e=t,n={getMode:function(){return r},getLength:function(t){return e.length},write:function(t){for(var r=e,n=0;n+1<r.length;)t.put(45*o(r.charAt(n))+o(r.charAt(n+1)),11),n+=2;n<r.length&&t.put(o(r.charAt(n)),6)}},o=function(t){if("0"<=t&&t<="9")return t.charCodeAt(0)-"0".charCodeAt(0);if("A"<=t&&t<="Z")return t.charCodeAt(0)-"A".charCodeAt(0)+10;switch(t){case" ":return 36;case"$":return 37;case"%":return 38;case"*":return 39;case"+":return 40;case"-":return 41;case".":return 42;case"/":return 43;case":":return 44;default:throw"illegal char :"+t}};return n},m=function(r){var e=f,n=t.stringToBytes(r),o={getMode:function(){return e},getLength:function(t){return n.length},write:function(t){for(var r=0;r<n.length;r+=1)t.put(n[r],8)}};return o},L=function(r){var e=c,n=t.stringToBytesFuncs.SJIS;if(!n)throw"sjis not supported.";!function(){var t=n("友");if(2!=t.length||38726!=(t[0]<<8|t[1]))throw"sjis not supported."}();var o=n(r),i={getMode:function(){return e},getLength:function(t){return~~(o.length/2)},write:function(t){for(var r=o,e=0;e+1<r.length;){var n=(255&r[e])<<8|255&r[e+1];if(33088<=n&&n<=40956)n-=33088;else{if(!(57408<=n&&n<=60351))throw"illegal char at "+(e+1)+"/"+n;n-=49472}n=192*(n>>>8&255)+(255&n),t.put(n,13),e+=2}if(e<r.length)throw"illegal char at "+(e+1)}};return i},D=function(){var t=[],r={writeByte:function(r){t.push(255&r)},writeShort:function(t){r.writeByte(t),r.writeByte(t>>>8)},writeBytes:function(t,e,n){e=e||0,n=n||t.length;for(var o=0;o<n;o+=1)r.writeByte(t[o+e])},writeString:function(t){for(var e=0;e<t.length;e+=1)r.writeByte(t.charCodeAt(e))},toByteArray:function(){return t},toString:function(){var r="";r+="[";for(var e=0;e<t.length;e+=1)e>0&&(r+=","),r+=t[e];return r+="]"}};return r},S=function(t){var r=t,e=0,n=0,o=0,i={read:function(){for(;o<8;){if(e>=r.length){if(0==o)return-1;throw"unexpected end of file./"+o}var t=r.charAt(e);if(e+=1,"="==t)return o=0,-1;t.match(/^\s$/)||(n=n<<6|a(t.charCodeAt(0)),o+=6)}var i=n>>>o-8&255;return o-=8,i}},a=function(t){if(65<=t&&t<=90)return t-65;if(97<=t&&t<=122)return t-97+26;if(48<=t&&t<=57)return t-48+52;if(43==t)return 62;if(47==t)return 63;throw"c:"+t};return i},I=function(t,r,e){for(var n=function(t,r){var e=t,n=r,o=new Array(t*r),i={setPixel:function(t,r,n){o[r*e+t]=n},write:function(t){t.writeString("GIF87a"),t.writeShort(e),t.writeShort(n),t.writeByte(128),t.writeByte(0),t.writeByte(0),t.writeByte(0),t.writeByte(0),t.writeByte(0),t.writeByte(255),t.writeByte(255),t.writeByte(255),t.writeString(","),t.writeShort(0),t.writeShort(0),t.writeShort(e),t.writeShort(n),t.writeByte(0);var r=a(2);t.writeByte(2);for(var o=0;r.length-o>255;)t.writeByte(255),t.writeBytes(r,o,255),o+=255;t.writeByte(r.length-o),t.writeBytes(r,o,r.length-o),t.writeByte(0),t.writeString(";")}},a=function(t){for(var r=1<<t,e=1+(1<<t),n=t+1,i=u(),a=0;a<r;a+=1)i.add(String.fromCharCode(a));i.add(String.fromCharCode(r)),i.add(String.fromCharCode(e));var f,c,g,l=D(),h=(f=l,c=0,g=0,{write:function(t,r){if(t>>>r!=0)throw"length over";for(;c+r>=8;)f.writeByte(255&(t<<c|g)),r-=8-c,t>>>=8-c,g=0,c=0;g|=t<<c,c+=r},flush:function(){c>0&&f.writeByte(g)}});h.write(r,n);var s=0,v=String.fromCharCode(o[s]);for(s+=1;s<o.length;){var d=String.fromCharCode(o[s]);s+=1,i.contains(v+d)?v+=d:(h.write(i.indexOf(v),n),i.size()<4095&&(i.size()==1<<n&&(n+=1),i.add(v+d)),v=d)}return h.write(i.indexOf(v),n),h.write(e,n),h.flush(),l.toByteArray()},u=function(){var t={},r=0,e={add:function(n){if(e.contains(n))throw"dup key:"+n;t[n]=r,r+=1},size:function(){return r},indexOf:function(r){return t[r]},contains:function(r){return void 0!==t[r]}};return e};return i}(t,r),o=0;o<r;o+=1)for(var i=0;i<t;i+=1)n.setPixel(i,o,e(i,o));var a=D();n.write(a);for(var u=function(){var t=0,r=0,e=0,n="",o={},i=function(t){n+=String.fromCharCode(a(63&t))},a=function(t){if(t<0);else{if(t<26)return 65+t;if(t<52)return t-26+97;if(t<62)return t-52+48;if(62==t)return 43;if(63==t)return 47}throw"n:"+t};return o.writeByte=function(n){for(t=t<<8|255&n,r+=8,e+=1;r>=6;)i(t>>>r-6),r-=6},o.flush=function(){if(r>0&&(i(t<<6-r),t=0,r=0),e%3!=0)for(var o=3-e%3,a=0;a<o;a+=1)n+="="},o.toString=function(){return n},o}(),f=a.toByteArray(),c=0;c<f.length;c+=1)u.writeByte(f[c]);return u.flush(),"data:image/gif;base64,"+u};return t}();qrcode.stringToBytesFuncs["UTF-8"]=function(t){return function(t){for(var r=[],e=0;e<t.length;e++){var n=t.charCodeAt(e);n<128?r.push(n):n<2048?r.push(192|n>>6,128|63&n):n<55296||n>=57344?r.push(224|n>>12,128|n>>6&63,128|63&n):(e++,n=65536+((1023&n)<<10|1023&t.charCodeAt(e)),r.push(240|n>>18,128|n>>12&63,128|n>>6&63,128|63&n))}return r}(t)},function(t){"function"==typeof define&&define.amd?define([],t):"object"==typeof exports&&(module.exports=t())}(function(){return qrcode});
+</script>
+<script src="assets/config.js"></script>
+<script src="assets/letterhead.js"></script>
+<script src="assets/portal.js" data-module="docs"></script>
+<style>
+.docnav{margin:16px 0 6px;background:#fff;border-radius:14px;box-shadow:0 1px 4px rgba(30,60,80,.08);overflow:hidden}
+.docgroups{display:flex;gap:6px;padding:6px;background:#F0F4F5;overflow-x:auto;scrollbar-width:none}
+.docgroups::-webkit-scrollbar,.docsub::-webkit-scrollbar{display:none}
+.docgroups a{flex:1 1 0;display:flex;align-items:center;justify-content:center;gap:9px;padding:10px 16px;border-radius:10px;color:var(--muted);
+  font:600 14px var(--font);text-decoration:none;white-space:nowrap;transition:background .15s,color .15s}
+.docgroups a:hover{color:var(--text);background:rgba(255,255,255,.6)}
+.docgroups a svg{width:19px;height:19px;flex:none;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.docgroups a.on{background:#fff;color:var(--teal);box-shadow:0 1px 4px rgba(30,60,80,.12)}
+.docsub{display:flex;gap:2px;padding:0 10px;overflow-x:auto;scrollbar-width:none}
+.docsub a{position:relative;padding:12px 14px;color:var(--muted);font:500 13.5px var(--font);text-decoration:none;white-space:nowrap}
+.docsub a:hover{color:var(--text)}
+.docsub a.on{color:var(--teal);font-weight:600}
+.docsub a.on::after{content:"";position:absolute;left:10px;right:10px;bottom:0;height:3px;border-radius:3px 3px 0 0;background:var(--teal)}
+.docsub a[hidden]{display:none}
+.docgroups a .sm{display:none}
+@media (max-width:640px){.docgroups a{padding:9px 6px;gap:6px;font-size:13.5px}.docgroups a svg{width:17px;height:17px}.docgroups a .lg{display:none}.docgroups a .sm{display:inline}.docsub{padding:0 4px}.docsub a{padding:12px 11px}}
+.ahhead .row{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.tools{display:flex;gap:10px;flex-wrap:wrap;align-items:end;margin-bottom:14px}
+.tools .field{margin:0}
+.tools input[type=search]{width:min(340px,100%)}
+td .btn{margin-right:4px}
+td.no{font-weight:600;color:var(--text);white-space:nowrap}
+.res{display:inline-block;font-size:11.5px;font-weight:600;padding:3px 10px;border-radius:99px;white-space:nowrap}
+.res.PASS{background:#E5F5EC;color:#23794F}
+.res.FAIL{background:#FCE8EB;color:#B4283D}
+.res.draft{background:#FFF1E6;color:#B5591A}
+.res.paid{background:#E5F5EC;color:#23794F}.res.partial{background:#E6EEF8;color:#2B66A6}.res.unpaid{background:#EEF1F3;color:#5E6E76}.res.overdue{background:#FCE8EB;color:#B4283D}
+.status-line{margin:2px 0 14px;font-size:14px}
+.empty{padding:34px 18px;text-align:center;color:var(--muted)}
+tbody tr.click{cursor:pointer}
+tbody tr.click:hover td{background:#F7FAFB}
+.who{display:flex;align-items:center;gap:10px}
+.mini{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:600;font-size:11.5px}
+
+/* form */
+.sheet{background:#fff;border-radius:12px;padding:6px 22px 20px;margin-bottom:16px;box-shadow:0 2px 10px rgba(30,60,80,.06)}
+.sheet h3{color:var(--text);font-size:15px;font-weight:600;margin:18px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:2px 18px}
+.field input,.field select,.field textarea{width:100%}
+textarea{resize:vertical;min-height:70px}
+.fixed{padding:9px 11px;background:#F2F8F9;border:1px dashed #CFE2E6;border-radius:8px;font-weight:600;color:var(--teal-dark)}
+.choice{display:flex;gap:18px;flex-wrap:wrap;padding:6px 0}
+.choice label{display:flex;align-items:center;gap:7px;font-weight:500;cursor:pointer}
+.choice input{width:18px;height:18px;margin:0;accent-color:var(--teal)}
+.choice.result label{padding:7px 16px;border:1.5px solid var(--border);border-radius:99px}
+.choice.result label:has(input:checked)[data-v=PASS]{border-color:var(--green);color:#23794F;background:#E5F5EC}
+.choice.result label:has(input:checked)[data-v=FAIL]{border-color:var(--red);color:#B4283D;background:#FCE8EB}
+.hint{font-size:12.5px;color:var(--muted);margin:2px 0 0}
+.photos{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.slot{border:1.5px dashed #CFDADF;border-radius:12px;aspect-ratio:4/3;position:relative;display:grid;place-items:center;background:#FAFCFC;overflow:hidden}
+.slot img{width:100%;height:100%;object-fit:contain;background:#fff}
+.slot .lbl{color:var(--muted);font-size:14px;text-align:center;padding:10px}
+.slot input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.slot .x{position:absolute;top:8px;right:8px;background:#fff;border:1px solid var(--border);border-radius:99px;padding:3px 10px;font:500 12px var(--font);cursor:pointer;z-index:2}
+.slot.qr{aspect-ratio:1;max-width:220px}
+.slot.filled{border-style:solid;border-color:var(--border)}
+.slot.ro input{display:none}
+.bar{position:sticky;bottom:0;background:rgba(245,247,249,.94);backdrop-filter:blur(6px);border-top:1px solid var(--border);padding:12px 0;display:flex;gap:10px;flex-wrap:wrap;align-items:center;z-index:5}
+.bar .grow{flex:1}
+.meta{font-size:13px;color:var(--muted);margin:2px 0 0}
+.err{margin:0}
+#toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--text);color:#fff;padding:11px 18px;border-radius:10px;font-weight:500;z-index:60;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+#toast.bad{background:var(--red)}
+.busy{opacity:.6;pointer-events:none}
+/* line items */
+.items{width:100%;border-collapse:collapse;min-width:640px}
+.items th{background:#FAFBFC;color:var(--muted);font-size:12.5px;font-weight:500;padding:9px 8px}
+.items td{padding:5px 4px;border-bottom:1px solid #EEF2F4;vertical-align:top}
+.items td input,.items td textarea{width:100%;padding:7px 8px;min-height:0}
+.items td textarea{resize:vertical;min-height:36px}
+.items td.n{width:34px;text-align:center;color:var(--muted);padding-top:13px}
+.items td.amt{text-align:right;padding:13px 8px 0;white-space:nowrap}
+.items input[type=number]{text-align:right}
+.items .rm{background:none;border:0;color:var(--red);cursor:pointer;font-size:18px;line-height:1;padding:9px 6px}
+.totals{margin:14px 0 0 auto;width:min(320px,100%)}
+.totals div{display:flex;justify-content:space-between;padding:6px 2px;border-bottom:1px solid var(--border)}
+.totals div.grand{font-weight:600;color:var(--text);font-size:1.1rem;border-bottom:2px solid var(--teal)}
+td.money{text-align:right;white-space:nowrap}
+/* payments */
+.paybox{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:14px}
+.paybox div{background:#FAFBFC;border-radius:10px;padding:12px 14px}
+.paybox b{display:block;font-size:18px;font-weight:600}.paybox span{color:var(--muted);font-size:12.5px}
+.payform{display:flex;gap:10px;flex-wrap:wrap;align-items:end;margin-top:12px}
+.payform .field{margin:0;flex:1 1 140px}
+.share{position:relative}
+/* checklists in forms */
+table.chk td{vertical-align:middle}
+table.chk input{width:100%;min-width:150px}
+table.chk select{min-width:86px;font-weight:600}
+table.chk .arsub{font-family:"Noto Naskh Arabic","Segoe UI",serif;font-size:13px;color:var(--muted);margin-top:2px}
+select.r-PASS{background:#E5F5EC;color:#23794F;border-color:#BFE3CD}
+select.r-FAIL{background:#FCE8EB;color:#B4283D;border-color:#F1C7CD}
+select.r-NA{background:#EEF1F3;color:#5E6E76}
+/* WhatsApp send */
+.btn.wa{background:#1F9D55;border-color:#1F9D55;color:#fff}
+.btn.wa:hover{background:#188548;border-color:#188548}
+.btn.wa svg{width:16px;height:16px;vertical-align:-3px;margin-right:6px}
+td .btn.wa svg{margin-right:0}
+.wa-dlg{border:0;border-radius:14px;padding:0;width:min(500px,94vw);box-shadow:0 24px 60px rgba(20,40,50,.25)}
+.wa-dlg::backdrop{background:rgba(20,40,50,.45)}
+.wa-dlg form{padding:18px 20px 20px;display:grid;gap:12px}
+.wa-h{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.wa-h b{font-size:18px;font-weight:600}
+.wa-h .x{border:0;background:none;font-size:26px;line-height:1;cursor:pointer;color:var(--muted);padding:2px 6px}
+.wa-dlg .field{margin:0}
+.wa-dlg textarea{min-height:190px;font:inherit;font-size:14px;line-height:1.5}
+.wa-link{font-size:12.5px;color:var(--muted);word-break:break-all;background:#F4F8F9;border-radius:8px;padding:8px 10px}
+.wa-link a{color:var(--teal-dark)}
+.wa-acts{display:flex;gap:8px;flex-wrap:wrap}
+.wa-err{color:#B4283D;font-size:13px;min-height:0;margin:0}
+.picker{display:flex;gap:10px;flex-wrap:wrap;align-items:end;background:#F7FAFB;border:1px dashed #CFE2E6;border-radius:10px;padding:12px 14px;margin-bottom:12px}
+.picker .field{margin:0;flex:1 1 170px}
+.picker b{flex:1 1 100%;font-weight:600;font-size:13px;color:var(--teal-dark)}
+.cathead td{background:#F2F8F9;font-weight:600;color:var(--teal-dark)}
+.catsub td{background:#FAFBFC;color:var(--muted);font-weight:500;font-size:13px;padding-left:28px}
+tr.inactive td{opacity:.5}
+.sharemenu{position:absolute;bottom:calc(100% + 6px);left:0;background:#fff;border:1px solid var(--border);border-radius:10px;box-shadow:0 12px 30px rgba(30,60,80,.16);padding:6px;min-width:200px;z-index:20}
+.sharemenu button{display:block;width:100%;text-align:left;background:none;border:0;padding:9px 10px;border-radius:7px;font:inherit;cursor:pointer}
+.sharemenu button:hover{background:var(--bg)}
+@media (max-width:600px){.sheet{padding:4px 14px 14px}}
+</style>
+</head>
+<body>
+<div class="ahhead">
+  <div class="row"><div><h1>Documents</h1><p>Company documents: save, approve, download PDFs and share.</p></div><span class="pill" id="myRole"></span></div>
+  <div class="docnav">
+    <nav class="docgroups" id="groups" aria-label="Document groups">
+      <a href="#quotation" data-g="sales"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6M9 16h3"/></svg><span class="lg">Sales &amp; Cash</span><span class="sm">Sales</span></a>
+      <a href="#jobcard" data-g="work"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></svg><span class="lg">Operations &amp; Purchasing</span><span class="sm">Workshop</span></a>
+    </nav>
+    <nav class="docsub" id="tabs" aria-label="Document types">
+      <a href="#quotation" data-t="quotation" data-g="sales">Quotation</a>
+      <a href="#invoice" data-t="invoice" data-g="sales">Invoice</a>
+      <a href="#receipt" data-t="receipt" data-g="sales">Cash Receipt</a>
+      <a href="#petty" data-t="petty" data-g="sales">Petty Cash</a>
+      <a href="#dn" data-t="dn" data-g="sales">Delivery Note</a>
+      <a href="#catalog" data-t="catalog" data-g="sales">Price List</a>
+      <a href="#customers" data-t="customers" data-g="sales">Customers</a>
+      <a href="#jobcard" data-t="jobcard" data-g="work">Job Card</a>
+      <a href="#mr" data-t="mr" data-g="work">Material Request</a>
+      <a href="#po" data-t="po" data-g="work">Purchase Order</a>
+    </nav>
+  </div>
+</div>
+<main>
+  <div id="view"></div>
+</main>
+<div id="toast" hidden></div>
+
+<script>
+(async () => {
+/* ============================== setup ============================== */
+const U = await window.PORTAL_READY;
+const sb = window.portalSb;
+const $ = (s, el = document) => el.querySelector(s);
+const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
+const view = $('#view');
+const ROLE = U.docs_role;                       // manager | staff | viewer
+const CAN_EDIT = ROLE === 'manager' || ROLE === 'staff';
+const CAN_DELETE = ROLE === 'manager';
+$('#myRole').textContent = ROLE;
+const BUCKET = 'docs';
+const today = () => new Intl.DateTimeFormat('en-CA', {timeZone: 'Asia/Riyadh'}).format(new Date());
+const fmtDate = d => d ? new Date(d + 'T00:00:00').toLocaleDateString('en-GB', {day: '2-digit', month: 'short', year: 'numeric'}) : '';
+
+let toastT;
+function toast(msg, bad) {
+  const t = $('#toast'); t.textContent = msg; t.className = bad ? 'bad' : ''; t.hidden = false;
+  clearTimeout(toastT); toastT = setTimeout(() => t.hidden = true, bad ? 6000 : 3000);
+}
+const nice = e => (e && (e.message || e.error_description)) || String(e);
+
+/* ============================== data ============================== */
+const nameOf = (() => { let cache = null;
+  return async id => {
+    if (!id) return '';
+    if (!cache) { const {data} = await sb.from('portal_users').select('id, full_name, username'); cache = Object.fromEntries((data || []).map(u => [u.id, u.full_name || u.username])); }
+    return cache[id] || '';
+  };
+})();
+/* ============================== images ============================== */
+const blobToDataUrl = b => new Promise((ok, no) => { const r = new FileReader(); r.onload = () => ok(r.result); r.onerror = no; r.readAsDataURL(b); });
+const loadImg = src => new Promise((ok, no) => { const i = new Image(); i.onload = () => ok(i); i.onerror = () => no(new Error('Could not load image')); i.src = src; });
+async function shrink(file, max, type, quality) {
+  const img = await loadImg(URL.createObjectURL(file));
+  const k = Math.min(1, max / Math.max(img.naturalWidth, img.naturalHeight));
+  const c = document.createElement('canvas');
+  c.width = Math.round(img.naturalWidth * k); c.height = Math.round(img.naturalHeight * k);
+  const g = c.getContext('2d');
+  if (type === 'image/jpeg') { g.fillStyle = '#fff'; g.fillRect(0, 0, c.width, c.height); }
+  g.drawImage(img, 0, 0, c.width, c.height);
+  URL.revokeObjectURL(img.src);
+  const blob = await new Promise(r => c.toBlob(r, type, quality));
+  return {blob, dataUrl: await blobToDataUrl(blob), w: c.width, h: c.height};
+}
+async function fileFromStorage(path) {
+  const {data, error} = await sb.storage.from(BUCKET).download(path);
+  if (error) throw error;
+  const dataUrl = await blobToDataUrl(data);
+  const img = await loadImg(dataUrl);
+  return {dataUrl, w: img.naturalWidth, h: img.naturalHeight};
+}
+let ASSETS = null;
+async function assets() {
+  if (ASSETS) return ASSETS;
+  const {header, footer, stamp} = await window.brandLetterhead();   // drawn from assets/config.js (see assets/letterhead.js)
+  return ASSETS = {header, footer, stamp};
+}
+
+/* ============================== PDF ============================== */
+const C = {slate: BRAND.rgb(BRAND.colors.brandDark), orange: BRAND.rgb(BRAND.colors.accent), ink: [28, 36, 40], muted: [110, 122, 128], line: [176, 190, 195], shade: [236, 242, 243], green: [45, 122, 76], red: [179, 38, 30]};
+
+/* ============================== public PDF links (WhatsApp) ============================== */
+const CERT_BUCKET = 'certs';
+const newToken = () => [...crypto.getRandomValues(new Uint8Array(16))].map(b => b.toString(16).padStart(2, '0')).join('');   // 128-bit, unguessable
+const certUrl = t => `${String(PORTAL_CONFIG.SUPABASE_URL).replace(/\/+$/, '')}/storage/v1/object/public/${CERT_BUCKET}/${t}.pdf`;
+
+/* ============================== small helpers ============================== */
+const AV_COLORS = [BRAND.colors.brand, BRAND.colors.accent, '#2E9E6A', '#3B82C4', '#8A5CC2', '#D9475B', '#C27A1A'];
+function who(name) {
+  const n = String(name || '').trim(); if (!n) return '';
+  let h = 0; for (const ch of n) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
+  const ini = n.split(/\s+/).filter(w => /\w/.test(w)).slice(0, 2).map(w => w[0]).join('').toUpperCase() || n[0];
+  return `<span class="who"><span class="mini" style="background:${AV_COLORS[h % AV_COLORS.length]}">${esc(ini)}</span>${esc(n)}</span>`;
+}
+
+/* Share a PDF: phones open the share sheet (WhatsApp, email, …) with the PDF attached;
+   computers download the PDF and open WhatsApp Web / the email app with a ready message. */
+function wireShare(btn, getPdf, getName, getText) {
+  btn.addEventListener('click', async e => {
+    e.stopPropagation();
+    const old = btn.textContent; btn.disabled = true; btn.textContent = 'Please wait…';
+    try {
+      const pdf = await getPdf(), name = getName(), text = getText();
+      const file = new File([pdf.output('blob')], name, {type: 'application/pdf'});
+      if (navigator.canShare && navigator.canShare({files: [file]})) {
+        try { await navigator.share({files: [file], title: name, text}); } catch (err) { if (err.name !== 'AbortError') throw err; }
+        return;
+      }
+      document.querySelectorAll('.sharemenu').forEach(m => m.remove());
+      const m = document.createElement('div'); m.className = 'sharemenu';
+      m.innerHTML = '<button type="button" data-s="wa">WhatsApp</button><button type="button" data-s="mail">Email</button><button type="button" data-s="dl">Download PDF only</button>';
+      btn.parentElement.appendChild(m);
+      m.addEventListener('click', ev => {
+        const k = ev.target.dataset.s; if (!k) return;
+        pdf.save(name);
+        if (k === 'wa') window.open('https://wa.me/?text=' + encodeURIComponent(text + '\n(PDF attached)'), '_blank', 'noopener');
+        if (k === 'mail') location.href = `mailto:?subject=${encodeURIComponent(name.replace(/\.pdf$/, '') + ' - ' + BRAND.name)}&body=${encodeURIComponent(text + '\n\nPlease find the PDF attached.\n\nRegards,\n' + BRAND.name)}`;
+        if (k !== 'dl') toast('PDF downloaded. Please attach it to your message.');
+        m.remove();
+      });
+      setTimeout(() => document.addEventListener('click', () => m.remove(), {once: true}), 0);
+    } catch (err) { toast('Could not share: ' + nice(err), true); }
+    finally { btn.disabled = false; btn.textContent = old; }
+  });
+}
+
+/* ============================== WhatsApp ==============================
+   The current PDF is uploaded to the public certs bucket
+   under s/<record id>.pdf. The id is a random UUID, so only people with the link can open it. */
+const WA_TYPES = {quotation: 'Quotation', invoice: 'Tax Invoice', receipt: 'Cash Receipt', dn: 'Delivery Note', jobcard: 'Job Card', po: 'Purchase Order'};
+const WA_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 3 10 14"/><path d="M21 3l-6.5 18-3.5-7-7-3.5z"/></svg>';
+const waNum = s => { let d = String(s || '').replace(/\D/g, ''); if (d.startsWith('00')) d = d.slice(2);
+  if (/^05\d{8}$/.test(d)) d = '966' + d.slice(1); else if (/^5\d{8}$/.test(d)) d = '966' + d; return d; };
+const waMemo = {
+  get: p => { try { return JSON.parse(localStorage.getItem('docs.wa.numbers') || '{}')[String(p || '').trim().toLowerCase()] || ''; } catch (e) { return ''; } },
+  set: (p, n) => { try { const m = JSON.parse(localStorage.getItem('docs.wa.numbers') || '{}'); m[String(p || '').trim().toLowerCase()] = n; localStorage.setItem('docs.wa.numbers', JSON.stringify(m)); } catch (e) {} }
+};
+const shareUrl = id => certUrl(`s/${id}`);
+async function waLink(type, rec, makePdf) {
+  const pdf = await makePdf();
+  const {error} = await sb.storage.from(CERT_BUCKET).upload(`s/${rec.id}.pdf`, pdf.output('blob'), {contentType: 'application/pdf', upsert: true, cacheControl: '60'});
+  if (error) throw new Error('Could not create the PDF link: ' + nice(error));
+  return shareUrl(rec.id);
+}
+function waText(type, r, link) {
+  const d = r.data || {}, hi = '', sign = BRAND.signature;
+  const money2 = n => Number(n || 0).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+  if (type === 'quotation') return hi + `Please find our Quotation ${r.doc_no}` + (r.party_name ? ` for ${r.party_name}` : '') + '.'
+    + (d.grand_total ? `\nTotal: SAR ${money2(d.grand_total)} (incl. VAT)` : '') + (d.validity ? `\nValid for: ${d.validity}` : '') + `\n\nQuotation (PDF):\n${link}` + sign;
+  if (type === 'invoice') return hi + `Please find Tax Invoice ${r.doc_no}` + (r.party_name ? ` for ${r.party_name}` : '') + '.'
+    + (d.grand_total ? `\nAmount: SAR ${money2(d.grand_total)}` : '') + (d.due_date ? `\nDue date: ${fmtDate(d.due_date)}` : '') + `\n\nInvoice (PDF):\n${link}` + sign;
+  if (type === 'receipt') return hi + `Thank you for your payment. Please find Cash Receipt ${r.doc_no}` + (d.amount ? ` for SAR ${money2(d.amount)}` : '') + '.'
+    + (d.invoice_no ? `\nAgainst invoice: ${d.invoice_no}` : '') + `\n\nReceipt (PDF):\n${link}` + sign;
+  if (type === 'po') return hi + `Please find Purchase Order ${r.doc_no}` + (d.delivery_date ? `, needed by ${fmtDate(d.delivery_date)}` : '') + '.'
+    + (d.grand_total ? `\nTotal: SAR ${money2(d.grand_total)}` : '') + `\n\nPurchase order (PDF):\n${link}` + sign;
+  if (type === 'dn') return hi + `Please find Delivery Note ${r.doc_no}` + (r.party_name ? ` for ${r.party_name}` : '') + '.'
+    + (d.po_no ? `\nPO No.: ${d.po_no}` : '') + (d.truck_no ? `\nVehicle No.: ${d.truck_no}` : '') + `\n\nDelivery note (PDF):\n${link}` + sign;
+  return hi + `Please find Job Card ${r.doc_no}` + (r.party_name ? ` for ${r.party_name}` : '') + '.'
+    + (d.equipment ? `\nEquipment: ${d.equipment}` : '') + (d.job_status ? `\nStatus: ${d.job_status}` : '') + `\n\nJob card (PDF):\n${link}` + sign;
+}
+async function sendWhatsApp(type, rec, makePdf) {
+  const link = await waLink(type, rec, makePdf), text = waText(type, rec, link);
+  document.getElementById('waDlg')?.remove();
+  const dl = document.createElement('dialog'); dl.id = 'waDlg'; dl.className = 'wa-dlg';
+  dl.innerHTML = `<form method="dialog">
+      <div class="wa-h"><b>Send ${esc(rec.doc_no)} on WhatsApp</b><button class="x" value="close" aria-label="Close">&times;</button></div>
+      <div class="field"><label for="wa_no">Customer mobile</label><input id="wa_no" type="tel" inputmode="tel" autocomplete="off" placeholder="05XXXXXXXX (optional)" value="${esc(waMemo.get(rec.party_name))}">
+        <div class="hint">Leave it empty to pick the contact inside WhatsApp. The number is remembered for ${esc(rec.party_name || 'this customer')} on this device.</div></div>
+      <div class="field"><label for="wa_msg">Message</label><textarea id="wa_msg">${esc(text)}</textarea></div>
+      <div class="wa-link">Link: <a href="${esc(link)}" target="_blank" rel="noopener">${esc(link)}</a></div>
+      <p class="wa-err" id="wa_err" role="alert"></p>
+      <div class="wa-acts"><button type="button" class="btn wa" id="wa_go">${WA_ICON}Open WhatsApp</button><button type="button" class="btn sec" id="wa_copy">Copy message</button></div>
+    </form>`;
+  document.body.appendChild(dl); dl.showModal();
+  dl.addEventListener('close', () => dl.remove());
+  dl.querySelector('#wa_go').onclick = () => {
+    const raw = dl.querySelector('#wa_no').value.trim(), n = waNum(raw);
+    if (raw && n.length < 11) { dl.querySelector('#wa_err').textContent = 'Please check the mobile number, e.g. 0551234567 or +966551234567.'; return; }
+    waMemo.set(rec.party_name, raw);
+    window.open(`https://wa.me/${n}?text=${encodeURIComponent(dl.querySelector('#wa_msg').value)}`, '_blank', 'noopener');
+    dl.close();
+  };
+  dl.querySelector('#wa_copy').onclick = async () => {
+    const ta = dl.querySelector('#wa_msg');
+    try { await navigator.clipboard.writeText(ta.value); toast('Message copied'); } catch (e) { ta.select(); document.execCommand('copy'); toast('Message copied'); }
+  };
+}
+async function waClick(btn, type, rec, makePdf, inForm) {
+  if (!rec?.id) { toast('Save the document first, then send it on WhatsApp.', true); return; }
+  if (inForm && dirty && !confirm('You have unsaved changes. The customer will get the last saved version. Continue?')) return;
+  const old = btn.innerHTML; btn.disabled = true; btn.textContent = 'Please wait…';
+  try { await sendWhatsApp(type, rec, makePdf); } catch (err) { toast(nice(err), true); }
+  finally { btn.disabled = false; btn.innerHTML = old; }
+}
+const waBtn = (type, id) => WA_TYPES[type] ? `<button class="btn small wa" data-wa="${id}" title="Send on WhatsApp" aria-label="Send on WhatsApp">${WA_ICON}</button>` : '';
+const waFormBtn = type => WA_TYPES[type] ? `<button class="btn wa" type="button" id="wa">${WA_ICON}WhatsApp</button>` : '';
+
+/* Invoice payments */
+const PAY_LABEL = {paid: 'Paid', partial: 'Partially paid', unpaid: 'Unpaid', overdue: 'Overdue'};
+function payState(total, paid, due) {
+  const bal = r2((Number(total) || 0) - (Number(paid) || 0));
+  if (bal <= 0.005) return 'paid';
+  if (due && due < today()) return 'overdue';
+  return paid > 0.005 ? 'partial' : 'unpaid';
+}
+async function paymentsFor(ids) {
+  if (!ids.length) return {};
+  const {data, error} = await sb.from('docs_payments').select('document_id, amount').in('document_id', ids);
+  if (error) return null;           // table not there yet (SQL not run)
+  const m = {}; data.forEach(p => m[p.document_id] = r2((m[p.document_id] || 0) + Number(p.amount))); return m;
+}
+
+/* ============================== draft / approve ============================== */
+const statusPill = r => r?.status === 'approved' ? '<span class="res PASS">Approved</span>' : '<span class="res draft">Draft</span>';
+const locked = rec => rec?.status === 'approved' && ROLE !== 'manager';     // approved documents: only a manager can change them
+function approvalButtons(rec) {
+  if (!rec) return '';
+  if (ROLE !== 'manager') return '';
+  return rec.status === 'approved' ? '<button class="btn sec" type="button" id="reopen">Reopen as draft</button>'
+                                   : '<button class="btn" type="button" id="approve" style="background:var(--green)">Approve</button>';
+}
+async function approvalLine(rec) {
+  if (!rec) return '';
+  return rec.status === 'approved'
+    ? `${statusPill(rec)} &nbsp;Approved${rec.approved_by ? ' by ' + esc(await nameOf(rec.approved_by)) : ''}${rec.approved_at ? ' · ' + new Date(rec.approved_at).toLocaleString('en-GB', {dateStyle: 'medium', timeStyle: 'short'}) : ''}${ROLE === 'manager' ? '' : ' &nbsp;(only a manager can change it)'}`
+    : `${statusPill(rec)}${ROLE === 'manager' ? ' &nbsp;Review it, then click <b>Approve</b>.' : ' &nbsp;Waiting for manager approval.'}`;
+}
+function wireApproval(rec, type) {
+  const go = async (status, btn) => {
+    if (dirty && !confirm('You have unsaved changes that will be lost. Continue anyway?')) return;
+    btn.disabled = true;
+    const {error} = await sb.from('docs_documents').update({status}).eq('id', rec.id);
+    if (error) { btn.disabled = false; toast(nice(error), true); return; }
+    dirty = false; toast(status === 'approved' ? `${rec.doc_no} approved` : `${rec.doc_no} reopened as draft`); route();
+  };
+  $('#approve')?.addEventListener('click', e => go('approved', e.target));
+  $('#reopen')?.addEventListener('click', e => go('draft', e.target));
+}
+
+let dirty = false;
+window.addEventListener('beforeunload', e => { if (dirty) { e.preventDefault(); e.returnValue = ''; } });
+
+async function recordFiles(r) {
+  const f = r.files || {};
+  const photos = await Promise.all([0, 1, 2, 3].map(i => f.photos?.[i] ? fileFromStorage(f.photos[i]).catch(() => null) : null));
+  const qr = f.qr ? await fileFromStorage(f.qr).catch(() => null) : null;
+  return {photos, qr};
+}
+
+/* ===================== DELIVERY NOTE & QUOTATION (documents with line items) ===================== */
+const VAT_NO = BRAND.vatNo;
+const BANK = BRAND.bank;
+const num = v => { const n = parseFloat(String(v ?? '').replace(/,/g, '')); return Number.isFinite(n) ? n : 0; };
+const money = n => (Number(n) || 0).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+const qtyTxt = v => String(v ?? '').trim() === '' ? '' : num(v).toLocaleString('en-US', {maximumFractionDigits: 3});
+const r2 = x => Math.round(x * 100) / 100;
+
+function words(n) {
+  const a = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen',
+             'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
+  const t = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+  const chunk = x => {
+    const out = [];
+    if (x >= 100) { out.push(a[Math.floor(x / 100)] + ' Hundred'); x %= 100; }
+    if (x >= 20) out.push(t[Math.floor(x / 10)] + (x % 10 ? '-' + a[x % 10] : ''));
+    else if (x) out.push(a[x]);
+    return out.join(' ');
+  };
+  if (!n) return 'Zero';
+  const out = [];
+  for (const [u, name] of [[1e9, 'Billion'], [1e6, 'Million'], [1e3, 'Thousand']]) if (n >= u) { out.push(chunk(Math.floor(n / u)) + ' ' + name); n %= u; }
+  if (n) out.push(chunk(n));
+  return out.join(' ');
+}
+const sarWords = total => { const h = Math.round(total * 100), r = Math.floor(h / 100), hal = h % 100;
+  return `Saudi Riyals ${words(r)}${hal ? ` and ${words(hal)} Halalas` : ''} Only`; };
+// amount in Arabic words (تفقيط): فقط ألف ومائتان وخمسون ريال سعودي لا غير
+function arNum(n) {
+  const U = ['', 'واحد', 'اثنان', 'ثلاثة', 'أربعة', 'خمسة', 'ستة', 'سبعة', 'ثمانية', 'تسعة', 'عشرة', 'أحد عشر', 'اثنا عشر', 'ثلاثة عشر', 'أربعة عشر', 'خمسة عشر', 'ستة عشر', 'سبعة عشر', 'ثمانية عشر', 'تسعة عشر'];
+  const T = ['', '', 'عشرون', 'ثلاثون', 'أربعون', 'خمسون', 'ستون', 'سبعون', 'ثمانون', 'تسعون'];
+  const H = ['', 'مائة', 'مائتان', 'ثلاثمائة', 'أربعمائة', 'خمسمائة', 'ستمائة', 'سبعمائة', 'ثمانمائة', 'تسعمائة'];
+  const small = x => { const h = Math.floor(x / 100), r = x % 100, p = []; if (h) p.push(H[h]);
+    if (r) p.push(r < 20 ? U[r] : (r % 10 ? U[r % 10] + ' و' + T[Math.floor(r / 10)] : T[Math.floor(r / 10)])); return p.join(' و'); };
+  const scale = (x, one, two, few, many) => x === 1 ? one : x === 2 ? two : x <= 10 ? small(x) + ' ' + few : small(x) + ' ' + many;
+  if (!n) return 'صفر';
+  const m = Math.floor(n / 1e6), th = Math.floor(n % 1e6 / 1000), r = n % 1000, out = [];
+  if (m) out.push(scale(m, 'مليون', 'مليونان', 'ملايين', 'مليون'));
+  if (th) out.push(scale(th, 'ألف', 'ألفان', 'آلاف', 'ألف'));
+  if (r) out.push(small(r));
+  return out.join(' و');
+}
+const sarWordsAr = total => { const h = Math.round(total * 100), r = Math.floor(h / 100), hal = h % 100;
+  return `فقط ${arNum(r)} ريال سعودي${hal ? ` و${arNum(hal)} هللة` : ''} لا غير`; };
+const METHOD_AR = {'Cash': 'نقداً', 'Cheque': 'شيك', 'Bank transfer': 'تحويل بنكي', 'Card': 'بطاقة'};
+
+function quoteTotals(items) {
+  let sub = 0, vat = 0;
+  const rows = items.map(it => {
+    const line = num(it.qty) * num(it.rate);
+    const tp = String(it.tax_pct ?? '').trim() === '' ? 15 : num(it.tax_pct);
+    const v = line * tp / 100; sub += line; vat += v;
+    return {...it, tp, vat: v, amount: line + v};
+  });
+  return {rows, sub: r2(sub), vat: r2(vat), total: r2(sub + vat)};
+}
+const maxNo = (list, re) => Math.max(0, ...list.map(r => (String(r.doc_no).match(re) || [])[1]).filter(Boolean).map(Number));
+
+const IDOCS = {
+  dn: {
+    title: 'Delivery Note', plural: 'Delivery Notes', pdfTitle: 'DELIVERY NOTE', group: 'customer',
+    noLabel: 'Delivery Note #', dateLabel: 'Date', partyTitle: 'Customer', partyLabel: 'Customer Name',
+    nextNo: (list, date) => { const y = (date || today()).slice(0, 4); return `DN-${y}-${String(maxNo(list, new RegExp(`^DN-${y}-(\\d+)$`)) + 1).padStart(3, '0')}`; },
+    head: [['invoice_no', 'Invoice No.'], ['po_no', 'PO No.']],
+    party: [['customer_address', 'Address'], ['customer_id', 'Customer ID']],
+    items: [{k: 'description', label: 'Description', wide: true}, {k: 'qty', label: 'Qty', num: true},
+            {k: 'delivered', label: 'Qty Delivered', num: true}, {k: 'received', label: 'Qty Received', num: true}],
+    extra: [{title: 'Driver / Vehicle', fields: [['driver_name', 'Driver Name'], ['driver_iqama', 'Driver Iqama No.'], ['truck_no', 'Vehicle No.']]}],
+    notes: [['remarks', 'Customer Remarks']],
+    listCols: [['Customer', r => who(r.party_name)], ['PO No.', r => esc(r.data?.po_no)], ['Items', r => (r.data?.items || []).length], ['Vehicle', r => esc(r.data?.truck_no)]],
+    search: r => [r.data?.po_no, r.data?.invoice_no, r.data?.truck_no, r.data?.driver_name]
+  },
+  quotation: {
+    title: 'Quotation', plural: 'Quotations', pdfTitle: 'QUOTATION', money: true, group: 'customer',
+    noLabel: 'Quote No.', dateLabel: 'Quote Date', partyTitle: 'Customer', partyLabel: 'Customer Name',
+    nextNo: list => 'QT-' + String(maxNo(list, /^QT-(\d+)$/) + 1).padStart(5, '0'),
+    head: [],
+    party: [['customer_address', 'Address'], ['customer_trn', 'TRN / VAT No.']],
+    items: [{k: 'description', label: 'Description', wide: true}, {k: 'qty', label: 'Qty', num: true},
+            {k: 'rate', label: 'Rate (SAR)', num: true}, {k: 'tax_pct', label: 'Tax %', num: true, def: '15'}],
+    extra: [{title: 'Terms & Conditions', fields: [['completion_time', 'Completion Time'], ['payment_terms', 'Payment Terms'], ['validity', 'Validity']]}],
+    notes: [['notes', 'Notes']],
+    listCols: [['Customer', r => who(r.party_name)], ['Total (SAR)', r => money(r.data?.grand_total), 'money']],
+    search: r => [r.data?.customer_trn]
+  },
+  po: {
+    title: 'Purchase Order', plural: 'Purchase Orders', pdfTitle: 'PURCHASE ORDER', money: true, group: 'vendor',
+    noLabel: 'PO Number', dateLabel: 'Date', partyTitle: 'Vendor', partyLabel: 'Vendor Name',
+    nextNo: list => 'PO-' + String(maxNo(list, /^PO-(\d+)$/) + 1).padStart(5, '0'),
+    head: [['ref_number', 'Ref #']],
+    party: [['vendor_address', 'Address'], ['vendor_trn', 'Vendor TRN / VAT No.']],
+    items: [{k: 'description', label: 'Description', wide: true}, {k: 'qty', label: 'Qty', num: true},
+            {k: 'rate', label: 'Rate (SAR)', num: true}, {k: 'tax_pct', label: 'Tax %', num: true, def: '15'}],
+    extra: [{title: 'Terms', optional: true, fields: [['delivery_date', 'Delivery Date'], ['delivery_terms', 'Delivery Terms'], ['payment_terms', 'Payment Terms']]}],
+    notes: [['notes', 'Notes']],
+    listCols: [['Vendor', r => who(r.party_name)], ['Ref #', r => esc(r.data?.ref_number)], ['Total (SAR)', r => money(r.data?.grand_total), 'money']],
+    search: r => [r.data?.ref_number, r.data?.vendor_trn]
+  }
+};
+IDOCS.invoice = {
+  title: 'Invoice', plural: 'Invoices', pdfTitle: 'TAX INVOICE', money: true, group: 'customer', zatca: true,
+  noLabel: 'Invoice No.', dateLabel: 'Invoice Date', partyTitle: 'Customer', partyLabel: 'Customer Name',
+  nextNo: list => 'INV-' + String(maxNo(list, /^INV-(\d+)$/) + 1).padStart(5, '0'),
+  head: [['quote_ref', 'Quote Reference'], ['customer_po', 'Customer PO No.']],
+  party: [['customer_address', 'Address'], ['customer_trn', 'TRN / VAT No.']],
+  items: IDOCS.quotation.items,
+  extra: [{title: 'Payment', optional: true, fields: [['payment_terms', 'Payment Terms'], ['due_date', 'Due Date', 'date']]}],
+  notes: [['notes', 'Notes']],
+  listCols: [['Customer', r => who(r.party_name)], ['Due', r => esc(fmtDate(r.data?.due_date))], ['Total (SAR)', r => money(r.data?.grand_total), 'money'],
+             ['Balance', r => r.paid == null ? '' : money(r2((r.data?.grand_total || 0) - r.paid)), 'money'],
+             ['Payment', r => { if (r.paid == null) return ''; const st = payState(r.data?.grand_total, r.paid, r.data?.due_date); return `<span class="res ${st}">${PAY_LABEL[st]}</span>`; }]],
+  search: r => [r.data?.quote_ref, r.data?.customer_po, r.data?.customer_trn]
+};
+IDOCS.jobcard = {
+  title: 'Job Card', plural: 'Job Cards', pdfTitle: 'JOB CARD / WORK ORDER', group: 'customer',
+  noLabel: 'Job Number', dateLabel: 'Date', partyTitle: 'Customer', partyLabel: 'Customer Name',
+  nextNo: (list, date) => { const y = (date || today()).slice(0, 4); return `JC-${y}-${String(maxNo(list, new RegExp(`^JC-${y}-(\\d+)$`)) + 1).padStart(3, '0')}`; },
+  head: [['equipment', 'Equipment'], ['assigned_to', 'Assigned To'], ['job_status', 'Job Status', 'select', ['Open', 'In Progress', 'Completed', 'On Hold']], ['target_date', 'Target Date', 'date']],
+  party: [],
+  body: [['description', 'Job Description']],
+  items: [{k: 'description', label: 'Material / Work', wide: true}, {k: 'qty', label: 'Qty', num: true}, {k: 'unit', label: 'Unit', text: true}],
+  itemsOptional: true,
+  extra: [], notes: [['remarks', 'Remarks']],
+  signs: ['Prepared By', 'Supervisor', 'Completed By'],
+  listCols: [['Customer', r => who(r.party_name)], ['Equipment', r => esc(r.data?.equipment)], ['Assigned To', r => esc(r.data?.assigned_to)], ['Job Status', r => esc(r.data?.job_status)]],
+  search: r => [r.data?.equipment, r.data?.assigned_to, r.data?.job_status]
+};
+IDOCS.mr = {
+  title: 'Material Request', plural: 'Material Requests', pdfTitle: 'MATERIAL REQUEST', group: 'staff',
+  noLabel: 'Request Number', dateLabel: 'Date', partyTitle: 'Requested By', partyLabel: 'Requested By',
+  nextNo: (list, date) => { const y = (date || today()).slice(0, 4); return `MR-${y}-${String(maxNo(list, new RegExp(`^MR-${y}-(\\d+)$`)) + 1).padStart(3, '0')}`; },
+  head: [['job_ref', 'Job / Project Ref'], ['required_by', 'Needed By (Date)', 'date']],
+  party: [['department', 'Department']],
+  items: [{k: 'description', label: 'Description', wide: true}, {k: 'qty', label: 'Qty', num: true}, {k: 'unit', label: 'Unit', text: true}, {k: 'purpose', label: 'Purpose', text: true}],
+  extra: [], notes: [['remarks', 'Remarks']],
+  signs: ['Requested By', 'Approved By', 'Store / Issued By'],
+  listCols: [['Requested By', r => who(r.party_name)], ['Department', r => esc(r.data?.department)], ['Job Ref', r => esc(r.data?.job_ref)], ['Items', r => (r.data?.items || []).length]],
+  search: r => [r.data?.department, r.data?.job_ref]
+};
+IDOCS.dn.signs = ['Prepared By', 'Delivered By (Driver)', 'Received By (Name / Sign / Date)'];
+const GROUP_TYPES = g => Object.keys(IDOCS).filter(k => IDOCS[k].group === g);
+
+const ILIST = {};
+async function loadIList(type, force) {
+  if (ILIST[type] && !force) return ILIST[type];
+  const {data, error} = await sb.from('docs_documents').select('id, doc_no, doc_date, party_name, data, files, status, created_at')
+    .eq('doc_type', type).order('created_at', {ascending: false}).limit(5000);
+  if (error) throw error;
+  if (type === 'invoice') { const m = await paymentsFor(data.map(r => r.id)); if (m) data.forEach(r => r.paid = m[r.id] || 0); }
+  return ILIST[type] = data;
+}
+
+/* ---------- PDF ---------- */
+function itemsPdf(type, r, img) {
+  const T = IDOCS[type], d = r.data || {};
+  const {jsPDF} = window.jspdf;
+  const pdf = new jsPDF({unit: 'mm', format: 'a4', compress: true});
+  const W = 210, H = 297, M = 12, CW = W - 2 * M;
+  const hdrH = CW * img.header.h / img.header.w, ftrH = CW * img.footer.h / img.footer.w;
+  const TOP = 5 + hdrH, BOTTOM = H - 5 - ftrH - 7;
+  let y;
+  const frame = () => {
+    pdf.addImage(img.header.dataUrl, 'JPEG', M, 5, CW, hdrH, 'hdr');
+    pdf.addImage(img.footer.dataUrl, 'JPEG', M, H - 5 - ftrH, CW, ftrH, 'ftr');
+    pdf.setFont('helvetica', 'normal'); pdf.setFontSize(7.5); pdf.setTextColor(...C.slate);
+    pdf.text(`VAT NO: ${VAT_NO}`, W - M, TOP + 4, {align: 'right'});
+    pdf.setDrawColor(...C.slate); pdf.setLineWidth(0.5);
+    pdf.line(M, TOP + 7, W - M, TOP + 7); pdf.line(M, TOP + 17, W - M, TOP + 17);
+    pdf.setFont('helvetica', 'bold'); pdf.setFontSize(13.5);
+    pdf.text(T.pdfTitle, W / 2, TOP + 12.2, {align: 'center', baseline: 'middle'});
+    y = TOP + 23;
+  };
+  const newPage = () => { pdf.addPage(); frame(); };
+  const need = h => { if (y + h > BOTTOM) { newPage(); return true; } return false; };
+  const section = (t, width = CW) => {
+    need(14);
+    pdf.setFont('helvetica', 'bold'); pdf.setFontSize(9.5); pdf.setTextColor(...C.slate);
+    pdf.text(t.toUpperCase(), M, y + 3.5);
+    pdf.setDrawColor(...C.orange); pdf.setLineWidth(0.5); pdf.line(M, y + 5.3, M + width, y + 5.3);
+    y += 8;
+  };
+  const kv = (pairs, cols = 2, width = CW) => {
+    const colW = width / cols, LW = cols === 1 ? 42 : 32;
+    for (let i = 0; i < pairs.length; i += cols) {
+      const row = pairs.slice(i, i + cols);
+      pdf.setFont('helvetica', 'normal'); pdf.setFontSize(9);
+      const lines = row.map(([, v]) => hasAr(v) ? arImg(String(v).trim(), 9, {maxW: colW - LW - 3}) : pdf.splitTextToSize(String(v ?? '').trim() || '-', colW - LW - 3));
+      const h = Math.max(7, Math.max(...lines.map(l => l.dataUrl ? (l.h + 2) / 4.1 : l.length)) * 4.1 + 3);
+      need(h);
+      row.forEach(([l], j) => {
+        const x = M + j * colW;
+        pdf.setFont('helvetica', 'bold'); pdf.setFontSize(8.5); pdf.setTextColor(...C.ink);
+        pdf.text(l, x, y + 4.6);
+        pdf.setFont('helvetica', 'normal'); pdf.setFontSize(9);
+        if (lines[j].dataUrl) pdf.addImage(lines[j].dataUrl, 'PNG', x + LW - 0.3, y + 1.2, lines[j].w, lines[j].h);
+        else pdf.text(lines[j], x + LW, y + 4.6, {lineHeightFactor: 1.15});
+      });
+      pdf.setDrawColor(...C.line); pdf.setLineWidth(0.2); pdf.line(M, y + h, M + width, y + h);
+      y += h;
+    }
+    y += 3;
+  };
+  const table = (cols, rows) => {
+    const fixed = cols.reduce((s, c) => s + (c.w || 0), 0);
+    cols.forEach(c => { if (!c.w) c.w = CW - fixed; });
+    const head = () => {
+      let x = M;
+      cols.forEach(c => {
+        pdf.setFillColor(...C.shade); pdf.setDrawColor(...C.line); pdf.setLineWidth(0.2);   // text colour resets fill, so set it per cell
+        pdf.rect(x, y, c.w, 7.5, 'FD');
+        pdf.setFont('helvetica', 'bold'); pdf.setFontSize(8.3); pdf.setTextColor(...C.slate);
+        pdf.text(c.label, c.align === 'right' ? x + c.w - 2 : x + 2, y + 4.8, {align: c.align === 'right' ? 'right' : 'left'});
+        x += c.w;
+      });
+      y += 7.5;
+    };
+    need(16); head();
+    rows.forEach(row => {
+      pdf.setFont('helvetica', 'normal'); pdf.setFontSize(8.8);
+      const lines = row.map((v, i) => hasAr(v) ? arImg(String(v).trim(), 8.8, {maxW: cols[i].w - 4}) : pdf.splitTextToSize(String(v ?? ''), cols[i].w - 4));
+      const h = Math.max(7, Math.max(...lines.map(l => l.dataUrl ? (l.h + 2) / 3.9 : l.length)) * 3.9 + 3.2);
+      if (need(h)) head();
+      let x = M;
+      cols.forEach((c, i) => {
+        pdf.setDrawColor(...C.line); pdf.setLineWidth(0.2); pdf.rect(x, y, c.w, h, 'S');
+        pdf.setTextColor(...C.ink); pdf.setFont('helvetica', 'normal'); pdf.setFontSize(8.8);
+        if (lines[i].dataUrl) pdf.addImage(lines[i].dataUrl, 'PNG', c.align === 'right' ? x + c.w - 1.5 - lines[i].w : x + 1.5, y + 1.3, lines[i].w, lines[i].h);
+        else pdf.text(lines[i], c.align === 'right' ? x + c.w - 2 : x + 2, y + 4.6, {align: c.align === 'right' ? 'right' : 'left', lineHeightFactor: 1.15});
+        x += c.w;
+      });
+      y += h;
+    });
+    y += 4;
+  };
+
+  frame();
+  const top = [[T.noLabel, r.doc_no || '(on save)'], [T.dateLabel, fmtDate(r.doc_date)],
+               ...T.head.map(([k, l, t]) => [l, t === 'date' ? fmtDate(d[k]) : d[k]])];
+  kv(top);
+  section(T.partyTitle);
+  kv([[T.partyLabel, r.party_name], ...T.party.map(([k, l]) => [l, d[k]])], 1);
+  (T.body || []).forEach(([k, l]) => {
+    if (!String(d[k] || '').trim()) return;
+    section(l);
+    pdf.setFont('helvetica', 'normal'); pdf.setFontSize(9.5); pdf.setTextColor(...C.ink);
+    const bl = hasAr(d[k]) ? null : pdf.splitTextToSize(String(d[k]).trim(), CW);
+    if (bl) bl.forEach(line => { need(5); pdf.text(line, M, y + 3.5); y += 4.6; });
+    else { const a = arImg(String(d[k]).trim(), 9.5, {maxW: CW}); need(a.h + 2); pdf.addImage(a.dataUrl, 'PNG', M, y, a.w, a.h); y += a.h; }
+    y += 4;
+  });
+  const items = (d.items || []);
+  if (!T.money && type !== 'dn') {
+    if (items.length) {
+      section('Items');
+      const cw = T.items.length > 3 ? 24 : 26;
+      table([{label: '#', w: 10}, ...T.items.map((c, i) => i === 0 ? {label: c.label} : {label: c.label, w: c.k === 'purpose' ? 40 : cw, align: c.num ? 'right' : 'left'})],
+        items.map((it, i) => [i + 1, ...T.items.map(c => c.num ? qtyTxt(it[c.k]) : it[c.k])]));
+    }
+  } else if (type === 'dn') {
+    table([{label: 'Sr.#', w: 12}, {label: 'Description'}, {label: 'Qty', w: 22, align: 'right'}, {label: 'Qty Delivered', w: 28, align: 'right'}, {label: 'Qty Received', w: 28, align: 'right'}],
+      items.map((it, i) => [i + 1, it.description, qtyTxt(it.qty), qtyTxt(it.delivered), qtyTxt(it.received)]));
+  } else {
+    const q = quoteTotals(items);
+    table([{label: '#', w: 9}, {label: 'Description'}, {label: 'Qty', w: 15, align: 'right'}, {label: 'Rate', w: 23, align: 'right'},
+           {label: 'Tax %', w: 14, align: 'right'}, {label: 'VAT', w: 22, align: 'right'}, {label: 'Amount', w: 26, align: 'right'}],
+      q.rows.map((it, i) => [i + 1, it.description, qtyTxt(it.qty), money(it.rate), it.tp + '%', money(it.vat), money(it.amount)]));
+    // totals (right)
+    need(27);
+    const bx = W - M - 82, bw = 82;
+    [['Sub Total', money(q.sub)], ['Standard Rate VAT (15%)', money(q.vat)]].forEach(([l, v]) => {
+      pdf.setFont('helvetica', 'normal'); pdf.setFontSize(9.5); pdf.setTextColor(...C.ink);
+      pdf.text(l, bx, y + 4); pdf.text(v, bx + bw, y + 4, {align: 'right'}); y += 6.5;
+    });
+    pdf.setDrawColor(...C.slate); pdf.setLineWidth(0.6); pdf.line(bx, y + 0.5, bx + bw, y + 0.5);
+    pdf.setFont('helvetica', 'bold'); pdf.setFontSize(11); pdf.setTextColor(...C.slate);
+    pdf.text('Total', bx, y + 6); pdf.text('SAR ' + money(q.total), bx + bw, y + 6, {align: 'right'});
+    y += 11;
+    pdf.setFont('helvetica', 'normal'); pdf.setFontSize(8.8); pdf.setTextColor(...C.ink);
+    const wl = pdf.splitTextToSize('Total In Words: ' + sarWords(q.total), CW);
+    need(wl.length * 4 + 4); pdf.text(wl, M, y + 3); y += wl.length * 4 + 5;
+  }
+  T.extra.forEach(s => { if (s.optional && !s.fields.some(([k]) => String(d[k] || '').trim())) return;
+    section(s.title); kv(s.fields.filter(([k]) => !s.optional || String(d[k] || '').trim()).map(([k, l, t]) => [l, t === 'date' ? fmtDate(d[k]) : d[k]]), 1); });
+  T.notes.forEach(([k, l]) => { if (String(d[k] || '').trim()) { section(l); kv([[l === 'Notes' ? 'Notes' : 'Remarks', d[k]]], 1); } });
+  if (T.money) {
+    // quotation / invoice: bank details on the left, stamp + signature on the right of the same band
+    need(40);
+    const y0 = y;
+    const bankW = T.zatca ? 88 : 112;
+    if (type === 'quotation' || type === 'invoice') { section('Bank Details', bankW); kv(BANK, 1, bankW); }
+    if (T.zatca) {
+      drawQr(pdf, zatcaQr(r), M + bankW + 4, y0 + 2, 30);
+      pdf.setFont('helvetica', 'normal'); pdf.setFontSize(6.5); pdf.setTextColor(...C.muted);
+      pdf.text('ZATCA QR', M + bankW + 19, y0 + 35, {align: 'center'});
+    }
+    const sw = 50, sk = Math.min(sw / img.stamp.w, 25 / img.stamp.h), x = W - M - 62;
+    const sy = Math.max(y, y0 + 36);
+    pdf.addImage(img.stamp.dataUrl, 'PNG', x + (62 - img.stamp.w * sk) / 2, sy - 4 - img.stamp.h * sk, img.stamp.w * sk, img.stamp.h * sk, 'stamp');
+    pdf.setDrawColor(...C.ink); pdf.setLineWidth(0.35); pdf.line(x, sy, x + 62, sy);
+    pdf.setFont('helvetica', 'bold'); pdf.setFontSize(8.5); pdf.setTextColor(...C.slate);
+    pdf.text('Authorized Signature', x + 31, sy + 4.5, {align: 'center'});
+    y = sy + 8;
+  }
+
+  // signature lines at the bottom of the last page (delivery note, job card, material request)
+  if (T.signs) {
+    if (y + 26 > BOTTOM) newPage();
+    const sy = BOTTOM - 8;
+    pdf.setDrawColor(...C.ink); pdf.setLineWidth(0.35);
+    const w = (CW - 20) / 3;
+    T.signs.forEach((t, i) => {
+      const x = M + i * (w + 10);
+      pdf.line(x, sy, x + w, sy);
+      pdf.setFont('helvetica', 'bold'); pdf.setFontSize(8.5); pdf.setTextColor(...C.slate);
+      pdf.text(t, x, sy + 4.5);
+    });
+  }
+  const n = pdf.getNumberOfPages();
+  for (let i = 1; i <= n; i++) {
+    pdf.setPage(i); pdf.setFont('helvetica', 'normal'); pdf.setFontSize(7.5); pdf.setTextColor(...C.muted);
+    pdf.text(`${r.doc_no || 'DRAFT'}   |   Page ${i} of ${n}`, W - M, BOTTOM + 4.5, {align: 'right'});
+  }
+  return pdf;
+}
+const SELLER_AR = BRAND.nameAr;
+function zatcaQr(r) {
+  const d = r.data || {}, enc = new TextEncoder();
+  const fields = [SELLER_AR, VAT_NO, `${r.doc_date || today()}T12:00:00Z`, Number(d.grand_total || 0).toFixed(2), Number(d.vat_total || 0).toFixed(2)];
+  const bytes = [];
+  fields.forEach((v, i) => { const b = enc.encode(v); bytes.push(i + 1, b.length, ...b); });
+  return btoa(String.fromCharCode(...bytes));
+}
+const iPdf = async (type, r, photos) => {
+  await arabicReady();
+  if (type === 'receipt') return receiptPdf(r, await assets());
+  if (type === 'petty') return pettyPdf(r, await assets());
+  return itemsPdf(type, r, await assets());
+};
+
+/* ---------- list ---------- */
+async function showIList(type) {
+  const seq = ROUTE_SEQ;
+  const T = IDOCS[type];
+  view.innerHTML = '<div class="ah-skel" role="status" aria-label="Loading"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>';
+  let list;
+  try { list = await loadIList(type, true); } catch (e) { view.innerHTML = `<p class="flash">Database error: ${esc(nice(e))}</p>`; return; }
+  if (seq !== ROUTE_SEQ) return;   // user already moved to another page
+  view.innerHTML = `
+    <div class="tools">
+      <div class="field"><label for="q">Search</label><input id="q" type="search" placeholder="Number, customer, PO…"></div>
+      <span style="flex:1"></span>
+      ${type === 'invoice' ? '<a class="btn sec" href="#invoice/receivables">Receivables</a>' : ''}
+      ${CAN_EDIT ? `<a class="btn" href="#${type}/new">+ New ${esc(T.title)}</a>` : ''}
+    </div>
+    ${T.summary ? T.summary(list) : ''}
+    <div class="table-wrap"><table><thead><tr><th>No.</th><th>Date</th>${T.listCols.map(c => `<th${c[2] ? ' style="text-align:right"' : ''}>${c[0]}</th>`).join('')}<th>Status</th><th></th></tr></thead><tbody id="rows"></tbody></table></div>
+    <p class="muted" id="count" style="font-size:13px"></p>`;
+  const draw = () => {
+    const q = $('#q').value.trim().toLowerCase();
+    const rows = list.filter(r => !q || [r.doc_no, r.party_name, ...T.search(r)].join(' ').toLowerCase().includes(q));
+    $('#rows').innerHTML = rows.length ? rows.map(r => `<tr class="click" data-id="${r.id}"><td class="no">${esc(r.doc_no)}</td>
+        <td style="white-space:nowrap">${esc(fmtDate(r.doc_date))}</td>${T.listCols.map(c => `<td class="${c[2] || ''}">${c[1](r)}</td>`).join('')}<td>${statusPill(r)}</td>
+        <td style="white-space:nowrap"><button class="btn small sec" data-pdf="${r.id}">PDF</button>${waBtn(type, r.id)}</td></tr>`).join('')
+      : `<tr><td colspan="${T.listCols.length + 4}" class="empty">${list.length ? 'Nothing matches this search.' : `No ${esc(T.title)} yet.` + (CAN_EDIT ? ` <a href="#${type}/new">+ Create the first one</a>` : '')}</td></tr>`;
+    $('#count').textContent = list.length ? `${rows.length} of ${list.length}` : '';
+  };
+  $('#q').addEventListener('input', draw);
+  if (T.wire) T.wire(list);
+  $('#rows').addEventListener('click', async e => {
+    const w = e.target.closest('[data-wa]');
+    if (w) { e.stopPropagation(); const r = list.find(x => x.id === w.dataset.wa); return waClick(w, type, r, () => iPdf(type, r)); }
+    const b = e.target.closest('[data-pdf]');
+    if (b) {
+      e.stopPropagation(); b.disabled = true;
+      try { const r = list.find(x => x.id === b.dataset.pdf); (await iPdf(type, r)).save(r.doc_no + '.pdf'); }
+      catch (err) { toast('Could not create PDF: ' + nice(err), true); }
+      b.disabled = false; return;
+    }
+    const tr = e.target.closest('tr[data-id]'); if (tr) location.hash = `#${type}/${tr.dataset.id}`;
+  });
+  draw();
+}
+
+/* ---------- form ---------- */
+async function showIForm(type, id, copyFrom, fromQuote) {
+  const seq = ROUTE_SEQ;
+  const T = IDOCS[type];
+  view.innerHTML = '<div class="ah-skel" role="status" aria-label="Loading"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>';
+  let list, others;
+  try { [list, ...others] = await Promise.all([loadIList(type, true), ...GROUP_TYPES(T.group).filter(t => t !== type).map(t => loadIList(t))]); others = others.flat(); }
+  catch (e) { view.innerHTML = `<p class="flash">Database error: ${esc(nice(e))}</p>`; return; }
+  let rec = null, src = null;
+  if (id || copyFrom) {
+    const {data} = await sb.from('docs_documents').select('*').eq('id', id || copyFrom).eq('doc_type', type).maybeSingle();
+    if (!data) { view.innerHTML = `<p class="flash">Document not found. <a href="#${type}">Back to list</a></p>`; return; }
+    src = data; if (id) rec = data;
+  }
+  if (fromQuote) {
+    const {data: q} = await sb.from('docs_documents').select('*').eq('id', fromQuote).eq('doc_type', 'quotation').maybeSingle();
+    if (q) src = {party_name: q.party_name, data: {customer_address: q.data?.customer_address, customer_trn: q.data?.customer_trn,
+      items: q.data?.items || [], quote_ref: q.doc_no, payment_terms: q.data?.payment_terms}};
+  }
+  const ro = !CAN_EDIT || locked(rec);
+  const dis = ro ? 'disabled' : '';
+  const d = {...(src?.data || {})};
+  const stLine = await approvalLine(rec);
+  const blankItem = () => Object.fromEntries(T.items.map(c => [c.k, c.def || '']));
+  let items = (d.items && d.items.length ? d.items : [blankItem()]).map(it => ({...it}));
+  if (type === 'invoice' && !rec && !d.due_date) { const x = new Date(today() + 'T00:00:00'); x.setDate(x.getDate() + 30); d.due_date = new Intl.DateTimeFormat('en-CA').format(x); }
+  const who = rec ? `Created by: ${esc(await nameOf(rec.created_by))} · ${new Date(rec.created_at).toLocaleString('en-GB', {dateStyle: 'medium', timeStyle: 'short'})}` +
+    (rec.updated_at ? ` &nbsp;|&nbsp; Last edited by: ${esc(await nameOf(rec.updated_by))} · ${new Date(rec.updated_at).toLocaleString('en-GB', {dateStyle: 'medium', timeStyle: 'short'})}` : '') : '';
+  const people = [...list, ...others];
+  const names = [...new Set(people.map(r => r.party_name).filter(Boolean))].sort();
+  const fld = ([k, l, t, opts], val) => `<div class="field"><label for="f_${k}">${esc(l)}</label>${t === 'select'
+    ? `<select id="f_${k}" ${dis}>${opts.map(o => `<option${o === val ? ' selected' : ''}>${esc(o)}</option>`).join('')}</select>`
+    : `<input id="f_${k}" ${t ? `type="${t}"` : ''} value="${esc(val)}" ${dis}>`}</div>`;
+  const dateNow = rec?.doc_date || today();
+
+  if (seq !== ROUTE_SEQ) return;   // user already moved to another page
+  view.innerHTML = `
+    <p style="margin:0 0 10px"><a href="#${type}">&larr; ${esc(T.plural)}</a></p>
+    <h2>${rec ? `${esc(T.title)} <span class="mono" style="font-size:1.1rem">${esc(rec.doc_no)}</span>` : 'New ' + esc(T.title)}</h2>
+    ${who ? `<p class="meta">${who}</p>` : ''}
+    ${stLine ? `<p class="status-line">${stLine}</p>` : ''}
+    <form id="f" autocomplete="off">
+      <div class="sheet">
+        <h3>${esc(T.title)} details</h3>
+        <div class="grid">
+          <div class="field"><label for="f_no">${esc(T.noLabel)}</label>
+            ${rec ? `<div class="fixed">${esc(rec.doc_no)}</div>` : `<input id="f_no" placeholder="Auto: ${esc(T.nextNo(list, dateNow))}" ${dis}>`}</div>
+          <div class="field"><label for="f_date">Date</label><input id="f_date" type="date" required value="${esc(dateNow)}" ${dis}></div>
+          ${T.head.map(f => fld(f, d[f[0]])).join('')}
+        </div>
+        ${rec ? '' : '<p class="hint">Leave blank to use the next number automatically.</p>'}
+        <h3>${esc(T.partyTitle)}</h3>
+        <div class="grid">
+          <div class="field"><label for="f_party">${esc(T.partyLabel)}</label><input id="f_party" list="names" required value="${esc(src?.party_name)}" ${dis}>
+            <datalist id="names">${names.map(n => `<option value="${esc(n)}">`).join('')}</datalist></div>
+          ${T.party.map(f => fld(f, d[f[0]])).join('')}
+        </div>
+        ${ro || !T.party.length ? '' : `<p class="hint">Choose an existing ${T.group === 'vendor' ? 'vendor' : 'customer'} to fill in their address and details automatically.</p>`}
+        ${(T.body || []).map(([k, l]) => `<div class="field" style="margin-top:12px"><label for="f_${k}">${esc(l)}</label><textarea id="f_${k}" rows="4" ${dis}>${esc(d[k])}</textarea></div>`).join('')}
+      </div>
+      <div class="sheet">
+        <h3>Items</h3>
+        ${!ro && CATALOG_TYPES.includes(type) ? '<div class="picker" id="picker"></div>' : ''}
+        <div class="table-wrap"><table class="items"><thead><tr><th>#</th>${T.items.map(c => `<th>${esc(c.label)}</th>`).join('')}${T.money ? '<th style="text-align:right">Amount</th>' : ''}<th></th></tr></thead>
+          <tbody id="items"></tbody></table></div>
+        ${ro ? '' : '<button type="button" class="btn sec small" id="addItem" style="margin-top:10px">+ Add item</button>'}
+        ${T.money ? '<div class="totals" id="totals"></div><p class="hint" id="inwords"></p>' : ''}
+      </div>
+      ${type === 'invoice' && rec ? '<div class="sheet" id="pays"><h3>Payments</h3><div class="ah-skel lines" role="status" aria-label="Loading"><i></i><i></i><i></i></div></div>' : ''}
+      <div class="sheet"${T.extra.length || T.notes.length ? '' : ' hidden'}>
+        ${T.extra.map(s => `<h3>${esc(s.title)}</h3><div class="grid">${s.fields.map(f => fld(f, d[f[0]])).join('')}</div>`).join('')}
+        ${T.notes.map(([k, l]) => `<div class="field" style="margin-top:12px"><label for="f_${k}">${esc(l)}</label><textarea id="f_${k}" rows="3" ${dis}>${esc(d[k])}</textarea></div>`).join('')}
+      </div>
+      <p class="err" id="err" role="alert"></p>
+      <div class="bar">
+        ${ro ? '' : '<button class="btn" id="save" type="submit">Save</button><button class="btn sec" id="saveNew" type="button" title="Save, then start a new one">Save &amp; New</button>'}
+        <button class="btn sec" type="button" id="dl">Download PDF</button>
+        <button class="btn sec" type="button" id="pv">Preview</button>
+        <span class="share"><button class="btn sec" type="button" id="sh">Share</button></span>
+        ${waFormBtn(type)}
+        ${rec && CAN_EDIT ? `<a class="btn sec" href="#${type}/copy/${rec.id}">Copy as new</a>` : ''}
+        ${rec && CAN_EDIT && type === 'quotation' ? `<a class="btn sec" href="#invoice/fromquote/${rec.id}">Make Invoice</a>` : ''}
+        ${approvalButtons(rec)}
+        <span class="grow"></span>
+        ${rec && CAN_DELETE ? '<button class="btn danger" type="button" id="del">Delete</button>' : ''}
+      </div>
+    </form>`;
+  wireApproval(rec, type);
+  if (type === 'invoice' && rec) drawPayments(rec);
+
+  const form = $('#f');
+  if (!ro && CATALOG_TYPES.includes(type)) wirePicker(items, () => { dirty = true; drawItems(); });
+  const drawItems = () => {
+    const q = T.money ? quoteTotals(items) : null;
+    $('#items').innerHTML = items.map((it, i) => `<tr data-i="${i}"><td class="n">${i + 1}</td>
+      ${T.items.map(c => `<td${c.wide ? ' style="min-width:240px"' : ' style="width:110px"'}>${c.wide
+        ? `<textarea data-k="${c.k}" rows="1" aria-label="${esc(c.label)} ${i + 1}" ${dis}>${esc(it[c.k])}</textarea>`
+        : c.text ? `<input data-k="${c.k}" value="${esc(it[c.k])}" aria-label="${esc(c.label)} ${i + 1}" ${dis}>`
+        : `<input data-k="${c.k}" type="number" step="any" inputmode="decimal" value="${esc(it[c.k])}" aria-label="${esc(c.label)} ${i + 1}" ${dis}>`}</td>`).join('')}
+      ${T.money ? `<td class="amt">${money(q.rows[i].amount)}</td>` : ''}
+      <td>${ro || items.length < 2 ? '' : `<button type="button" class="rm" data-rm="${i}" aria-label="Remove item ${i + 1}">&times;</button>`}</td></tr>`).join('');
+    $$('#items textarea').forEach(grow);
+    drawTotals();
+  };
+  const drawTotals = () => {
+    if (!T.money) return;
+    const q = quoteTotals(items);
+    $('#totals').innerHTML = `<div><span>Sub Total</span><span>${money(q.sub)}</span></div><div><span>VAT (15%)</span><span>${money(q.vat)}</span></div>
+      <div class="grand"><span>Total</span><span>SAR ${money(q.total)}</span></div>`;
+    $('#inwords').textContent = sarWords(q.total);
+    $$('#items tr').forEach((tr, i) => { const c = tr.querySelector('.amt'); if (c) c.textContent = money(q.rows[i].amount); });
+  };
+  drawItems();
+  function grow(t) { t.style.height = 'auto'; t.style.height = t.scrollHeight + 2 + 'px'; }
+  $('#items').addEventListener('input', e => {
+    const k = e.target.dataset.k; if (!k) return;
+    if (e.target.tagName === 'TEXTAREA') grow(e.target);
+    items[+e.target.closest('tr').dataset.i][k] = e.target.value; drawTotals();
+  });
+  $('#items').addEventListener('click', e => { const b = e.target.closest('[data-rm]'); if (!b) return; items.splice(+b.dataset.rm, 1); dirty = true; drawItems(); });
+  $('#addItem')?.addEventListener('click', () => { items.push(blankItem()); dirty = true; drawItems(); $('#items tr:last-child textarea')?.focus(); });
+  form.addEventListener('input', () => { dirty = true; });
+  // fill customer details from the latest document for that customer
+  $('#f_party').addEventListener('change', () => {
+    const n = $('#f_party').value.trim().toLowerCase(); if (!n) return;
+    const last = people.filter(r => (r.party_name || '').trim().toLowerCase() === n).sort((a, b) => b.created_at.localeCompare(a.created_at))[0];
+    if (!last) return;
+    T.party.map(([k]) => k).forEach(k => { const el = $('#f_' + k); if (el && !el.value.trim() && last.data?.[k]) el.value = last.data[k]; });
+  });
+
+  const collect = () => {
+    const data = {};
+    [...T.head, ...T.party, ...(T.body || []), ...T.extra.flatMap(s => s.fields), ...T.notes].forEach(([k]) => data[k] = ($('#f_' + k)?.value || '').trim());
+    data.items = items.map(it => Object.fromEntries(T.items.map(c => [c.k, String(it[c.k] ?? '').trim()])))
+      .filter(it => T.items.some(c => !c.def && !c.text && it[c.k] !== ''));
+    if (T.money) { const q = quoteTotals(data.items); Object.assign(data, {sub_total: q.sub, vat_total: q.vat, grand_total: q.total, total_in_words: sarWords(q.total)}); }
+    return {doc_date: $('#f_date').value, party_name: $('#f_party').value.trim(), data};
+  };
+  const run = async (btn, fn) => { const t = btn.textContent; btn.disabled = true; btn.textContent = 'Please wait…'; $('#err').textContent = '';
+    try { await fn(); } catch (e) { $('#err').textContent = nice(e); } btn.disabled = false; btn.textContent = t; };
+  const draft = () => ({...collect(), doc_no: rec?.doc_no || ($('#f_no')?.value.trim() || '')});
+  $('#dl').onclick = e => run(e.target, async () => (await iPdf(type, draft())).save((draft().doc_no || T.title.replace(/ /g, '-') + '-DRAFT') + '.pdf'));
+  $('#wa')?.addEventListener('click', e => waClick(e.currentTarget, type, rec, () => iPdf(type, rec), true));
+  wireShare($('#sh'), () => iPdf(type, draft()), () => (draft().doc_no || T.title.replace(/ /g, '-') + '-DRAFT') + '.pdf',
+    () => { const v = draft(); return `${T.title} ${v.doc_no || ''} - ${v.party_name}${T.money ? ` - SAR ${money(v.data.grand_total)}` : ''}`; });
+  $('#pv').onclick = e => run(e.target, async () => {
+    const w = window.open('', '_blank'); const url = (await iPdf(type, draft())).output('bloburl');
+    if (w) w.location = url; else location.href = url;
+  });
+  $('#del')?.addEventListener('click', e => run(e.target, async () => {
+    if (!confirm(`Permanently delete ${rec.doc_no}?`)) return;
+    const {error} = await sb.from('docs_documents').delete().eq('id', rec.id);
+    if (error) throw error;
+    if (WA_TYPES[type]) sb.storage.from(CERT_BUCKET).remove([`s/${rec.id}.pdf`]).catch(() => {});   // its WhatsApp PDF link, if one was made
+    dirty = false; toast(rec.doc_no + ' deleted'); location.hash = '#' + type;
+  }));
+  form.addEventListener('submit', e => { e.preventDefault(); if (!ro) run($('#save'), async () => {
+    const v = collect();
+    if (!v.doc_date) throw new Error('Please enter the date.');
+    if (!v.party_name) { $('#f_party').focus(); throw new Error('Please fill in ' + T.partyLabel + '.'); }
+    if (!v.data.items.length && !T.itemsOptional) throw new Error('Please add at least one item.');
+    let res;
+    if (rec) res = await sb.from('docs_documents').update(v).eq('id', rec.id).select().single();
+    else {
+      const manual = $('#f_no').value.trim();
+      res = await sb.from('docs_documents').insert({doc_type: type, ...v, ...(manual ? {doc_no: manual} : {})}).select().single();
+    }
+    if (res.error) throw new Error(res.error.code === '23505' ? 'This number already exists. Leave it blank or enter a different one.' : nice(res.error));
+    rec = res.data; dirty = false;
+    toast(`${rec.doc_no} saved`);
+    goAfterSave(type, rec.id);
+  }); });
+}
+
+/* ===================== shared PDF helpers (colours, dates, Arabic text, QR) ===================== */
+const BLUE = [31, 90, 166], RED = [192, 0, 0], SILVER = [217, 217, 217], LIGHT = [244, 247, 247];
+const fullDate = v => { if (!v) return '-'; const d = new Date(v + 'T00:00:00'); if (isNaN(d)) return v;
+  return `${d.toLocaleDateString('en-GB', {weekday: 'long'})}, ${d.getDate()} ${d.toLocaleDateString('en-GB', {month: 'long'})} ${d.getFullYear()}`; };
+const addMonths = (v, m) => { const d = new Date(v + 'T00:00:00'); d.setMonth(d.getMonth() + m);
+  return new Intl.DateTimeFormat('en-CA').format(d); };
+const AR_MONTHS = ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'];
+function arDate(d) { if (!d) return '…'; const [y, m, day] = d.split('-').map(Number); return `${day} ${AR_MONTHS[m - 1]} ${y}`; }
+/* Arabic is drawn by the browser (correct joining + right-to-left) onto a canvas, then placed in the PDF as an image */
+const AR_FONT = '"Noto Naskh Arabic", "Segoe UI", Tahoma, Arial, sans-serif';
+async function arabicReady() { try { await Promise.all([document.fonts.load(`400 20px ${AR_FONT}`, 'شركة'), document.fonts.load(`700 20px ${AR_FONT}`, 'شركة')]); } catch (e) {} }
+const hasAr = v => /[\u0600-\u06FF]/.test(String(v ?? ''));
+function arImg(text, pt, {color = '#000', bold = false, maxW = null} = {}) {
+  const rtl = !/^[^\u0600-\u06FFA-Za-z]*[A-Za-z]/.test(String(text || ''));   // first letter decides direction
+  const S = 12, px = pt * 0.3528 * S;                       // 12 px per mm
+  const c = document.createElement('canvas'), g = c.getContext('2d');
+  const font = `${bold ? 700 : 400} ${px}px ${AR_FONT}`;
+  g.font = font;
+  const lines = [];
+  String(text || '').split('\n').forEach(par => {
+    if (!maxW) { lines.push(par); return; }
+    let cur = '';
+    par.split(/\s+/).forEach(w => { const t = cur ? cur + ' ' + w : w; if (cur && g.measureText(t).width > maxW * S) { lines.push(cur); cur = w; } else cur = t; });
+    lines.push(cur);
+  });
+  const lh = px * 1.55;
+  c.width = Math.ceil(Math.max(1, ...lines.map(l => g.measureText(l).width))) + 6;
+  c.height = Math.ceil(lines.length * lh) + 4;
+  g.font = font; g.fillStyle = color; g.direction = rtl ? 'rtl' : 'ltr'; g.textAlign = rtl ? 'right' : 'left'; g.textBaseline = 'middle';
+  lines.forEach((l, i) => g.fillText(l, rtl ? c.width - 3 : 3, 2 + lh * (i + 0.5)));
+  return {dataUrl: c.toDataURL('image/png'), w: c.width / S, h: c.height / S};
+}
+function drawQr(pdf, text, x, y, size) {
+  const q = qrcode(0, 'M'); q.addData(unescape(encodeURIComponent(text))); q.make();
+  const n = q.getModuleCount(), m = size / (n + 2);
+  pdf.setFillColor(255, 255, 255); pdf.rect(x, y, size, size, 'F'); pdf.setFillColor(0, 0, 0);
+  for (let r = 0; r < n; r++) for (let col = 0; col < n; col++) if (q.isDark(r, col)) pdf.rect(x + (col + 1) * m, y + (r + 1) * m, m + 0.02, m + 0.02, 'F');
+}
+
+/* ===================== SHARED: letterhead document builder (petty cash) ===================== */
+const CR_NO = BRAND.crNo;
+const CO_AR = BRAND.nameAr;
+function certDoc(img, docNo) {
+  const {jsPDF} = window.jspdf;
+  const pdf = new jsPDF({unit: 'mm', format: 'a4', compress: true});
+  const W = 210, H = 297, M = 12, CW = W - 2 * M;
+  const hdrH = CW * img.header.h / img.header.w, ftrH = CW * img.footer.h / img.footer.w, TOP = 5 + hdrH, BOT = H - 5 - ftrH - 6;
+  const frame = () => {
+    pdf.addImage(img.header.dataUrl, 'JPEG', M, 5, CW, hdrH, 'hdr');
+    pdf.addImage(img.footer.dataUrl, 'JPEG', M, H - 5 - ftrH, CW, ftrH, 'ftr');
+    pdf.setFont('helvetica', 'normal'); pdf.setFontSize(7.5); pdf.setTextColor(...C.slate);
+    pdf.text(`CR: ${CR_NO}   |   VAT NO: ${VAT_NO}`, W - M, TOP + 3.5, {align: 'right'});
+  };
+  frame();
+  const d = {pdf, W, H, M, CW, TOP, BOT, ftrH, y: TOP + 9};
+  d.page = () => { pdf.addPage(); frame(); d.y = TOP + 9; };
+  d.need = h => { if (d.y + h > d.BOT) d.page(); };
+  d.ar = (t, x, yMid, pt, o = {}) => {                 // x = right edge, or centre (o.center), or left edge (o.left)
+    const a = arImg(t, pt, o); const left = o.center ? x - a.w / 2 : o.left ? x : x - a.w;
+    pdf.addImage(a.dataUrl, 'PNG', left, yMid - a.h / 2, a.w, a.h); return a;
+  };
+  d.title = (en, arT, sub) => {
+    pdf.setFont('helvetica', 'bold'); pdf.setFontSize(14); pdf.setTextColor(...C.slate);
+    pdf.text(en, W / 2, d.y, {align: 'center'}); d.y += 6.5;
+    if (arT) { d.ar(arT, W / 2, d.y, 12.5, {bold: true, color: 'rgb(46,88,104)', center: true}); d.y += 6; }
+    if (sub) { pdf.setFont('helvetica', 'normal'); pdf.setFontSize(8.5); pdf.setTextColor(...C.muted); pdf.text(sub, W / 2, d.y, {align: 'center'}); d.y += 4; }
+    d.y += 3;
+  };
+  d.bar = (en, arT) => {
+    d.need(14);
+    pdf.setFillColor(...C.slate); pdf.rect(M, d.y, CW, 7, 'F');
+    pdf.setFont('helvetica', 'bold'); pdf.setFontSize(9); pdf.setTextColor(255, 255, 255);
+    pdf.text(en, M + 3, d.y + 4.7);
+    if (arT) d.ar(arT, W - M - 3, d.y + 3.6, 9, {bold: true, color: '#ffffff'});
+    d.y += 7;
+  };
+  // label / value grid, `cols` pairs per row; label may be [en, ar]
+  d.grid = (rows, cols = 2, RH = 10) => {
+    const cw = CW / cols, LW = cols === 1 ? 52 : 34;
+    rows.forEach(row => {
+      d.need(RH);
+      row.forEach(([lab, v], i) => {
+        const x = M + i * cw, [en, arL] = Array.isArray(lab) ? lab : [lab, ''];
+        pdf.setFillColor(...LIGHT); pdf.rect(x, d.y, LW, RH, 'F');
+        pdf.setFont('helvetica', 'bold'); pdf.setFontSize(7.6); pdf.setTextColor(...C.ink);
+        pdf.text(en, x + 1.8, d.y + (arL ? 3.9 : RH / 2 + 1.2));
+        if (arL) d.ar(arL, x + 1.8, d.y + 7.2, 6.8, {left: true, color: 'rgb(84,100,112)'});
+        const vw = cw - LW - 3, s = String(v ?? '').trim() || '-';
+        if (hasAr(s)) { const a = arImg(s, 8.5, {bold: true, maxW: vw}); pdf.addImage(a.dataUrl, 'PNG', x + LW + 2, d.y + RH / 2 - Math.min(a.h, RH - 1) / 2, a.w * Math.min(1, (RH - 1) / a.h), Math.min(a.h, RH - 1)); }
+        else { pdf.setFont('helvetica', 'normal'); pdf.setFontSize(8.6); pdf.setTextColor(...C.ink);
+          const ls = pdf.splitTextToSize(s, vw).slice(0, 2); pdf.text(ls, x + LW + 2, d.y + RH / 2 + 1.2 - (ls.length - 1) * 1.8); }
+      });
+      pdf.setDrawColor(...C.line); pdf.setLineWidth(0.2); pdf.line(M, d.y + RH, W - M, d.y + RH);
+      d.y += RH;
+    });
+  };
+  d.para = (t, size = 8.8, style = 'normal') => {
+    pdf.setFont('helvetica', style); pdf.setFontSize(size); pdf.setTextColor(...C.ink);
+    const ls = pdf.splitTextToSize(String(t || ''), CW - 4); d.need(ls.length * size * 0.46 + 3);
+    pdf.text(ls, M + 2, d.y + 4, {lineHeightFactor: 1.4}); d.y += ls.length * size * 0.353 * 1.4 + 4;
+  };
+  d.signs = (boxes, qrText, img2) => {          // signature boxes on the right, QR on the left, stamp over the last box
+    const QR = 34, BH = 40; d.need(BH + 8);
+    const y0 = d.y + 3;
+    drawQr(pdf, qrText, M, y0, QR);
+    pdf.setFont('helvetica', 'normal'); pdf.setFontSize(6.5); pdf.setTextColor(...C.muted);
+    pdf.text('Scan to verify', M + QR / 2, y0 + QR + 3, {align: 'center'});
+    const x0 = M + QR + 8, bw = (CW - QR - 8 - 4 * (boxes.length - 1)) / boxes.length;
+    boxes.forEach(([cap, name, title], i) => {
+      const x = x0 + i * (bw + 4);
+      pdf.setDrawColor(...C.line); pdf.setLineWidth(0.3); pdf.roundedRect(x, y0, bw, BH, 1.2, 1.2, 'S');
+      pdf.setFont('helvetica', 'bold'); pdf.setFontSize(7.8); pdf.setTextColor(...C.slate); pdf.text(cap, x + 3, y0 + 5);
+      pdf.setFont('helvetica', 'bold'); pdf.setFontSize(9); pdf.setTextColor(...C.ink); pdf.text(pdf.splitTextToSize(name || ' ', bw - 6)[0], x + 3, y0 + 11);
+      pdf.setFont('helvetica', 'normal'); pdf.setFontSize(7.8); pdf.setTextColor(...C.muted); if (title) pdf.text(pdf.splitTextToSize(title, bw - 6)[0], x + 3, y0 + 15.5);
+      pdf.setDrawColor(...C.muted); pdf.setLineWidth(0.25); pdf.line(x + 3, y0 + BH - 9, x + bw - 3, y0 + BH - 9);
+      pdf.setFontSize(6.8); pdf.text('Signature & date', x + 3, y0 + BH - 5.5);
+    });
+    const st = img2.stamp, sk = Math.min(44 / st.w, 20 / st.h), sw = st.w * sk, sh = st.h * sk;
+    pdf.addImage(st.dataUrl, 'PNG', x0 + (boxes.length - 1) * (bw + 4) + bw - sw - 2, y0 + BH - 9 - sh + 2, sw, sh, 'stamp');
+    d.y = y0 + BH + 6;
+  };
+  d.finish = () => { const n = pdf.getNumberOfPages();
+    for (let i = 1; i <= n; i++) { pdf.setPage(i); pdf.setFont('helvetica', 'normal'); pdf.setFontSize(7.5); pdf.setTextColor(...C.muted);
+      pdf.text(`${docNo || 'DRAFT'}   |   Page ${i} of ${n}`, W - M, H - 5 - ftrH - 2.5, {align: 'right'}); }
+    return pdf; };
+  return d;
+}
+const RES_COL = {PASS: [[232, 245, 236], [29, 122, 75]], FAIL: [[252, 235, 233], [179, 38, 30]], 'N/A': [[238, 241, 243], [96, 110, 118]]};
+// remembers the last signer names on this device
+const signMemo = {get: k => { try { return JSON.parse(localStorage.getItem('docs.sign.' + k) || '{}'); } catch (e) { return {}; } },
+  set: (k, v) => { try { localStorage.setItem('docs.sign.' + k, JSON.stringify(v)); } catch (e) {} }};
+
+/* ===================== PETTY CASH (daily small expenses, PC-2026-001) ===================== */
+const PETTY_CATS = ['Fuel', 'Transport', 'Food & water', 'Tools & hardware', 'Stationery', 'Cleaning', 'Repairs & maintenance', 'Mobile & internet', 'Government fees', 'Courier', 'Other'];
+const pettySort = (a, b) => (a.doc_date || '').localeCompare(b.doc_date || '') || (a.created_at || '').localeCompare(b.created_at || '');
+const pettyClose = r => r2((Number(r.data?.opening) || 0) + (Number(r.data?.received) || 0) - (Number(r.data?.spent) || 0));
+IDOCS.petty = {
+  title: 'Petty Cash', plural: 'Petty Cash', group: 'staff', custom: true,
+  nextNo: (list, date) => { const y = (date || today()).slice(0, 4); return `PC-${y}-${String(maxNo(list, new RegExp(`^PC-${y}-(\\d+)$`)) + 1).padStart(3, '0')}`; },
+  listCols: [['Held by', r => who(r.party_name)], ['Items', r => (r.data?.items || []).length], ['Received (SAR)', r => Number(r.data?.received) ? money(r.data.received) : '', 'money'],
+             ['Spent (SAR)', r => money(r.data?.spent), 'money'], ['Balance (SAR)', r => `<b>${money(pettyClose(r))}</b>`, 'money']],
+  search: r => (r.data?.items || []).flatMap(i => [i.description, i.category, i.paid_to, i.bill_no]),
+  summary: list => {
+    if (!list.length) return '';
+    const last = list.slice().sort(pettySort).pop(), month = today().slice(0, 7), mine = list.filter(r => (r.doc_date || '').slice(0, 7) === month);
+    const spentM = r2(mine.reduce((a, r) => a + (Number(r.data?.spent) || 0), 0)), recM = r2(mine.reduce((a, r) => a + (Number(r.data?.received) || 0), 0));
+    const cats = {}; mine.forEach(r => (r.data?.items || []).forEach(i => { const c = i.category || 'Other'; cats[c] = r2((cats[c] || 0) + (Number(i.amount) || 0)); }));
+    const top = Object.entries(cats).sort((a, b) => b[1] - a[1]).slice(0, 3).map(([c, v]) => `${esc(c)} ${money(v)}`).join(' · ');
+    return `<div class="paybox"><div><b>SAR ${money(pettyClose(last))}</b><span>Cash in hand now (after ${esc(last.doc_no)})</span></div>
+      <div><b>SAR ${money(spentM)}</b><span>Spent this month</span></div><div><b>SAR ${money(recM)}</b><span>Received this month</span></div>
+      <div><b style="font-size:14px">${top || '-'}</b><span>Top this month</span></div></div>
+      <div class="picker" id="pcReport"><b>Petty cash report (PDF)</b>
+        <div class="field"><label for="pr_period">Period</label><select id="pr_period"><option value="this">This month</option><option value="last">Last month</option><option value="custom">Custom dates</option></select></div>
+        <div class="field"><label for="pr_from">From</label><input id="pr_from" type="date"></div>
+        <div class="field"><label for="pr_to">To</label><input id="pr_to" type="date"></div>
+        <button class="btn" type="button" id="pr_go">Download report</button></div>`;
+  },
+  wire: list => {
+    const per = $('#pr_period'); if (!per) return;
+    const set = () => { const t = today(), [y, m] = t.split('-').map(Number);
+      if (per.value === 'this') { $('#pr_from').value = t.slice(0, 7) + '-01'; $('#pr_to').value = t; }
+      if (per.value === 'last') { const a = new Date(Date.UTC(y, m - 2, 1)), z = new Date(Date.UTC(y, m - 1, 0)); $('#pr_from').value = a.toISOString().slice(0, 10); $('#pr_to').value = z.toISOString().slice(0, 10); }
+      $('#pr_from').disabled = $('#pr_to').disabled = per.value !== 'custom'; };
+    per.onchange = set; set();
+    $('#pr_go').onclick = async e => {
+      const from = $('#pr_from').value, to = $('#pr_to').value;
+      if (!from || !to || from > to) { toast('Please choose a valid period.', true); return; }
+      const rows = list.filter(r => r.doc_date >= from && r.doc_date <= to).sort(pettySort);
+      if (!rows.length) { toast('No petty cash vouchers in this period.', true); return; }
+      const b = e.target; b.disabled = true; b.textContent = 'Please wait…';
+      try { await arabicReady(); (pettyReportPdf(rows, from, to, list, await assets())).save(`Petty-cash-${from}_to_${to}.pdf`); }
+      catch (err) { toast('Could not create PDF: ' + nice(err), true); }
+      b.disabled = false; b.textContent = 'Download report';
+    };
+  }
+};
+// all vouchers of a period in one PDF: every expense line, cash received, totals by category, opening and closing balance
+function pettyReportPdf(rows, from, to, all, img) {
+  const D = certDoc(img, `Petty cash ${dmy(from)} - ${dmy(to)}`), {pdf, M, CW, W} = D;
+  D.title('PETTY CASH REPORT', 'تقرير النثرية', `${fullDate(from)}  to  ${fullDate(to)}`);
+  const opening = Number(rows[0].data?.opening) || 0, closing = pettyClose(rows[rows.length - 1]);
+  const lines = rows.flatMap(r => (r.data?.items || []).map(i => ({...i, date: r.doc_date, no: r.doc_no})));
+  const recs = rows.filter(r => Number(r.data?.received)).map(r => ({date: r.doc_date, no: r.doc_no, from: r.data.received_from, amount: Number(r.data.received)}));
+  const spent = r2(lines.reduce((a, i) => a + (Number(i.amount) || 0), 0)), received = r2(recs.reduce((a, x) => a + x.amount, 0));
+  const holders = [...new Set(rows.map(r => r.party_name).filter(Boolean))].join(', ');
+  D.grid([[[['Period', 'الفترة'], `${dmy(from)} - ${dmy(to)}`], [['Vouchers', 'عدد السندات'], `${rows.length} (${rows[0].doc_no} - ${rows[rows.length - 1].doc_no})`]],
+          [[['Held by', 'أمين الصندوق'], holders], [['Expense lines', 'عدد المصروفات'], String(lines.length)]]], 2, 9.5);
+  D.y += 4;
+  // summary boxes
+  const box = [['Opening balance', 'الرصيد الافتتاحي', opening], ['Cash received', 'النقدية المستلمة', received], ['Total spent', 'إجمالي المصروفات', spent], ['Closing balance', 'الرصيد الختامي', closing]];
+  const bw = CW / 4;
+  box.forEach(([en, a, v], i) => { const x = M + i * bw, last = i === 3;
+    pdf.setFillColor(...(last ? C.slate : LIGHT)); pdf.rect(x + (i ? 0.8 : 0), D.y, bw - 0.8, 15, 'F');
+    pdf.setFont('helvetica', 'bold'); pdf.setFontSize(7.6); pdf.setTextColor(...(last ? [255, 255, 255] : C.slate)); pdf.text(en, x + 3, D.y + 4.6);
+    D.ar(a, x + bw - 3, D.y + 4, 7.2, {color: last ? '#ffffff' : '#546470'});
+    pdf.setFontSize(12); pdf.setTextColor(...(last ? [255, 255, 255] : C.ink)); pdf.text('SAR ' + money(v), x + 3, D.y + 12); });
+  D.y += 20;
+  // expenses table
+  D.bar('Expenses', 'المصروفات');
+  const cols = [19, 26, 58, 30, 28, 17, CW - 178];
+  const xs = cols.reduce((a, w, i) => (a.push(i ? a[i - 1] + cols[i - 1] : M), a), []);
+  const head = (h) => { pdf.setFillColor(...LIGHT); pdf.rect(M, D.y, CW, 6.5, 'F'); pdf.setFont('helvetica', 'bold'); pdf.setFontSize(7.2); pdf.setTextColor(...C.slate);
+    h.forEach((t, i) => pdf.text(t, i === h.length - 1 ? xs[i] + cols[i] - 1.5 : xs[i] + 1.4, D.y + 4.3, i === h.length - 1 ? {align: 'right'} : {})); D.y += 6.5; };
+  const H1 = ['Date', 'Voucher', 'Description', 'Category', 'Paid to', 'Bill No.', 'Amount'];
+  head(H1);
+  const cell = (t, x, w, y) => { const v = String(t ?? ''); if (hasAr(v)) { const a = arImg(v, 7.6, {maxW: w - 2.5}); const k = Math.min(1, 5.6 / a.h); pdf.addImage(a.dataUrl, 'PNG', x + 1.4, y - 3.9, a.w * k, a.h * k); }
+    else pdf.text(pdf.splitTextToSize(v, w - 2.5)[0] || '', x + 1.4, y); };
+  lines.forEach((it, i) => { const RH = 6.4;
+    if (D.y + RH > D.BOT) { D.page(); head(H1); }
+    if (i % 2) { pdf.setFillColor(250, 251, 252); pdf.rect(M, D.y, CW, RH, 'F'); }
+    pdf.setFont('helvetica', 'normal'); pdf.setFontSize(7.4); pdf.setTextColor(...C.ink);
+    const y = D.y + 4.3; pdf.text(dmy(it.date), xs[0] + 1.4, y); pdf.text(it.no || '', xs[1] + 1.4, y);
+    cell(it.description, xs[2], cols[2], y); cell(it.category, xs[3], cols[3], y); cell(it.paid_to, xs[4], cols[4], y); cell(it.bill_no, xs[5], cols[5], y);
+    pdf.setFont('helvetica', 'bold'); pdf.text(money(it.amount), xs[6] + cols[6] - 1.5, y, {align: 'right'});
+    pdf.setDrawColor(...C.line); pdf.setLineWidth(0.12); pdf.line(M, D.y + RH, W - M, D.y + RH); D.y += RH; });
+  D.need(8); pdf.setFillColor(...C.shade); pdf.rect(M, D.y, CW, 7, 'F'); pdf.setFont('helvetica', 'bold'); pdf.setFontSize(8.2); pdf.setTextColor(...C.ink);
+  pdf.text('Total spent', M + 2, D.y + 4.8); pdf.text('SAR ' + money(spent), W - M - 1.5, D.y + 4.8, {align: 'right'}); D.y += 11;
+  // by category
+  const cats = {}; lines.forEach(i => { const c = i.category || 'Other'; cats[c] = r2((cats[c] || 0) + (Number(i.amount) || 0)); });
+  const catRows = Object.entries(cats).sort((a, b) => b[1] - a[1]);
+  D.bar('Spent by category', 'المصروفات حسب الفئة');
+  catRows.forEach(([c, v]) => { D.need(6.5); const pct = spent ? v / spent : 0;
+    pdf.setFont('helvetica', 'normal'); pdf.setFontSize(8); pdf.setTextColor(...C.ink); pdf.text(c, M + 2, D.y + 4.4);
+    pdf.setFillColor(...C.shade); pdf.rect(M + 55, D.y + 1.6, 80, 3.4, 'F'); pdf.setFillColor(...C.slate); pdf.rect(M + 55, D.y + 1.6, Math.max(0.5, 80 * pct), 3.4, 'F');
+    pdf.setTextColor(...C.muted); pdf.text(`${Math.round(pct * 100)}%`, M + 138, D.y + 4.4);
+    pdf.setFont('helvetica', 'bold'); pdf.setTextColor(...C.ink); pdf.text('SAR ' + money(v), W - M - 1.5, D.y + 4.4, {align: 'right'});
+    pdf.setDrawColor(...C.line); pdf.setLineWidth(0.12); pdf.line(M, D.y + 6.2, W - M, D.y + 6.2); D.y += 6.4; });
+  D.y += 5;
+  // cash received
+  if (recs.length) {
+    D.bar('Cash received', 'النقدية المستلمة');
+    recs.forEach(x => { D.need(6.5); pdf.setFont('helvetica', 'normal'); pdf.setFontSize(8); pdf.setTextColor(...C.ink);
+      pdf.text(dmy(x.date), M + 2, D.y + 4.4); pdf.text(x.no, M + 26, D.y + 4.4); cell(x.from || '-', M + 52, 90, D.y + 4.4);
+      pdf.setFont('helvetica', 'bold'); pdf.text('SAR ' + money(x.amount), W - M - 1.5, D.y + 4.4, {align: 'right'});
+      pdf.setDrawColor(...C.line); pdf.setLineWidth(0.12); pdf.line(M, D.y + 6.2, W - M, D.y + 6.2); D.y += 6.4; });
+    D.y += 5;
+  }
+  // words + signatures
+  D.need(52);
+  pdf.setFont('helvetica', 'bold'); pdf.setFontSize(7.8); pdf.setTextColor(...C.slate); pdf.text('Total spent in words', M, D.y + 4);
+  pdf.setFont('helvetica', 'normal'); pdf.setFontSize(8.2); pdf.setTextColor(...C.ink); pdf.text(pdf.splitTextToSize(sarWords(spent), CW), M, D.y + 9);
+  const aw = arImg(sarWordsAr(spent), 8.6, {maxW: CW}); pdf.addImage(aw.dataUrl, 'PNG', W - M - aw.w, D.y + 12, aw.w, aw.h);
+  D.y += 22;
+  const sb2 = [['Prepared by (cashier)', 'أمين الصندوق'], ['Approved by', 'اعتماد'], ['Checked by (accounts)', 'المراجعة (الحسابات)']], sw = (CW - 8) / 3;
+  sb2.forEach(([en, a], i) => { const x = M + i * (sw + 4);
+    pdf.setDrawColor(...C.line); pdf.setLineWidth(0.3); pdf.roundedRect(x, D.y, sw, 26, 1.2, 1.2, 'S');
+    pdf.setFont('helvetica', 'bold'); pdf.setFontSize(7.6); pdf.setTextColor(...C.slate); pdf.text(en, x + 3, D.y + 5); D.ar(a, x + sw - 3, D.y + 4.3, 7.4, {color: '#546470'});
+    pdf.setDrawColor(...C.muted); pdf.setLineWidth(0.25); pdf.line(x + 3, D.y + 20, x + sw - 3, D.y + 20);
+    pdf.setFont('helvetica', 'normal'); pdf.setFontSize(6.8); pdf.setTextColor(...C.muted); pdf.text('Name, signature & date', x + 3, D.y + 23.5); });
+  const st = img.stamp, sk = Math.min(40 / st.w, 18 / st.h);
+  pdf.addImage(st.dataUrl, 'PNG', M + sw + 4 + sw - st.w * sk - 3, D.y + 18 - st.h * sk, st.w * sk, st.h * sk, 'stamp');
+  return D.finish();
+}
+function pettyPdf(r, img) {
+  const d = r.data || {}, items = (d.items || []).filter(i => i.description || Number(i.amount));
+  const D = certDoc(img, r.doc_no), {pdf, M, CW, W} = D;
+  D.title('PETTY CASH VOUCHER', 'سند صرف نثرية', 'Daily small expenses');
+  D.grid([
+    [[['Voucher No.', 'رقم السند'], r.doc_no || '(on save)'], [['Date', 'التاريخ'], fullDate(r.doc_date)]],
+    [[['Held by', 'أمين الصندوق'], r.party_name], [['Cash received from', 'استلام النقدية من'], Number(d.received) ? d.received_from || '-' : '-']]
+  ], 2, 9.5);
+  D.y += 4;
+  D.bar('Expenses', 'المصروفات');
+  const cols = [8, 70, 32, 34, 20, CW - 164];          // # | description | category | paid to | bill no | amount
+  const xs = cols.reduce((a, w, i) => (a.push(i ? a[i - 1] + cols[i - 1] : M), a), []);
+  const head = () => { pdf.setFillColor(...LIGHT); pdf.rect(M, D.y, CW, 6.5, 'F'); pdf.setFont('helvetica', 'bold'); pdf.setFontSize(7.4); pdf.setTextColor(...C.slate);
+    ['#', 'Description', 'Category', 'Paid to', 'Bill No.', 'Amount (SAR)'].forEach((h, i) => pdf.text(h, i === 5 ? xs[i] + cols[i] - 1.6 : xs[i] + 1.6, D.y + 4.3, i === 5 ? {align: 'right'} : {})); D.y += 6.5; };
+  head();
+  items.forEach((it, i) => {
+    pdf.setFont('helvetica', 'normal'); pdf.setFontSize(8);
+    const desc = hasAr(it.description) ? null : pdf.splitTextToSize(String(it.description || '-'), cols[1] - 3);
+    const RH = Math.max(7, desc ? desc.length * 3.6 + 3.4 : 8);
+    if (D.y + RH > D.BOT) { D.page(); head(); }
+    if (i % 2) { pdf.setFillColor(250, 251, 252); pdf.rect(M, D.y, CW, RH, 'F'); }
+    pdf.setTextColor(...C.muted); pdf.text(String(i + 1), xs[0] + 1.6, D.y + 4.6);
+    pdf.setTextColor(...C.ink);
+    if (desc) pdf.text(desc, xs[1] + 1.4, D.y + 4.6); else { const a = arImg(it.description, 8.5, {maxW: cols[1] - 3}); const k = Math.min(1, (RH - 1.5) / a.h); pdf.addImage(a.dataUrl, 'PNG', xs[1] + 1.4, D.y + (RH - a.h * k) / 2, a.w * k, a.h * k); }
+    pdf.text(pdf.splitTextToSize(String(it.category || ''), cols[2] - 3)[0] || '', xs[2] + 1.4, D.y + 4.6);
+    if (hasAr(it.paid_to)) { const a = arImg(it.paid_to, 8, {maxW: cols[3] - 3}); const k = Math.min(1, (RH - 1.5) / a.h); pdf.addImage(a.dataUrl, 'PNG', xs[3] + 1.4, D.y + (RH - a.h * k) / 2, a.w * k, a.h * k); }
+    else pdf.text(pdf.splitTextToSize(String(it.paid_to || ''), cols[3] - 3)[0] || '', xs[3] + 1.4, D.y + 4.6);
+    pdf.text(String(it.bill_no || ''), xs[4] + 1.4, D.y + 4.6);
+    pdf.setFont('helvetica', 'bold'); pdf.text(money(it.amount), xs[5] + cols[5] - 1.6, D.y + 4.6, {align: 'right'});
+    pdf.setDrawColor(...C.line); pdf.setLineWidth(0.15); pdf.line(M, D.y + RH, W - M, D.y + RH);
+    D.y += RH;
+  });
+  if (!items.length) { pdf.setFont('helvetica', 'italic'); pdf.setFontSize(8.5); pdf.setTextColor(...C.muted); pdf.text('No expenses recorded.', M + 2, D.y + 5); D.y += 8; }
+  // summary
+  D.need(52); D.y += 4;
+  const spent = Number(d.spent) || 0, rows = [['Opening balance', 'الرصيد الافتتاحي', Number(d.opening) || 0], ['Cash received', 'النقدية المستلمة', Number(d.received) || 0],
+    ['Total spent', 'إجمالي المصروفات', spent], ['Closing balance', 'الرصيد الختامي', pettyClose(r)]];
+  const bx = W - M - 92;
+  rows.forEach(([en, a, v], i) => { const last = i === 3, yy = D.y + i * 8;
+    pdf.setFillColor(...(last ? C.slate : LIGHT)); pdf.rect(bx, yy, 92, 7.4, 'F');
+    pdf.setFont('helvetica', 'bold'); pdf.setFontSize(8.2); pdf.setTextColor(...(last ? [255, 255, 255] : C.ink)); pdf.text(en, bx + 2.5, yy + 4.9);
+    D.ar(a, bx + 58, yy + 3.7, 7.6, {color: last ? '#ffffff' : '#546470'});
+    pdf.setFontSize(9); pdf.text((i === 2 ? '- ' : '') + money(v), bx + 89.5, yy + 4.9, {align: 'right'}); });
+  // words for the total spent, left of the summary
+  pdf.setFont('helvetica', 'bold'); pdf.setFontSize(7.8); pdf.setTextColor(...C.slate); pdf.text('Total spent in words', M, D.y + 4);
+  pdf.setFont('helvetica', 'normal'); pdf.setFontSize(8.2); pdf.setTextColor(...C.ink); pdf.text(pdf.splitTextToSize(sarWords(spent), bx - M - 6), M, D.y + 9);
+  const aw = arImg(sarWordsAr(spent), 8.6, {maxW: bx - M - 6}); pdf.addImage(aw.dataUrl, 'PNG', bx - 6 - aw.w, D.y + 18, aw.w, aw.h);
+  D.y += 36;
+  if (d.note) { D.need(12); pdf.setFont('helvetica', 'bold'); pdf.setFontSize(8); pdf.setTextColor(...C.slate); pdf.text('Note', M, D.y + 3);
+    pdf.setFont('helvetica', 'normal'); pdf.setTextColor(...C.ink); const ls = pdf.splitTextToSize(d.note, CW - 14); pdf.text(ls, M + 12, D.y + 3); D.y += ls.length * 3.8 + 4; }
+  // signatures (3 boxes) + stamp
+  D.need(36); D.y += 4;
+  const boxes = [['Prepared by (cashier)', 'أمين الصندوق', d.prepared_by || r.party_name], ['Approved by', 'اعتماد', d.approver], ['Checked by (accounts)', 'المراجعة (الحسابات)', d.checker]];
+  const bw = (CW - 8) / 3;
+  boxes.forEach(([en, a, name], i) => { const x = M + i * (bw + 4);
+    pdf.setDrawColor(...C.line); pdf.setLineWidth(0.3); pdf.roundedRect(x, D.y, bw, 30, 1.2, 1.2, 'S');
+    pdf.setFont('helvetica', 'bold'); pdf.setFontSize(7.6); pdf.setTextColor(...C.slate); pdf.text(en, x + 3, D.y + 5);
+    D.ar(a, x + bw - 3, D.y + 4.3, 7.4, {color: '#546470'});
+    pdf.setFontSize(9); pdf.setTextColor(...C.ink); pdf.text(pdf.splitTextToSize(name || ' ', bw - 6)[0], x + 3, D.y + 11);
+    pdf.setDrawColor(...C.muted); pdf.setLineWidth(0.25); pdf.line(x + 3, D.y + 24, x + bw - 3, D.y + 24);
+    pdf.setFont('helvetica', 'normal'); pdf.setFontSize(6.8); pdf.setTextColor(...C.muted); pdf.text('Signature & date', x + 3, D.y + 27.5); });
+  const st = img.stamp, sk = Math.min(40 / st.w, 18 / st.h);
+  pdf.addImage(st.dataUrl, 'PNG', M + bw + 4 + bw - st.w * sk - 3, D.y + 22 - st.h * sk, st.w * sk, st.h * sk, 'stamp');
+  D.y += 34;
+  return D.finish();
+}
+
+async function showPettyForm(id, copyFrom) {
+  const seq = ROUTE_SEQ, type = 'petty', T = IDOCS.petty;
+  view.innerHTML = '<div class="ah-skel" role="status" aria-label="Loading"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>';
+  let list, mrs;
+  try { [list, mrs] = await Promise.all([loadIList(type, true), loadIList('mr').catch(() => [])]); }
+  catch (e) { view.innerHTML = `<p class="flash">Database error: ${esc(nice(e))}. Has the latest <b>supabase_docs.sql</b> been run?</p>`; return; }
+  let rec = null, src = null;
+  if (id || copyFrom) {
+    const {data} = await sb.from('docs_documents').select('*').eq('id', id || copyFrom).eq('doc_type', type).maybeSingle();
+    if (!data) { view.innerHTML = `<p class="flash">Voucher not found. <a href="#petty">Back to list</a></p>`; return; }
+    src = data; if (id) rec = data;
+  }
+  const ro = !CAN_EDIT || locked(rec), dis = ro ? 'disabled' : '';
+  const dateNow = rec?.doc_date || today(), memo = signMemo.get('petty');
+  const d = {approver: memo.approver || '', checker: memo.checker || '', ...(src?.data || {})};
+  // opening balance = closing balance of the previous voucher
+  const prevOf = date => list.filter(x => x.id !== rec?.id && (x.doc_date < date || (x.doc_date === date && rec && x.created_at < rec.created_at) || (x.doc_date === date && !rec))).sort(pettySort).pop();
+  let openAuto = !rec || d.opening_auto !== false;
+  if (!rec) { const pv = prevOf(dateNow); d.opening = pv ? pettyClose(pv) : 0; d.received = ''; d.received_from = ''; d.note = ''; }
+  const items = (copyFrom && !rec ? [] : (d.items || [])).map(i => ({...i}));
+  while (items.length < 5) items.push({description: '', category: '', paid_to: '', bill_no: '', amount: ''});
+  const holders = [...new Set([...list, ...mrs].map(x => x.party_name).filter(Boolean))].sort();
+  const stLine = await approvalLine(rec);
+  const whoLine = rec ? `Created by: ${esc(await nameOf(rec.created_by))} · ${new Date(rec.created_at).toLocaleString('en-GB', {dateStyle: 'medium', timeStyle: 'short'})}` +
+    (rec.updated_at ? ` &nbsp;|&nbsp; Last edited by: ${esc(await nameOf(rec.updated_by))} · ${new Date(rec.updated_at).toLocaleString('en-GB', {dateStyle: 'medium', timeStyle: 'short'})}` : '') : '';
+  if (seq !== ROUTE_SEQ) return;
+  view.innerHTML = `
+    <p style="margin:0 0 10px"><a href="#petty">&larr; Petty Cash</a></p>
+    <h2>${rec ? `Petty Cash <span class="mono" style="font-size:1.1rem">${esc(rec.doc_no)}</span>` : 'New Petty Cash Voucher'}</h2>
+    ${whoLine ? `<p class="meta">${whoLine}</p>` : ''}${stLine ? `<p class="status-line">${stLine}</p>` : ''}
+    <form id="f" autocomplete="off">
+      <div class="sheet">
+        <h3>Voucher</h3>
+        <div class="grid">
+          <div class="field"><label for="f_no">Voucher No.</label>${rec ? `<div class="fixed">${esc(rec.doc_no)}</div>` : `<input id="f_no" placeholder="Auto: ${esc(T.nextNo(list, dateNow))}" ${dis}>`}</div>
+          <div class="field"><label for="f_date">Date</label><input id="f_date" type="date" required value="${esc(dateNow)}" ${dis}></div>
+          <div class="field"><label for="f_party">Held by (cashier)</label><input id="f_party" list="holders" required value="${esc(src?.party_name)}" ${dis}>
+            <datalist id="holders">${holders.map(n => `<option value="${esc(n)}">`).join('')}</datalist></div>
+          <div class="field"><label for="f_opening">Opening balance (SAR)</label><input id="f_opening" type="number" step="0.01" value="${esc(d.opening ?? 0)}" ${dis}></div>
+          <div class="field"><label for="f_received">Cash received today (SAR)</label><input id="f_received" type="number" min="0" step="0.01" value="${esc(d.received ?? '')}" placeholder="0" ${dis}></div>
+          <div class="field"><label for="f_received_from">Received from</label><input id="f_received_from" value="${esc(d.received_from)}" placeholder="e.g. Accounts / Azeem" ${dis}></div>
+        </div>
+        <p class="hint" id="openHint">${openAuto ? 'Opening balance is the closing balance of the previous voucher.' : 'Opening balance was changed by hand.'}</p>
+      </div>
+      <div class="sheet">
+        <h3>Expenses</h3>
+        <div class="table-wrap"><table class="chk pc"><thead><tr><th>#</th><th>Description</th><th>Category</th><th>Paid to</th><th>Bill No.</th><th style="text-align:right">Amount (SAR)</th><th></th></tr></thead><tbody id="pcRows"></tbody></table></div>
+        ${ro ? '' : '<button class="btn sec" type="button" id="addRow" style="margin-top:10px">+ Add line</button>'}
+        <datalist id="pcCats">${PETTY_CATS.map(c => `<option value="${esc(c)}">`).join('')}</datalist>
+        <div class="paybox" style="margin-top:14px" id="pcSum"></div>
+        <div class="field"><label for="f_note">Note</label><input id="f_note" value="${esc(d.note)}" ${dis}></div>
+      </div>
+      <div class="sheet">
+        <h3>Signatures</h3>
+        <div class="grid">
+          <div class="field"><label for="f_approver">Approved by</label><input id="f_approver" value="${esc(d.approver)}" ${dis}></div>
+          <div class="field"><label for="f_checker">Checked by (accounts)</label><input id="f_checker" value="${esc(d.checker)}" ${dis}></div>
+        </div>
+      </div>
+      <p class="err" id="err" role="alert"></p>
+      <div class="bar">
+        ${ro ? '' : '<button class="btn" id="save" type="submit">Save</button><button class="btn sec" id="saveNew" type="button" title="Save, then start a new one">Save &amp; New</button>'}
+        <button class="btn sec" type="button" id="dl">Download PDF</button>
+        <button class="btn sec" type="button" id="pv">Preview</button>
+        <span class="share"><button class="btn sec" type="button" id="sh">Share</button></span>
+        ${approvalButtons(rec)}
+        <span class="grow"></span>
+        ${rec && CAN_DELETE ? '<button class="btn danger" type="button" id="del">Delete</button>' : ''}
+      </div>
+    </form>`;
+  wireApproval(rec, type);
+  const form = $('#f');
+  const readItems = () => [...$('#pcRows').querySelectorAll('tr')].map(tr => ({description: tr.querySelector('[data-k=description]').value.trim(), category: tr.querySelector('[data-k=category]').value.trim(),
+    paid_to: tr.querySelector('[data-k=paid_to]').value.trim(), bill_no: tr.querySelector('[data-k=bill_no]').value.trim(), amount: r2(Number(tr.querySelector('[data-k=amount]').value) || 0)}));
+  const drawRows = list2 => { $('#pcRows').innerHTML = list2.map((it, i) => `<tr><td class="muted">${i + 1}</td>
+      <td><input data-k="description" value="${esc(it.description)}" placeholder="e.g. Diesel for forklift" ${dis}></td>
+      <td><input data-k="category" list="pcCats" value="${esc(it.category)}" style="min-width:120px" ${dis}></td>
+      <td><input data-k="paid_to" value="${esc(it.paid_to)}" style="min-width:110px" ${dis}></td>
+      <td><input data-k="bill_no" value="${esc(it.bill_no)}" style="min-width:80px" ${dis}></td>
+      <td><input data-k="amount" type="number" min="0" step="0.01" value="${esc(it.amount)}" style="min-width:90px;text-align:right" ${dis}></td>
+      <td>${ro ? '' : `<button type="button" class="btn small danger" data-rm="${i}" aria-label="Remove line ${i + 1}">&times;</button>`}</td></tr>`).join(''); };
+  const sum = () => { const its = readItems(), spent = r2(its.reduce((a, i) => a + i.amount, 0)), open = Number($('#f_opening').value) || 0, rec2 = Number($('#f_received').value) || 0, close = r2(open + rec2 - spent);
+    $('#pcSum').innerHTML = `<div><b>${money(open)}</b><span>Opening</span></div><div><b>${money(rec2)}</b><span>Received</span></div><div><b>${money(spent)}</b><span>Spent (${its.filter(i => i.amount).length} items)</span></div>
+      <div><b style="color:${close < 0 ? 'var(--red)' : 'var(--green)'}">${money(close)}</b><span>Closing balance</span></div>`; return {spent, close}; };
+  drawRows(items); sum();
+  $('#addRow')?.addEventListener('click', () => { const its = readItems(); its.push({description: '', category: '', paid_to: '', bill_no: '', amount: ''}); drawRows(its); sum(); $('#pcRows tr:last-child [data-k=description]').focus(); dirty = true; });
+  $('#pcRows').addEventListener('click', e => { const b = e.target.closest('[data-rm]'); if (!b) return; const its = readItems(); its.splice(+b.dataset.rm, 1); if (!its.length) its.push({description: '', category: '', paid_to: '', bill_no: '', amount: ''}); drawRows(its); sum(); dirty = true; });
+  form.addEventListener('input', e => {
+    dirty = true;
+    if (e.target.id === 'f_opening') { openAuto = false; $('#openHint').textContent = 'Opening balance was changed by hand.'; }
+    if (e.target.id === 'f_date' && openAuto && e.target.value) { const pv = prevOf(e.target.value); $('#f_opening').value = pv ? pettyClose(pv) : 0; }
+    sum();
+  });
+  const collect = () => { const its = readItems().filter(i => i.description || i.amount), {spent} = sum();
+    return {doc_date: $('#f_date').value, party_name: $('#f_party').value.trim(), data: {opening: r2(Number($('#f_opening').value) || 0), opening_auto: openAuto,
+      received: r2(Number($('#f_received').value) || 0), received_from: $('#f_received_from').value.trim(), items: its, spent,
+      note: $('#f_note').value.trim(), prepared_by: $('#f_party').value.trim(), approver: $('#f_approver').value.trim(), checker: $('#f_checker').value.trim()}}; };
+  const draft = () => ({...collect(), doc_no: rec?.doc_no || ($('#f_no')?.value.trim() || '')});
+  const fileName = () => (draft().doc_no || 'Petty-Cash-DRAFT') + '.pdf';
+  const run = async (btn, fn) => { const t = btn.textContent; btn.disabled = true; btn.textContent = 'Please wait…'; $('#err').textContent = '';
+    try { await fn(); } catch (e) { $('#err').textContent = nice(e); } btn.disabled = false; btn.textContent = t; };
+  $('#dl').onclick = e => run(e.target, async () => (await iPdf(type, draft())).save(fileName()));
+  wireShare($('#sh'), () => iPdf(type, draft()), fileName, () => { const v = draft(); return `Petty Cash Voucher ${v.doc_no || ''} - ${fmtDate(v.doc_date)} - spent SAR ${money(v.data.spent)}`; });
+  $('#pv').onclick = e => run(e.target, async () => { const w = window.open('', '_blank'); const url = (await iPdf(type, draft())).output('bloburl'); if (w) w.location = url; else location.href = url; });
+  $('#del')?.addEventListener('click', e => run(e.target, async () => {
+    if (!confirm(`Permanently delete ${rec.doc_no}? Later vouchers keep their own opening balance.`)) return;
+    const {error} = await sb.from('docs_documents').delete().eq('id', rec.id); if (error) throw error;
+    const ph = (rec.files?.photos || []).filter(Boolean); if (ph.length) await sb.storage.from(BUCKET).remove(ph);
+    dirty = false; toast(rec.doc_no + ' deleted'); location.hash = '#petty';
+  }));
+  form.addEventListener('submit', e => { e.preventDefault(); if (!ro) run($('#save'), async () => {
+    const v = collect();
+    if (!v.doc_date) throw new Error('Please enter the date.');
+    if (!v.party_name) { $('#f_party').focus(); throw new Error('Please enter who holds the petty cash.'); }
+    if (!v.data.items.length && !v.data.received) throw new Error('Add at least one expense, or the cash received.');
+    if (v.data.items.some(i => !i.amount)) throw new Error('Every expense line needs an amount.');
+    let res;
+    if (rec) res = await sb.from('docs_documents').update(v).eq('id', rec.id).select().single();
+    else { const manual = $('#f_no').value.trim(); res = await sb.from('docs_documents').insert({doc_type: type, ...v, ...(manual ? {doc_no: manual} : {})}).select().single(); }
+    if (res.error) throw new Error(res.error.code === '23505' ? 'This number already exists. Leave it blank or enter a different one.' : nice(res.error));
+    rec = res.data;
+    signMemo.set('petty', {approver: v.data.approver, checker: v.data.checker});
+    dirty = false; toast(`${rec.doc_no} saved`);
+    goAfterSave(type, rec.id);
+  }); });
+}
+
+/* ===================== CUSTOMERS (from Zoho Books contacts, or added by hand) ===================== */
+let CUSTS = null;
+async function loadCustomers(force) {
+  if (CUSTS && !force) return CUSTS;
+  const {data, error} = await sb.from('docs_customers').select('*').order('name').limit(5000);
+  if (error) { CUSTS = []; CUSTS.error = error; return CUSTS; }
+  return CUSTS = data;
+}
+const custKey = s => String(s || '').trim().toLowerCase().replace(/\s+/g, ' ');
+const findCustomer = name => { const k = custKey(name); return k ? (CUSTS || []).find(c => custKey(c.name) === k || custKey(c.name_ar) === k) : null; };
+// on any customer form: suggest customers from the list and fill in their details when one is picked
+async function wireCustomer(type) {
+  if (['po', 'mr', 'petty'].includes(type)) return;
+  const inp = $('#f_party') || $('#party_name'); if (!inp || inp.disabled) return;
+  const list = (await loadCustomers()).filter(c => c.active); if (!list.length || !document.body.contains(inp)) return;
+  let dl = inp.list; if (!dl) { dl = document.createElement('datalist'); dl.id = 'custList'; inp.after(dl); inp.setAttribute('list', 'custList'); }
+  const have = new Set([...dl.options].map(o => custKey(o.value)));
+  const opts = list.flatMap(c => [[c.name, c], ...(c.name_ar && custKey(c.name_ar) !== custKey(c.name) ? [[c.name_ar, c]] : [])]);
+  dl.insertAdjacentHTML('afterbegin', opts.filter(([n]) => !have.has(custKey(n))).map(([n, c]) => `<option value="${esc(n)}" label="${esc([c.code, n === c.name ? c.name_ar : c.name].filter(Boolean).join(' · '))}">`).join(''));
+  const hint = document.createElement('div'); hint.className = 'hint'; hint.id = 'custHint'; inp.closest('.field').appendChild(hint);
+  const show = c => { hint.innerHTML = c ? `Customer list: <b>${esc(c.code || '')}</b>${c.vat_no ? ` · VAT ${esc(c.vat_no)}` : ''}${c.mobile || c.phone ? ` · ${esc(c.mobile || c.phone)}` : ''}${c.payment_terms ? ` · ${esc(c.payment_terms)}` : ''}` : ''; };
+  const fill = () => {
+    const c = findCustomer(inp.value); show(c); if (!c) return;
+    const put = (id, v) => { const el = $('#' + id); if (el && !el.disabled && !el.value.trim() && v) { el.value = v; el.dispatchEvent(new Event('input', {bubbles: true})); } };
+    put('f_customer_address', c.address || c.address_ar); put('f_customer_trn', c.vat_no); put('f_customer_id', c.code);
+    if ((c.mobile || c.phone) && typeof waMemo !== 'undefined' && !waMemo.get(inp.value)) waMemo.set(inp.value, c.mobile || c.phone);
+  };
+  inp.addEventListener('change', fill); inp.addEventListener('input', () => { if (findCustomer(inp.value)) fill(); else show(null); });
+  show(findCustomer(inp.value));
+}
+// turn one row of Zoho's Contacts.xlsx into a customer
+function zohoToCustomer(r) {
+  const v = k => String(r[k] ?? '').trim();
+  const join = (...a) => a.filter(Boolean).join(', ');
+  const en = join(v('Billing Address'), v('Billing Street2'), v('Billing District'), [v('Billing City'), v('Billing Code')].filter(Boolean).join(' '), v('Billing Country'));
+  const ar = join(v('Billing Address (Secondary Language)'), v('Billing Street 2 (Secondary Language)'), v('Billing District (Secondary Language)'),
+    [v('Billing City (Secondary Language)'), v('Billing Code (Secondary Language)')].filter(Boolean).join(' '), v('Billing Country (Secondary Language)'));
+  const terms = v('Payment Terms Label'), t = terms.toLowerCase().replace(/ie/, 'ei');
+  return {code: v('Customer Number') || null, name: v('Display Name') || v('Company Name') || v('Contact Name'), name_ar: v('Display Name (Secondary Language)') || null,
+    contact_person: [v('Salutation'), v('First Name'), v('Last Name')].filter(Boolean).join(' ') || null, phone: v('Phone') || v('Billing Phone') || null, mobile: v('MobilePhone') || null,
+    email: v('EmailID') || null, vat_no: v('Tax Registration Number') || null, buyer_id: v('Buyer ID Value') ? `${v('Buyer ID Label') || 'ID'} ${v('Buyer ID Value')}` : null,
+    address: en || null, address_ar: ar && ar !== en ? ar : null, city: v('Billing City') || null,
+    payment_terms: t.includes('due on receipt') ? 'Due on receipt' : terms ? terms.charAt(0) + terms.slice(1).toLowerCase() : null,
+    active: !v('Status') || v('Status').toLowerCase() === 'active', zoho_id: v('Contact ID') || null, notes: v('Notes') || null};
+}
+const CUST_F = [['code', 'Customer No.'], ['name', 'Name (English)'], ['name_ar', 'Name (Arabic)'], ['contact_person', 'Contact person'], ['mobile', 'Mobile'], ['phone', 'Phone'], ['email', 'Email'],
+  ['vat_no', 'VAT No.'], ['buyer_id', 'Buyer ID (TIN / CR)'], ['city', 'City'], ['payment_terms', 'Payment terms']];
+async function showCustomers() {
+  const seq = ROUTE_SEQ;
+  view.innerHTML = '<div class="ah-skel" role="status" aria-label="Loading"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>';
+  const list = await loadCustomers(true);
+  if (seq !== ROUTE_SEQ) return;
+  if (list.error) { view.innerHTML = `<p class="flash">The customer list is not set up yet: run the latest <b>supabase_docs.sql</b> in Supabase. (${esc(nice(list.error))})</p>`; return; }
+  view.innerHTML = `
+    <div class="tools">
+      <div class="field"><label for="q">Search</label><input id="q" type="search" placeholder="Name, number, VAT, city, phone"></div>
+      <div class="field"><label for="cs">Show</label><select id="cs" data-remember="docs.cust.show"><option value="active">Active</option><option value="all">All</option><option value="inactive">Inactive</option></select></div>
+      <span style="flex:1"></span>
+      ${CAN_EDIT ? '<label class="btn sec" for="zimp" style="cursor:pointer">Import from Zoho (Excel)</label><input type="file" id="zimp" accept=".xlsx,.xls,.csv" hidden><a class="btn" href="#customers/new">+ New customer</a>' : ''}
+    </div>
+    <p class="hint" id="impMsg" style="margin-top:-6px">${list.length} customers. ${CAN_EDIT ? 'In Zoho Books: Sales → Customers → ⋮ → Export Customers (XLSX), then import that file here. Importing again updates existing customers and adds new ones.' : ''}</p>
+    <div class="table-wrap"><table><thead><tr><th>No.</th><th>Customer</th><th>VAT No.</th><th>Mobile / phone</th><th>City</th><th>Payment terms</th><th>Status</th></tr></thead><tbody id="rows"></tbody></table></div>
+    <p class="muted" id="count" style="font-size:13px"></p>`;
+  const draw = () => {
+    const q = custKey($('#q').value), st = $('#cs').value;
+    const rows = list.filter(c => (st === 'all' || (st === 'active' ? c.active : !c.active)) && (!q || custKey([c.code, c.name, c.name_ar, c.vat_no, c.city, c.mobile, c.phone, c.email, c.contact_person].join(' ')).includes(q)));
+    $('#rows').innerHTML = rows.length ? rows.map(c => `<tr class="click" data-id="${c.id}"><td class="no">${esc(c.code || '')}</td>
+      <td>${who(c.name)}${c.name_ar && c.name_ar !== c.name ? `<div class="sub" dir="rtl" lang="ar" style="text-align:left">${esc(c.name_ar)}</div>` : ''}</td>
+      <td class="mono" style="white-space:nowrap">${esc(c.vat_no || '')}</td><td style="white-space:nowrap">${esc(c.mobile || c.phone || '')}</td><td>${esc(c.city || '')}</td><td style="white-space:nowrap">${esc(c.payment_terms || '')}</td>
+      <td>${c.active ? '<span class="res PASS">Active</span>' : '<span class="res draft">Inactive</span>'}</td></tr>`).join('')
+      : `<tr><td colspan="7" class="empty">${list.length ? 'No customer matches this search.' : 'No customers yet.' + (CAN_EDIT ? ' Import the Zoho Books customer export above, or <a href="#customers/new">+ Add the first customer</a>' : '')}</td></tr>`;
+    $('#count').textContent = list.length ? `${rows.length} of ${list.length}` : '';
+  };
+  $('#q').addEventListener('input', draw); $('#cs').addEventListener('change', draw); draw();
+  $('#rows').addEventListener('click', e => { const tr = e.target.closest('tr[data-id]'); if (tr) location.hash = '#customers/' + tr.dataset.id; });
+  $('#zimp')?.addEventListener('change', async e => {
+    const file = e.target.files[0]; e.target.value = ''; if (!file) return;
+    const msg = $('#impMsg'); msg.textContent = 'Reading the file…';
+    try {
+      if (!window.XLSX) await new Promise((ok, no) => { const s = document.createElement('script'); s.src = 'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js'; s.onload = ok; s.onerror = () => no(new Error('Could not load the Excel reader. Check the internet connection.')); document.head.appendChild(s); });
+      const wb = XLSX.read(await file.arrayBuffer(), {type: 'array'}), ws = wb.Sheets[wb.SheetNames[0]];
+      const raw = XLSX.utils.sheet_to_json(ws, {defval: '', raw: false});
+      if (!raw.length || !('Display Name' in raw[0])) throw new Error('This does not look like the Zoho Books customer export (no "Display Name" column).');
+      const rows = raw.filter(r => String(r['Contact Type'] || 'customer').toLowerCase() !== 'vendor').map(zohoToCustomer).filter(c => c.name);
+      const byZoho = Object.fromEntries(list.filter(c => c.zoho_id).map(c => [c.zoho_id, c])), byCode = Object.fromEntries(list.filter(c => c.code).map(c => [c.code, c]));
+      let added = 0, updated = 0;
+      const out = rows.map(c => { const ex = (c.zoho_id && byZoho[c.zoho_id]) || (c.code && byCode[c.code]);
+        if (!ex) { added++; return c; }
+        updated++; const m = {...c, id: ex.id};                     // keep details typed in the portal when Zoho has nothing
+        Object.keys(c).forEach(k => { if ((c[k] === null || c[k] === '') && ex[k]) m[k] = ex[k]; });
+        return {...m, updated_at: new Date().toISOString()}; });
+      msg.textContent = `Saving ${out.length} customers…`;
+      const news = out.filter(c => !c.id), olds = out.filter(c => c.id);
+      for (let i = 0; i < news.length; i += 200) { const {error} = await sb.from('docs_customers').insert(news.slice(i, i + 200)); if (error) throw error; }
+      for (let i = 0; i < olds.length; i += 200) { const {error} = await sb.from('docs_customers').upsert(olds.slice(i, i + 200), {onConflict: 'id'}); if (error) throw error; }
+      toast(`Customers imported: ${added} new, ${updated} updated`); CUSTS = null; showCustomers();
+    } catch (err) { msg.textContent = ''; toast('Import failed: ' + nice(err), true); }
+  });
+}
+async function showCustomerForm(id) {
+  const seq = ROUTE_SEQ;
+  await loadCustomers(true);
+  if (CUSTS.error) { view.innerHTML = `<p class="flash">Run the latest <b>supabase_docs.sql</b> in Supabase first.</p>`; return; }
+  const c = id ? CUSTS.find(x => x.id === id) : {active: true};
+  if (!c) { view.innerHTML = '<p class="flash">Customer not found. <a href="#customers">Back to list</a></p>'; return; }
+  const ro = !CAN_EDIT, dis = ro ? 'disabled' : '';
+  let docs = [];
+  if (id) { const names = [c.name, c.name_ar].filter(Boolean); const {data} = await sb.from('docs_documents').select('id, doc_type, doc_no, doc_date, status').in('party_name', names).order('doc_date', {ascending: false}).limit(30); docs = data || []; }
+  if (seq !== ROUTE_SEQ) return;
+  const DN = window.portalDocNames || {};
+  view.innerHTML = `
+    <p style="margin:0 0 10px"><a href="#customers">&larr; Customers</a></p>
+    <h2>${id ? esc(c.name) : 'New customer'}</h2>
+    ${c.name_ar && c.name_ar !== c.name ? `<p class="meta" dir="rtl" lang="ar" style="text-align:left">${esc(c.name_ar)}</p>` : ''}
+    <form id="f" autocomplete="off">
+      <div class="sheet">
+        <h3>Customer</h3>
+        <div class="grid">${CUST_F.map(([k, l]) => `<div class="field"><label for="c_${k}">${l}</label><input id="c_${k}" value="${esc(c[k] || '')}" ${k === 'name' ? 'required' : ''} ${k === 'name_ar' ? 'dir="rtl" lang="ar"' : ''} ${dis}></div>`).join('')}
+          <label class="field" style="flex-direction:row;align-items:center;gap:8px;display:flex"><input type="checkbox" id="c_active"${c.active ? ' checked' : ''} ${dis} style="width:auto"> Active (shown in suggestions)</label></div>
+        <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
+          <div class="field"><label for="c_address">Address (English)</label><textarea id="c_address" rows="3" ${dis}>${esc(c.address || '')}</textarea></div>
+          <div class="field"><label for="c_address_ar">Address (Arabic)</label><textarea id="c_address_ar" rows="3" dir="rtl" lang="ar" ${dis}>${esc(c.address_ar || '')}</textarea></div>
+        </div>
+        <div class="field"><label for="c_notes">Notes</label><input id="c_notes" value="${esc(c.notes || '')}" ${dis}></div>
+        ${c.zoho_id ? '<p class="hint">Imported from Zoho Books. A new import updates it; details you add here are kept when Zoho has them empty.</p>' : ''}
+      </div>
+      ${id ? `<div class="sheet"><h3>Documents for this customer</h3>${docs.length ? `<div class="table-wrap" style="box-shadow:none;border:1px solid var(--border)"><table><thead><tr><th>No.</th><th>Type</th><th>Date</th><th>Status</th></tr></thead><tbody>
+        ${docs.map(d => `<tr class="click" data-href="#${d.doc_type}/${d.id}"><td class="no">${esc(d.doc_no)}</td><td>${esc(DN[d.doc_type] || d.doc_type)}</td><td>${esc(fmtDate(d.doc_date))}</td><td>${statusPill(d)}</td></tr>`).join('')}</tbody></table></div>` : '<p class="muted">No documents yet.</p>'}</div>` : ''}
+      <p class="err" id="err" role="alert"></p>
+      <div class="bar">
+        ${ro ? '' : '<button class="btn" id="save" type="submit">Save</button>'}
+        <span class="grow"></span>
+        ${id && CAN_DELETE ? '<button class="btn danger" type="button" id="del">Delete</button>' : ''}
+      </div>
+    </form>`;
+  const form = $('#f');
+  form.addEventListener('input', () => { dirty = true; });
+  view.querySelectorAll('tr[data-href]').forEach(tr => tr.onclick = () => { location.hash = tr.dataset.href; });
+  $('#del')?.addEventListener('click', async () => { if (!confirm(`Delete ${c.name}? Documents already made for this customer are not changed.`)) return;
+    const {error} = await sb.from('docs_customers').delete().eq('id', id); if (error) { $('#err').textContent = nice(error); return; }
+    dirty = false; CUSTS = null; toast('Customer deleted'); location.hash = '#customers'; });
+  form.addEventListener('submit', async e => { e.preventDefault(); if (ro) return;
+    const v = Object.fromEntries(CUST_F.map(([k]) => [k, $('#c_' + k).value.trim() || null]));
+    Object.assign(v, {address: $('#c_address').value.trim() || null, address_ar: $('#c_address_ar').value.trim() || null, notes: $('#c_notes').value.trim() || null, active: $('#c_active').checked});
+    if (!v.name) { $('#err').textContent = 'Please enter the customer name.'; return; }
+    const res = id ? await sb.from('docs_customers').update({...v, updated_at: new Date().toISOString()}).eq('id', id).select().single() : await sb.from('docs_customers').insert(v).select().single();
+    if (res.error) { $('#err').textContent = res.error.code === '23505' ? 'This customer number already exists.' : nice(res.error); return; }
+    dirty = false; CUSTS = null; toast(`${v.name} saved`); location.hash = '#customers/' + res.data.id;
+  });
+}
+
+/* ===================== CASH RECEIPT (سند قبض) ===================== */
+// Money received from a customer. Can be linked to an invoice: the payment is then recorded on that invoice too.
+const RCPT_METHODS = ['Cash', 'Cheque', 'Bank transfer', 'Card'];
+IDOCS.receipt = {
+  title: 'Cash Receipt', plural: 'Cash Receipts', group: 'customer', custom: true,
+  nextNo: (list, date) => { const y = (date || today()).slice(0, 4); return `CR-${y}-${String(maxNo(list, new RegExp(`^CR-${y}-(\\d+)$`)) + 1).padStart(3, '0')}`; },
+  party: [],
+  listCols: [['Received from', r => who(r.party_name)], ['Method', r => esc(r.data?.method)], ['Invoice', r => esc(r.data?.invoice_no)], ['Amount (SAR)', r => money(r.data?.amount), 'money']],
+  search: r => [r.data?.invoice_no, r.data?.purpose, r.data?.reference, r.data?.method]
+};
+
+function receiptPdf(r, img) {
+  const d = r.data || {};
+  const {jsPDF} = window.jspdf;
+  const pdf = new jsPDF({unit: 'mm', format: 'a4', compress: true});
+  const W = 210, M = 12, CW = W - 2 * M, hh = CW * img.header.h / img.header.w;
+  const ar = (t, x, y, pt, o = {}) => { const a = arImg(t, pt, o); pdf.addImage(a.dataUrl, 'PNG', o.left ? x : x - a.w, y - a.h / 2, a.w, a.h); return a; };
+  const amount = Number(d.amount) || 0;
+  const half = (y0, label) => {
+    pdf.addImage(img.header.dataUrl, 'JPEG', M, y0, CW, hh, 'hdr');
+    let y = y0 + hh + 7;
+    // title + copy label
+    pdf.setFont('helvetica', 'bold'); pdf.setFontSize(16); pdf.setTextColor(...C.slate);
+    pdf.text('CASH RECEIPT', M, y + 2);
+    ar('سند قبض', M + pdf.getTextWidth('CASH RECEIPT') + 5, y + 0.6, 14, {left: true, color: '#2E5868', bold: true});
+    pdf.setFont('helvetica', 'normal'); pdf.setFontSize(8); pdf.setTextColor(...C.muted);
+    pdf.text(label + `   |   VAT No: ${VAT_NO}`, M, y + 7.5);
+    // amount box
+    const bw = 62, bx = W - M - bw;
+    pdf.setDrawColor(...C.slate); pdf.setLineWidth(0.6); pdf.roundedRect(bx, y - 6, bw, 15, 1.5, 1.5, 'S');
+    pdf.setFillColor(...C.slate); pdf.roundedRect(bx, y - 6, 16, 15, 1.5, 1.5, 'F'); pdf.rect(bx + 8, y - 6, 8, 15, 'F');
+    pdf.setFont('helvetica', 'bold'); pdf.setFontSize(10); pdf.setTextColor(255, 255, 255); pdf.text('SAR', bx + 8, y + 2.8, {align: 'center'});
+    pdf.setFontSize(15); pdf.setTextColor(...C.ink); pdf.text(money(amount), bx + bw - 3, y + 3.4, {align: 'right'});
+    y += 14;
+    // no. and date
+    pdf.setDrawColor(...C.line); pdf.setLineWidth(0.25); pdf.line(M, y, W - M, y);
+    pdf.setFont('helvetica', 'bold'); pdf.setFontSize(9); pdf.setTextColor(...C.ink);
+    pdf.text('Receipt No.', M, y + 6); pdf.setTextColor(...RED); pdf.setFontSize(10.5); pdf.text(r.doc_no || 'DRAFT', M + 23, y + 6);
+    ar('رقم السند', M + 80, y + 5.2, 8.5);
+    pdf.setFont('helvetica', 'bold'); pdf.setFontSize(9); pdf.setTextColor(...C.ink); pdf.text('Date', W / 2 + 6, y + 6);
+    pdf.setFont('helvetica', 'normal'); pdf.text(fullDate(r.doc_date), W / 2 + 18, y + 6);
+    ar('التاريخ', W - M, y + 5.2, 8.5);
+    y += 10;
+    // lines: English label | value | Arabic label
+    const line = (en, arTxt, value, h = 10) => {
+      pdf.setFont('helvetica', 'bold'); pdf.setFontSize(9); pdf.setTextColor(...C.slate); pdf.text(en, M, y + 6);
+      const aw = ar(arTxt, W - M, y + 5.2, 9).w;
+      const x0 = M + 40, x1 = W - M - aw - 4;
+      pdf.setDrawColor(...C.line); pdf.setLineDashPattern([0.6, 0.9], 0); pdf.line(x0, y + 7.6, x1, y + 7.6); pdf.setLineDashPattern([], 0);
+      const v = String(value || '').trim() || '-';
+      if (hasAr(v)) { const a = arImg(v, 10, {maxW: x1 - x0 - 2, bold: true}); const k = Math.min(1, 8 / a.h); pdf.addImage(a.dataUrl, 'PNG', x0 + 1, y + 6 - a.h * k + 1.6, a.w * k, a.h * k); }
+      else { pdf.setFont('helvetica', 'bold'); pdf.setFontSize(10); pdf.setTextColor(...C.ink); pdf.text(pdf.splitTextToSize(v, x1 - x0 - 2)[0], x0 + 1, y + 6); }
+      y += h;
+    };
+    line('Received from', 'استلمنا من السيد / السادة', r.party_name, 9);
+    line('The sum of', 'مبلغ وقدره', sarWords(amount), 7.5);
+    { const x0 = M + 40, x1 = W - M - 34, a = arImg(sarWordsAr(amount), 9.5, {bold: true, maxW: x1 - x0}); const k = Math.min(1, 6.5 / a.h);
+      pdf.addImage(a.dataUrl, 'PNG', x1 - a.w * k, y + 4.2 - a.h * k / 2, a.w * k, a.h * k); y += 8; }
+    line('Being', 'وذلك عن', [[d.purpose, d.invoice_no && `against invoice ${d.invoice_no}`].filter(Boolean).join(', '), d.purpose_ar].filter(Boolean).join('  /  '), 9);
+    line('Paid by', 'طريقة الدفع', [`${d.method || ''}${METHOD_AR[d.method] ? ` (${METHOD_AR[d.method]})` : ''}`, d.reference && `No. ${d.reference}`, d.bank].filter(Boolean).join(', '), 9);
+    // what was due, and what is still due after this receipt
+    const due = Number(d.due_total) || 0;
+    if (due > 0) {
+      const before = Number(d.paid_before) || 0, bal = r2(due - before - amount);
+      const cells = [['Total due', 'المبلغ المستحق', due], ...(before > 0.005 ? [['Paid before', 'المدفوع سابقاً', before]] : []), ['This receipt', 'هذا السند', amount], [bal >= -0.005 ? 'Balance due' : 'Overpaid', bal >= -0.005 ? 'المتبقي' : 'زيادة', Math.abs(bal)]];
+      const cw = CW / cells.length; y += 2;
+      cells.forEach(([en, a2, v], i) => { const x = M + i * cw, last = i === cells.length - 1;
+        pdf.setFillColor(...(last ? (bal > 0.005 ? [253, 238, 232] : [232, 245, 236]) : LIGHT)); pdf.rect(x + (i ? 0.6 : 0), y, cw - 0.6, 11, 'F');
+        pdf.setFont('helvetica', 'bold'); pdf.setFontSize(7.4); pdf.setTextColor(...C.slate); pdf.text(en, x + 2.5, y + 4);
+        ar(a2, x + cw - 2.5, y + 3.4, 7.4, {color: '#2E5868'});
+        pdf.setFontSize(10.5); pdf.setTextColor(...(last && bal > 0.005 ? C.red : C.ink)); pdf.text('SAR ' + money(v), x + 2.5, y + 9.2); });
+      y += 12;
+    }
+    // signatures + stamp
+    y += due > 0 ? 9 : 14;
+    const sw = 46, sh = img.stamp.h * sw / img.stamp.w;
+    pdf.addImage(img.stamp.dataUrl, 'PNG', W / 2 - sw / 2, y + 9 - sh, sw, sh, 'stamp');
+    pdf.setDrawColor(...C.ink); pdf.setLineWidth(0.35); pdf.line(M, y + 6, M + 60, y + 6); pdf.line(W - M - 60, y + 6, W - M, y + 6);
+    pdf.setFont('helvetica', 'bold'); pdf.setFontSize(8.5); pdf.setTextColor(...C.slate);
+    pdf.text(`Received by (${BRAND.short})`, M, y + 10.5); ar('المستلم', M + 60, y + 10, 8.5);
+    pdf.text('Paid by (Customer)', W - M - 60, y + 10.5); ar('الدافع', W - M, y + 10, 8.5);
+  };
+  half(6, 'Original');
+  pdf.setDrawColor(...C.muted); pdf.setLineWidth(0.2); pdf.setLineDashPattern([2, 1.5], 0); pdf.line(4, 148.5, W - 4, 148.5); pdf.setLineDashPattern([], 0);
+  pdf.setFont('helvetica', 'normal'); pdf.setFontSize(6.5); pdf.setTextColor(...C.muted); pdf.text('cut here', W / 2, 147.3, {align: 'center'});
+  half(154, 'Copy');
+  return pdf;
+}
+
+async function showReceiptForm(id, copyFrom) {
+  const seq = ROUTE_SEQ, type = 'receipt', T = IDOCS.receipt;
+  view.innerHTML = '<div class="ah-skel" role="status" aria-label="Loading"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>';
+  let list, invoices, others;
+  try { [list, invoices, ...others] = await Promise.all([loadIList(type, true), loadIList('invoice', true), ...GROUP_TYPES('customer').filter(t => t !== type && t !== 'invoice').map(t => loadIList(t))]); others = others.flat(); }
+  catch (e) { view.innerHTML = `<p class="flash">Database error: ${esc(nice(e))}</p>`; return; }
+  let rec = null, src = null;
+  if (id || copyFrom) {
+    const {data} = await sb.from('docs_documents').select('*').eq('id', id || copyFrom).eq('doc_type', type).maybeSingle();
+    if (!data) { view.innerHTML = `<p class="flash">Receipt not found. <a href="#receipt">Back to list</a></p>`; return; }
+    src = data; if (id) rec = data;
+  }
+  const d = {method: 'Cash', ...(src?.data || {})};
+  if (copyFrom) { delete d.payment_id; delete d.invoice_id; delete d.invoice_no; }
+  const ro = !CAN_EDIT || locked(rec), dis = ro ? 'disabled' : '';
+  const dateNow = rec?.doc_date || today(), stLine = await approvalLine(rec);
+  const names = [...new Set([...list, ...invoices, ...others].map(x => x.party_name).filter(Boolean))].sort();
+  const bal = inv => r2((Number(inv.data?.grand_total) || 0) - (inv.paid || 0)) + (rec && d.invoice_id === inv.id ? Number(d.amount || 0) : 0);
+  const who = rec ? `Created by: ${esc(await nameOf(rec.created_by))} · ${new Date(rec.created_at).toLocaleString('en-GB', {dateStyle: 'medium', timeStyle: 'short'})}` : '';
+  if (seq !== ROUTE_SEQ) return;
+  view.innerHTML = `
+    <p style="margin:0 0 10px"><a href="#receipt">&larr; Cash Receipts</a></p>
+    <h2>${rec ? `Cash Receipt <span class="mono" style="font-size:1.1rem">${esc(rec.doc_no)}</span>` : 'New Cash Receipt'}</h2>
+    ${who ? `<p class="meta">${who}</p>` : ''}${stLine ? `<p class="status-line">${stLine}</p>` : ''}
+    <form id="f" autocomplete="off">
+      <div class="sheet">
+        <h3>Receipt</h3>
+        <div class="grid">
+          <div class="field"><label for="f_no">Receipt No.</label>${rec ? `<div class="fixed">${esc(rec.doc_no)}</div>` : `<input id="f_no" placeholder="Auto: ${esc(T.nextNo(list, dateNow))}" ${dis}>`}</div>
+          <div class="field"><label for="f_date">Date</label><input id="f_date" type="date" required value="${esc(dateNow)}" ${dis}></div>
+          <div class="field" style="grid-column:1/-1"><label for="f_party">Received from</label><input id="f_party" list="names" required value="${esc(src?.party_name)}" ${dis}>
+            <datalist id="names">${names.map(n => `<option value="${esc(n)}">`).join('')}</datalist></div>
+          <div class="field"><label for="f_amount">Amount (SAR)</label><input id="f_amount" type="number" min="0.01" step="0.01" required value="${esc(d.amount)}" ${dis}></div>
+          <div class="field"><label for="f_method">Paid by</label><select id="f_method" ${dis}>${RCPT_METHODS.map(m => `<option${m === d.method ? ' selected' : ''}>${m}</option>`).join('')}</select></div>
+          <div class="field"><label for="f_reference">Cheque / transfer No.</label><input id="f_reference" value="${esc(d.reference)}" ${dis}></div>
+          <div class="field"><label for="f_bank">Bank</label><input id="f_bank" value="${esc(d.bank)}" placeholder="e.g. Demo Bank" ${dis}></div>
+        </div>
+        <p class="hint" id="words"></p>
+        <div class="grid">
+          <div class="field"><label for="f_invoice">Against invoice (optional)</label><select id="f_invoice" ${dis}></select></div>
+          <div class="field"><label for="f_purpose">Being (for)</label><input id="f_purpose" value="${esc(d.purpose)}" placeholder="e.g. Advance payment for order" ${dis}></div>
+          <div class="field"><label for="f_purpose_ar">Being (Arabic, optional)</label><input id="f_purpose_ar" dir="rtl" lang="ar" value="${esc(d.purpose_ar)}" placeholder="مثال: دفعة مقدمة لتصنيع خزان" ${dis}></div>
+          <div class="field" id="dueBox"><label for="f_due">Amount due before this receipt (SAR, optional)</label><input id="f_due" type="number" min="0" step="0.01" value="${esc(d.invoice_id ? '' : d.due_total)}" ${dis}></div>
+        </div>
+        <p class="hint" id="dueLine"></p>
+        ${ro ? '' : '<p class="hint">Choose an invoice to record this money as a payment on it too (it then shows in that invoice&#39;s Payments and in Receivables).</p>'}
+      </div>
+      <p class="err" id="err" role="alert"></p>
+      <div class="bar">
+        ${ro ? '' : '<button class="btn" id="save" type="submit">Save</button><button class="btn sec" id="saveNew" type="button" title="Save, then start a new one">Save &amp; New</button>'}
+        <button class="btn sec" type="button" id="dl">Download PDF</button>
+        <button class="btn sec" type="button" id="pv">Preview</button>
+        <span class="share"><button class="btn sec" type="button" id="sh">Share</button></span>
+        ${rec && CAN_EDIT ? `<a class="btn sec" href="#receipt/copy/${rec.id}">Copy as new</a>` : ''}
+        ${approvalButtons(rec)}
+        <span class="grow"></span>
+        ${rec && CAN_DELETE ? '<button class="btn danger" type="button" id="del">Delete</button>' : ''}
+      </div>
+    </form>`;
+  wireApproval(rec, type);
+  const form = $('#f');
+  const drawInvoices = () => {
+    const p = $('#f_party').value.trim().toLowerCase(), cur = $('#f_invoice').value || d.invoice_id;
+    const opts = invoices.filter(i => i.id === cur || ((i.party_name || '').trim().toLowerCase() === p && bal(i) > 0.005));
+    $('#f_invoice').innerHTML = `<option value="">Not linked to an invoice</option>` + opts.map(i => `<option value="${i.id}"${i.id === cur ? ' selected' : ''}>${esc(i.doc_no)}, balance SAR ${money(bal(i))}</option>`).join('');
+  };
+  const drawWords = () => { const a = Number($('#f_amount').value); $('#words').innerHTML = a > 0 ? `${esc(sarWords(a))}<br><span dir="rtl" lang="ar">${esc(sarWordsAr(a))}</span>` : ''; };
+  const dueInfo = () => { const inv = invoices.find(i => i.id === $('#f_invoice').value), a = r2(Number($('#f_amount').value) || 0);
+    if (inv) { const total = r2(Number(inv.data?.grand_total) || 0), before = r2(total - bal(inv)); return {due_total: total, paid_before: before, balance: r2(total - before - a)}; }
+    const due = r2(Number($('#f_due').value) || 0); return due > 0 ? {due_total: due, paid_before: 0, balance: r2(due - a)} : {due_total: 0, paid_before: 0, balance: 0}; };
+  const drawDue = () => { const linked = !!$('#f_invoice').value, x = dueInfo(); $('#dueBox').hidden = linked;
+    $('#dueLine').innerHTML = x.due_total > 0 ? `Printed on the receipt: total due <b>SAR ${money(x.due_total)}</b>${x.paid_before ? `, paid before SAR ${money(x.paid_before)}` : ''}, this receipt SAR ${money(Number($('#f_amount').value) || 0)}, <b>${x.balance >= -0.005 ? 'balance due' : 'overpaid'} SAR ${money(Math.abs(x.balance))}</b>` : ''; };
+  drawInvoices(); drawWords(); drawDue();
+  form.addEventListener('input', e => { dirty = true; if (e.target.id === 'f_amount') drawWords(); if (['f_amount', 'f_due'].includes(e.target.id)) drawDue(); });
+  $('#f_party').addEventListener('change', () => { drawInvoices(); drawDue(); });
+  $('#f_invoice').addEventListener('change', drawDue);
+  $('#f_invoice').addEventListener('change', () => { const inv = invoices.find(i => i.id === $('#f_invoice').value);
+    if (inv && !$('#f_amount').value) { $('#f_amount').value = bal(inv).toFixed(2); drawWords(); }
+    if (inv && !$('#f_purpose').value.trim()) $('#f_purpose').value = 'Payment';
+  });
+  const collect = () => { const inv = invoices.find(i => i.id === $('#f_invoice').value);
+    return {doc_date: $('#f_date').value, party_name: $('#f_party').value.trim(), data: {amount: r2(Number($('#f_amount').value) || 0), method: $('#f_method').value,
+      reference: $('#f_reference').value.trim(), bank: $('#f_bank').value.trim(), purpose: $('#f_purpose').value.trim(), purpose_ar: $('#f_purpose_ar').value.trim(),
+      due_total: dueInfo().due_total, paid_before: dueInfo().paid_before,
+      invoice_id: inv ? inv.id : null, invoice_no: inv ? inv.doc_no : null, payment_id: rec?.data?.payment_id || null}}; };
+  const draft = () => ({...collect(), doc_no: rec?.doc_no || ($('#f_no')?.value.trim() || '')});
+  const run = async (btn, fn) => { const t = btn.textContent; btn.disabled = true; btn.textContent = 'Please wait…'; $('#err').textContent = '';
+    try { await fn(); } catch (e) { $('#err').textContent = nice(e); } btn.disabled = false; btn.textContent = t; };
+  const name = () => (draft().doc_no || 'Cash-Receipt-DRAFT') + '.pdf';
+  $('#dl').onclick = e => run(e.target, async () => (await iPdf(type, draft())).save(name()));
+  wireShare($('#sh'), () => iPdf(type, draft()), name, () => { const v = draft(); return `Cash Receipt ${v.doc_no || ''} - ${v.party_name} - SAR ${money(v.data.amount)}`; });
+  $('#pv').onclick = e => run(e.target, async () => { const w = window.open('', '_blank'); const url = (await iPdf(type, draft())).output('bloburl'); if (w) w.location = url; else location.href = url; });
+  $('#del')?.addEventListener('click', e => run(e.target, async () => {
+    if (!confirm(`Permanently delete ${rec.doc_no}?${rec.data?.payment_id ? ' Its payment on ' + rec.data.invoice_no + ' will be deleted too.' : ''}`)) return;
+    if (rec.data?.payment_id) { const {error} = await sb.from('docs_payments').delete().eq('id', rec.data.payment_id); if (error) throw error; }
+    const {error} = await sb.from('docs_documents').delete().eq('id', rec.id); if (error) throw error;
+    ILIST.invoice = null; dirty = false; toast(rec.doc_no + ' deleted'); location.hash = '#receipt';
+  }));
+  form.addEventListener('submit', e => { e.preventDefault(); if (!ro) run($('#save'), async () => {
+    const v = collect(), x = v.data, old = rec?.data || {};
+    if (!v.doc_date) throw new Error('Please enter the date.');
+    if (!v.party_name) { $('#f_party').focus(); throw new Error('Please enter who the money was received from.'); }
+    if (!(x.amount > 0)) { $('#f_amount').focus(); throw new Error('Please enter the amount.'); }
+    const linkChanged = old.payment_id && (old.invoice_id !== x.invoice_id || Number(old.amount) !== x.amount || rec.doc_date !== v.doc_date || old.method !== x.method);
+    if (linkChanged && !CAN_DELETE) throw new Error('This receipt is recorded as a payment on ' + old.invoice_no + '. Only a manager can change its amount, date, method or invoice.');
+    if (x.invoice_id && !old.payment_id) { const inv = invoices.find(i => i.id === x.invoice_id);
+      if (inv && x.amount > bal(inv) + 0.005 && !confirm(`This is more than the invoice balance (SAR ${money(bal(inv))}). Save anyway?`)) return; }
+    let res;
+    if (rec) res = await sb.from('docs_documents').update(v).eq('id', rec.id).select().single();
+    else { const manual = $('#f_no').value.trim(); res = await sb.from('docs_documents').insert({doc_type: type, ...v, ...(manual ? {doc_no: manual} : {})}).select().single(); }
+    if (res.error) throw new Error(res.error.code === '23505' ? 'This number already exists. Leave it blank or enter a different one.' : nice(res.error));
+    rec = res.data;
+    // keep the invoice payment in step with the receipt
+    let pid = old.payment_id || null;
+    if (pid && (linkChanged || !x.invoice_id)) { const {error} = await sb.from('docs_payments').delete().eq('id', pid); if (error) throw error; pid = null; }
+    if (x.invoice_id && !pid) {
+      const {data: pay, error} = await sb.from('docs_payments').insert({document_id: x.invoice_id, paid_on: v.doc_date, amount: x.amount, method: x.method, reference: rec.doc_no}).select().single();
+      if (error) throw new Error('Receipt saved, but the invoice payment could not be recorded: ' + nice(error));
+      pid = pay.id;
+    }
+    if (pid !== (rec.data?.payment_id || null)) { const up = await sb.from('docs_documents').update({data: {...rec.data, payment_id: pid}}).eq('id', rec.id).select().single(); if (!up.error) rec = up.data; }
+    ILIST.invoice = null; dirty = false; toast(`${rec.doc_no} saved`);
+    goAfterSave(type, rec.id);
+  }); });
+}
+
+/* ============================== invoice payments panel ============================== */
+async function drawPayments(rec) {
+  const box = $('#pays'); if (!box) return;
+  const {data, error} = await sb.from('docs_payments').select('*').eq('document_id', rec.id).order('paid_on');
+  if (error) { box.innerHTML = '<h3>Payments</h3><p class="flash">Payments table not found. Run the latest <b>supabase_docs.sql</b> in Supabase.</p>'; return; }
+  const total = Number(rec.data?.grand_total) || 0, paid = r2(data.reduce((s, p) => s + Number(p.amount), 0)), bal = r2(total - paid);
+  const st = payState(total, paid, rec.data?.due_date);
+  const canAdd = CAN_EDIT, canDel = CAN_DELETE;
+  box.innerHTML = `<h3>Payments <span class="res ${st}" style="margin-left:6px">${PAY_LABEL[st]}</span></h3>
+    <div class="paybox"><div><b>${money(total)}</b><span>Invoice total (SAR)</span></div><div><b>${money(paid)}</b><span>Received</span></div>
+      <div><b style="color:${bal > 0.005 ? 'var(--red)' : 'var(--green)'}">${money(Math.max(0, bal))}</b><span>Balance</span></div>
+      <div><b>${esc(fmtDate(rec.data?.due_date) || '-')}</b><span>Due date</span></div></div>
+    ${data.length ? `<div class="table-wrap" style="box-shadow:none;border:1px solid var(--border)"><table><thead><tr><th>Date</th><th style="text-align:right">Amount (SAR)</th><th>Method</th><th>Reference</th><th>Recorded by</th><th></th></tr></thead><tbody>
+      ${(await Promise.all(data.map(async p => `<tr><td>${esc(fmtDate(p.paid_on))}</td><td class="money">${money(p.amount)}</td><td>${esc(p.method)}</td><td>${esc(p.reference)}</td>
+        <td>${esc(await nameOf(p.created_by))}</td><td>${canDel ? `<button type="button" class="btn small danger" data-delpay="${p.id}">Delete</button>` : ''}</td></tr>`))).join('')}
+      </tbody></table></div>` : '<p class="muted" style="margin:0">No payments recorded yet.</p>'}
+    ${canAdd && bal > 0.005 ? `<div class="payform">
+      <div class="field"><label for="p_date">Payment date</label><input id="p_date" type="date" value="${today()}"></div>
+      <div class="field"><label for="p_amt">Amount (SAR)</label><input id="p_amt" type="number" step="0.01" min="0.01" value="${bal.toFixed(2)}"></div>
+      <div class="field"><label for="p_method">Method</label><select id="p_method"><option>Bank transfer</option><option>Cash</option><option>Cheque</option><option>Card</option></select></div>
+      <div class="field"><label for="p_ref">Reference</label><input id="p_ref" placeholder="Transfer / cheque no."></div>
+      <button type="button" class="btn" id="p_add">Record payment</button></div>` : ''}`;
+  $('#p_add')?.addEventListener('click', async e => {
+    const amt = Number($('#p_amt').value);
+    if (!(amt > 0)) { toast('Please enter the amount.', true); return; }
+    if (amt > bal + 0.005 && !confirm(`This is more than the balance (${money(bal)}). Record it anyway?`)) return;
+    e.target.disabled = true;
+    const {error: err} = await sb.from('docs_payments').insert({document_id: rec.id, paid_on: $('#p_date').value || today(), amount: r2(amt),
+      method: $('#p_method').value, reference: $('#p_ref').value.trim() || null});
+    if (err) { e.target.disabled = false; toast(nice(err), true); return; }
+    ILIST.invoice = null; toast('Payment recorded'); drawPayments(rec);
+  });
+  box.querySelectorAll('[data-delpay]').forEach(b => b.addEventListener('click', async () => {
+    if (!confirm('Delete this payment?')) return;
+    const {error: err} = await sb.from('docs_payments').delete().eq('id', b.dataset.delpay);
+    if (err) { toast(nice(err), true); return; }
+    ILIST.invoice = null; toast('Payment deleted'); drawPayments(rec);
+  }));
+}
+
+/* receivables: what each customer still owes, by how late it is */
+async function showReceivables() {
+  const seq = ROUTE_SEQ;
+  view.innerHTML = '<div class="ah-skel" role="status" aria-label="Loading"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>';
+  let list; try { list = await loadIList('invoice', true); } catch (e) { view.innerHTML = `<p class="flash">Database error: ${esc(nice(e))}</p>`; return; }
+  if (seq !== ROUTE_SEQ) return;
+  const t = today(), days = d => Math.floor((new Date(t) - new Date(d)) / 864e5);
+  const B = ['Not due', '1-30 days', '31-60 days', '61-90 days', '90+ days'];
+  const by = {};
+  list.forEach(r => {
+    if (r.paid == null) return;
+    const bal = r2((r.data?.grand_total || 0) - r.paid); if (bal <= 0.005) return;
+    const due = r.data?.due_date || r.doc_date, late = days(due);
+    const b = late <= 0 ? 0 : late <= 30 ? 1 : late <= 60 ? 2 : late <= 90 ? 3 : 4;
+    const c = by[r.party_name || '-'] ||= {name: r.party_name || '-', b: [0, 0, 0, 0, 0], n: 0};
+    c.b[b] = r2(c.b[b] + bal); c.n++;
+  });
+  const rows = Object.values(by).map(c => ({...c, total: r2(c.b.reduce((a, x) => a + x, 0))})).sort((a, b) => b.total - a.total);
+  const tot = B.map((_, i) => r2(rows.reduce((a, c) => a + c.b[i], 0))), grand = r2(tot.reduce((a, x) => a + x, 0));
+  view.innerHTML = `
+    <div class="tools"><a class="btn sec" href="#invoice">&larr; Invoices</a><span style="flex:1"></span>
+      ${rows.length ? '<button class="btn sec" id="csv">Excel (CSV) download</button>' : ''}</div>
+    <div class="kpis" style="margin-bottom:16px">${[['Total receivable', grand, 'var(--teal)'], ['Not due yet', tot[0], 'var(--green)'], ['Overdue', r2(grand - tot[0]), 'var(--red)'], ['90+ days', tot[4], 'var(--orange)']]
+      .map(([l, v, c]) => `<div class="kpi"><span><b style="color:${c}">SAR ${money(v)}</b><span>${l}</span></span></div>`).join('')}</div>
+    ${list.length && list[0].paid == null ? '<p class="flash">Payments table not found. Run the latest <b>supabase_docs.sql</b> in Supabase.</p>' : ''}
+    <div class="table-wrap"><table><thead><tr><th>Customer</th><th style="text-align:right">Invoices</th>${B.map(b => `<th style="text-align:right">${b}</th>`).join('')}<th style="text-align:right">Total (SAR)</th></tr></thead>
+    <tbody>${rows.length ? rows.map(c => `<tr><td>${who(c.name)}</td><td class="money">${c.n}</td>${c.b.map((v, i) => `<td class="money"${i >= 3 && v ? ' style="color:var(--red);font-weight:600"' : ''}>${v ? money(v) : '-'}</td>`).join('')}<td class="money"><b>${money(c.total)}</b></td></tr>`).join('')
+      : `<tr><td colspan="8" class="empty">No outstanding balances.</td></tr>`}</tbody>
+    ${rows.length ? `<tfoot><tr><td><b>Total</b></td><td></td>${tot.map(v => `<td class="money"><b>${money(v)}</b></td>`).join('')}<td class="money"><b>${money(grand)}</b></td></tr></tfoot>` : ''}</table></div>
+    <p class="muted" style="font-size:13px">Days are counted from the due date (or from the invoice date if there is no due date).</p>`;
+  $('#csv')?.addEventListener('click', () => {
+    const q = v => `"${String(v).replace(/"/g, '""')}"`;
+    const lines = [['Customer', 'Invoices', ...B, 'Total'], ...rows.map(c => [c.name, c.n, ...c.b, c.total]), ['Total', '', ...tot, grand]].map(r => r.map(q).join(','));
+    const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob(['﻿' + lines.join('\n')], {type: 'text/csv'}));
+    a.download = `receivables-${today()}.csv`; a.click();
+  });
+}
+
+/* ============================== PRICE LIST (Category > Sub-category > Product) ============================== */
+const CATALOG_TYPES = ['quotation', 'invoice'];
+let CATALOG = null;
+async function loadCatalog(force) {
+  if (CATALOG && !force) return CATALOG;
+  const {data, error} = await sb.from('docs_catalog').select('*').order('category').order('subcategory').order('name');
+  if (error) throw error;
+  data.sort((a, b) => (a.category + '\u0000' + a.subcategory + '\u0000' + a.name).localeCompare(b.category + '\u0000' + b.subcategory + '\u0000' + b.name));
+  return CATALOG = data;
+}
+const uniq = a => [...new Set(a.filter(Boolean))];
+
+async function wirePicker(items, redraw) {
+  const box = $('#picker'); if (!box) return;
+  let list;
+  try { list = (await loadCatalog()).filter(c => c.active); } catch (e) { box.innerHTML = '<b>Price list not found. Run the latest supabase_docs.sql in Supabase.</b>'; return; }
+  if (!list.length) { box.innerHTML = `<b>The price list is empty.</b><span class="muted" style="font-size:13px">Open the <a href="#catalog">Price List</a> to add products.</span>`; return; }
+  box.innerHTML = `<b>Choose a product from the price list</b>
+    <div class="field"><label for="pk_cat">Category</label><select id="pk_cat"><option value="">Choose…</option>${uniq(list.map(c => c.category)).map(c => `<option>${esc(c)}</option>`).join('')}</select></div>
+    <div class="field"><label for="pk_sub">Sub-category</label><select id="pk_sub" disabled></select></div>
+    <div class="field"><label for="pk_prod">Product</label><select id="pk_prod" disabled></select></div>
+    <div class="field" style="flex:0 1 90px"><label for="pk_qty">Qty</label><input id="pk_qty" type="number" min="0" step="any" value="1"></div>
+    <button type="button" class="btn" id="pk_add" disabled>+ Add</button>`;
+  const cat = $('#pk_cat'), sub = $('#pk_sub'), prod = $('#pk_prod'), add = $('#pk_add');
+  const fillProd = () => {
+    const ps = list.filter(c => c.category === cat.value && c.subcategory === sub.value);
+    prod.innerHTML = ps.map(c => `<option value="${c.id}">${esc(c.name)} — SAR ${money(c.rate)}${c.unit ? ' / ' + esc(c.unit) : ''}</option>`).join('');
+    prod.disabled = !ps.length; add.disabled = !ps.length;
+  };
+  cat.onchange = () => {
+    const subs = uniq(list.filter(c => c.category === cat.value).map(c => c.subcategory));
+    const hasBlank = list.some(c => c.category === cat.value && !c.subcategory);
+    sub.innerHTML = (hasBlank ? '<option value="">(General)</option>' : '') + subs.map(x => `<option>${esc(x)}</option>`).join('');
+    sub.disabled = !cat.value; fillProd();
+  };
+  sub.onchange = fillProd;
+  add.onclick = () => {
+    const c = list.find(x => x.id === prod.value); if (!c) return;
+    const it = {description: c.name + (c.description ? '\n' + c.description : '') + (c.unit ? ` (per ${c.unit})` : ''), qty: $('#pk_qty').value || '1', rate: String(c.rate), tax_pct: '15'};
+    const blank = items.length === 1 && !items[0].description && !items[0].qty && !items[0].rate;
+    if (blank) items[0] = it; else items.push(it);
+    redraw(); toast(`${c.name} added`);
+  };
+}
+
+async function showCatalog() {
+  const seq = ROUTE_SEQ;
+  view.innerHTML = '<div class="ah-skel" role="status" aria-label="Loading"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>';
+  let list; try { list = await loadCatalog(true); } catch (e) { view.innerHTML = `<p class="flash">Price list not found: ${esc(nice(e))}. Run the latest <b>supabase_docs.sql</b> in Supabase.</p>`; return; }
+  if (seq !== ROUTE_SEQ) return;
+  view.innerHTML = `
+    <div class="tools">
+      <div class="field"><label for="q">Search</label><input id="q" type="search" placeholder="Product, category…"></div>
+      <div class="field"><label for="fc">Category</label><select id="fc" data-remember="docs.catalog.cat"><option value="">All</option>${uniq(list.map(c => c.category)).map(c => `<option>${esc(c)}</option>`).join('')}</select></div>
+      <span style="flex:1"></span>${CAN_EDIT ? '<button class="btn" id="addc">+ Add product</button>' : ''}</div>
+    <div id="cform"></div>
+    <div class="table-wrap"><table><thead><tr><th>Product</th><th>Description</th><th>Unit</th><th style="text-align:right">Rate (SAR)</th><th></th></tr></thead><tbody id="rows"></tbody></table></div>
+    <p class="muted" style="font-size:13px">These products can be added to Quotation and Invoice "Items" by choosing Category, then Sub-category, then Product; the details fill in automatically.</p>`;
+  const draw = () => {
+    const q = $('#q').value.trim().toLowerCase(), fc = $('#fc').value;
+    const rows = list.filter(c => (!fc || c.category === fc) && (!q || [c.category, c.subcategory, c.name, c.description].join(' ').toLowerCase().includes(q)));
+    let lastC = null, lastS = null, html = '';
+    rows.forEach(c => {
+      if (c.category !== lastC) { html += `<tr class="cathead"><td colspan="5">${esc(c.category)}</td></tr>`; lastC = c.category; lastS = null; }
+      if (c.subcategory !== lastS) { if (c.subcategory) html += `<tr class="catsub"><td colspan="5">${esc(c.subcategory)}</td></tr>`; lastS = c.subcategory; }
+      html += `<tr class="${CAN_EDIT ? 'click' : ''} ${c.active ? '' : 'inactive'}" data-id="${c.id}"><td style="padding-left:${c.subcategory ? 40 : 28}px"><b>${esc(c.name)}</b>${c.active ? '' : ' <span class="res draft">Hidden</span>'}</td>
+        <td class="muted">${esc(c.description)}</td><td>${esc(c.unit)}</td><td class="money">${money(c.rate)}</td><td>${CAN_EDIT ? '<button class="btn small sec">Edit</button>' : ''}</td></tr>`;
+    });
+    $('#rows').innerHTML = html || `<tr><td colspan="5" class="empty">${list.length ? 'Nothing found.' : 'The price list is empty.' + (CAN_EDIT ? ' Click "+ Add product" to start.' : '')}</td></tr>`;
+  };
+  const form = c => {
+    const isNew = !c; c = c || {active: true, category: $('#fc').value};
+    $('#cform').innerHTML = `<div class="sheet"><h3>${isNew ? 'Add product' : 'Edit product'}</h3><div class="grid">
+      <div class="field"><label for="c_cat">Category</label><input id="c_cat" list="cats" required value="${esc(c.category)}" placeholder="e.g. Tanks"><datalist id="cats">${uniq(list.map(x => x.category)).map(x => `<option value="${esc(x)}">`).join('')}</datalist></div>
+      <div class="field"><label for="c_sub">Sub-category</label><input id="c_sub" list="subs" value="${esc(c.subcategory)}" placeholder="e.g. Office furniture"><datalist id="subs">${uniq(list.map(x => x.subcategory)).map(x => `<option value="${esc(x)}">`).join('')}</datalist></div>
+      <div class="field"><label for="c_name">Product</label><input id="c_name" required value="${esc(c.name)}" placeholder="e.g. Executive desk 160 cm"></div>
+      <div class="field"><label for="c_unit">Unit</label><input id="c_unit" value="${esc(c.unit)}" placeholder="pcs, set, job, m"></div>
+      <div class="field"><label for="c_rate">Rate (SAR, without VAT)</label><input id="c_rate" type="number" min="0" step="0.01" value="${esc(c.rate ?? '')}"></div>
+      <div class="field"><label><input type="checkbox" id="c_act"${c.active ? ' checked' : ''} style="width:auto"> Show in quotations</label></div></div>
+      <div class="field"><label for="c_desc">Description (shown under the product on quotations)</label><textarea id="c_desc" rows="2">${esc(c.description)}</textarea></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn" id="c_save">Save product</button><button class="btn sec" id="c_cancel">Cancel</button>
+        <span style="flex:1"></span>${!isNew && CAN_DELETE ? '<button class="btn danger" id="c_del">Delete</button>' : ''}</div><p class="err" id="c_err"></p></div>`;
+    $('#c_cat').focus();
+    $('#c_cancel').onclick = () => $('#cform').innerHTML = '';
+    $('#c_save').onclick = async e => {
+      const row = {category: $('#c_cat').value.trim(), subcategory: $('#c_sub').value.trim(), name: $('#c_name').value.trim(), unit: $('#c_unit').value.trim() || null,
+                   rate: Number($('#c_rate').value || 0), description: $('#c_desc').value.trim() || null, active: $('#c_act').checked};
+      if (!row.category || !row.name) { $('#c_err').textContent = 'Category and product name are required.'; return; }
+      e.target.disabled = true;
+      const res = isNew ? await sb.from('docs_catalog').insert(row) : await sb.from('docs_catalog').update({...row, updated_at: new Date().toISOString()}).eq('id', c.id);
+      if (res.error) { e.target.disabled = false; $('#c_err').textContent = nice(res.error); return; }
+      toast(isNew ? 'Product added' : 'Product updated'); CATALOG = null; route();
+    };
+    $('#c_del')?.addEventListener('click', async () => {
+      if (!confirm(`Delete ${c.name} from the price list? (Existing quotations will not be affected.)`)) return;
+      const {error} = await sb.from('docs_catalog').delete().eq('id', c.id);
+      if (error) { $('#c_err').textContent = nice(error); return; }
+      toast('Product deleted'); CATALOG = null; route();
+    });
+  };
+  $('#q').addEventListener('input', draw); $('#fc').addEventListener('change', draw);
+  $('#addc')?.addEventListener('click', () => form(null));
+  $('#rows').addEventListener('click', e => { const tr = e.target.closest('tr[data-id]'); if (tr && CAN_EDIT) { form(list.find(c => c.id === tr.dataset.id)); $('#cform').scrollIntoView({behavior: 'smooth', block: 'start'}); } });
+  draw();
+}
+
+/* ============================== routing ============================== */
+let ROUTE_SEQ = 0;
+/* Save & New: after saving, open a fresh form of the same type */
+let SAVE_NEW = false;
+document.addEventListener('click', e => {
+  if (e.target.closest('#save')) SAVE_NEW = false;
+  if (e.target.closest('#saveNew')) { SAVE_NEW = true; $('#f')?.requestSubmit(); }
+});
+function goAfterSave(type, id) {
+  const to = SAVE_NEW ? `#${type}/new` : `#${type}/${id}`; SAVE_NEW = false;
+  if (location.hash !== to) location.hash = to; else route();
+}
+async function route() {
+  ROUTE_SEQ++;
+  const h = location.hash.replace(/^#/, '') || 'quotation';
+  const [type, a, b] = h.split('/');
+  if (!['quotation', 'invoice', 'dn', 'po', 'jobcard', 'mr', 'receipt', 'petty', 'catalog', 'customers'].includes(type)) { location.hash = '#quotation'; return; }
+  $$('#tabs a').forEach(x => x.classList.toggle('on', x.dataset.t === type));
+  const grp = $(`#tabs a[data-t="${type}"]`)?.dataset.g || 'sales';
+  $$('#tabs a').forEach(x => x.hidden = x.dataset.g !== grp);
+  $$('#groups a').forEach(x => x.classList.toggle('on', x.dataset.g === grp));
+  try { localStorage.setItem('docs.lastIn.' + grp, type); } catch (e) {}
+  $$('#groups a').forEach(x => { let last = null; try { last = localStorage.getItem('docs.lastIn.' + x.dataset.g); } catch (e) {}
+    if (last && $(`#tabs a[data-t="${last}"][data-g="${x.dataset.g}"]`)) x.setAttribute('href', '#' + last); });
+  if (type === 'catalog') return showCatalog();
+  if (type === 'customers') { if (a === 'new' && !CAN_EDIT) { location.hash = '#customers'; return; } return a ? showCustomerForm(a === 'new' ? null : a) : showCustomers(); }
+  const withCust = p => Promise.resolve(p).then(() => wireCustomer(type)).catch(() => {});
+  {
+    const form = type === 'petty' ? (i, c) => showPettyForm(i, c) : type === 'receipt' ? (i, c) => showReceiptForm(i, c) : (i, c) => showIForm(type, i, c);
+    if (!a) return showIList(type);
+    if (a === 'new') return CAN_EDIT ? withCust(form(null)) : (location.hash = '#' + type);
+    if (a === 'copy') return CAN_EDIT ? withCust(form(null, b)) : (location.hash = '#' + type);
+    if (a === 'receivables' && type === 'invoice') return showReceivables();
+    if (a === 'fromquote' && type === 'invoice') return CAN_EDIT ? withCust(showIForm('invoice', null, null, b)) : (location.hash = '#invoice');
+    return withCust(form(a));
+  }
+}
+let lastHash = location.hash, goingBack = false;
+window.addEventListener('hashchange', () => {
+  if (goingBack) { goingBack = false; return; }
+  if (dirty && !confirm('Your changes are not saved. Leave anyway?')) {
+    goingBack = true; location.hash = lastHash; return;
+  }
+  dirty = false; lastHash = location.hash; route();
+});
+route();
+})();
+</script>
+</body>
+</html>

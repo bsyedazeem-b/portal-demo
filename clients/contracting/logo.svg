@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Bunyan Contracting (demo) mark: a safety helmet inside a hexagon -->
+  <path d="M32 2.5 58 17.5v29L32 61.5 6 46.5v-29z" fill="#2F3E5C"/>
+  <path d="M15 41h34v5H15z" fill="#fff"/>
+  <path d="M18 41a14 14 0 0 1 28 0z" fill="#EE7B22"/>
+  <path d="M29 24h6v9h-6z" fill="#fff" fill-opacity=".9"/>
+</svg>

@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sign in | {portal}</title>
+<link rel="icon" href="assets/favicon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#E9EEF0">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500&family=Saira+Condensed:wght@500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/adhan@4.4.6/lib/bundles/adhan.umd.min.js"></script>
+<script src="assets/config.js"></script>
+<style>
+:root{--steel:#E6ECEE;--steel2:#CFD8DC;--ink:#1F2D35;--muted:#66767F;--hot:var(--accent);--red:#C8394E;--paper:#fff;--field:#F3F6F7;--line:#DCE3E6}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{font:15px/1.5 'IBM Plex Sans','IBM Plex Sans Arabic','Segoe UI',system-ui,sans-serif;color:var(--ink);min-height:100vh;
+  background:repeating-linear-gradient(90deg,rgba(255,255,255,.4) 0 1px,transparent 1px 3px),radial-gradient(90% 80% at 25% 30%,#F7F9FA 0,var(--steel) 55%,var(--steel2) 100%)}
+[hidden]{display:none!important}
+.ar{font-family:'IBM Plex Sans Arabic',sans-serif}
+.wrap{min-height:100vh;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);align-items:center;max-width:1220px;margin:0 auto;padding:36px 32px;gap:56px}
+.left{display:grid;gap:22px;justify-items:center}
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;width:100%}
+.co{display:flex;align-items:center;gap:12px}
+.co img{height:44px;border-radius:8px;background:#fff;padding:3px 5px;box-shadow:0 2px 8px rgba(30,60,80,.08)}
+.co b{display:block;font-weight:600;white-space:nowrap}.co span{display:block;color:var(--muted);font-size:13.5px;white-space:nowrap}
+.wx{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.75);border-radius:14px;padding:6px 14px 6px 8px;box-shadow:0 2px 8px rgba(30,60,80,.08);font-size:13px;line-height:1.25;white-space:nowrap;color:var(--muted)}
+.wx i{font-style:normal;display:block;color:var(--ink);font-size:13.5px}
+.wx svg{width:26px;height:26px;flex:none}
+.wx b{font:600 19px 'Saira Condensed',sans-serif}
+.dial{width:min(400px,100%);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 28%,rgba(255,255,255,.75),rgba(255,255,255,.22) 60%,rgba(255,255,255,.12));
+  -webkit-backdrop-filter:blur(10px) saturate(1.2);backdrop-filter:blur(10px) saturate(1.2);border:1px solid rgba(255,255,255,.85);
+  box-shadow:0 30px 60px -20px rgba(30,60,80,.28),inset 0 1px 0 rgba(255,255,255,.9),inset 0 -12px 30px rgba(var(--brand-rgb),.06)}
+svg.gauge{width:100%;height:auto;display:block}
+.dates{text-align:center;line-height:1.4}
+.dates b{display:block;font-weight:500;font-size:16px}
+.dates span{color:var(--muted);font-size:15px}
+.pray{width:min(460px,100%);background:rgba(255,255,255,.8);border-radius:16px;box-shadow:0 2px 10px rgba(30,60,80,.08);padding:12px}
+.pray .next{display:flex;justify-content:space-between;align-items:baseline;padding:2px 6px 10px;font-size:14px;color:var(--muted)}
+.pray .next b{color:var(--ink);font-weight:600}
+.pray .next em{font-style:normal;color:var(--brand);font-weight:600}
+.pray ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.pray li{text-align:center;padding:8px 2px 7px;border-radius:10px}
+.pray li .n{display:block;font-size:12.5px;color:var(--muted)}
+.pray li .a{display:block;font-size:12px;color:var(--muted)}
+.pray li .t{display:block;font:600 19px 'Saira Condensed',sans-serif;letter-spacing:.02em;margin:1px 0}
+.pray li.on{background:var(--brand);color:#fff}
+.pray li.on .n,.pray li.on .a{color:#CFE7EC}
+.pray li.past{opacity:.5}
+.card{background:var(--paper);border-radius:20px;padding:42px 40px 34px;box-shadow:0 30px 60px rgba(30,60,80,.14);width:min(420px,100%);justify-self:center}
+.card .hd{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:6px}
+.card h1{font-size:27px;font-weight:600;margin:0;line-height:1.2}
+.card .hi{margin:0;color:var(--brand);font-size:17px}
+.card p.sub{margin:0 0 26px;color:var(--muted)}
+.field{display:grid;gap:6px;margin-bottom:16px}
+.field label{font-size:13.5px;font-weight:500;color:#41525B}
+.field input{font:inherit;font-size:16px;padding:12px 14px;border:1.5px solid transparent;border-radius:10px;background:var(--field);color:var(--ink);width:100%}
+.field input:focus{outline:none;border-color:var(--brand);background:#fff;box-shadow:0 0 0 4px #E3F0F2}
+.pw{position:relative}.pw input{padding-right:64px}
+.pw button{position:absolute;right:8px;top:50%;transform:translateY(-50%);border:0;background:none;color:var(--brand);font:500 13px 'IBM Plex Sans',sans-serif;cursor:pointer;padding:6px 8px;border-radius:6px}
+.btn{width:100%;border:0;border-radius:10px;padding:14px;font:600 15.5px 'IBM Plex Sans',sans-serif;color:#fff;background:var(--brand);cursor:pointer;margin-top:6px}
+.btn:hover{background:var(--brand-d)}.btn:disabled{opacity:.6;cursor:default}
+.btn:focus-visible,.pw button:focus-visible{outline:3px solid var(--brand-l);outline-offset:2px}
+.err{color:var(--red);font-size:14px;min-height:1.3em;margin:0}
+.flash{background:#FFF4EA;border:1px solid #F6D3B4;color:#7A3F10;padding:11px 14px;border-radius:10px;margin:0 0 18px;font-size:14px}
+.btn.ghost{background:var(--accent);color:#1F2D35;margin-top:0}.btn.ghost:hover{filter:brightness(.95);background:var(--accent)}
+.demo .or{display:flex;align-items:center;gap:12px;margin:18px 0 14px;color:var(--muted);font-size:13px}
+.demo .or::before,.demo .or::after{content:'';flex:1;height:1px;background:var(--line)}
+.demo .hint{margin:9px 0 0;color:var(--muted);font-size:13px;text-align:center}
+.help{margin-top:26px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:13.5px}
+@media (max-width:920px){
+  .wrap{grid-template-columns:1fr;padding:18px 16px 36px;gap:22px}
+  .left{gap:16px}
+  .dial{width:min(280px,76vw)}
+  .wx{padding:5px 10px 5px 6px}.wx span{display:none}
+  .card{padding:28px 22px 24px}
+  /* phone: sign-in form right after the clock, prayer times below it */
+  .left{display:contents}
+  .top{order:1}.dial{order:2;justify-self:center}.dates{order:3}.card{order:4}.pray{order:5;justify-self:center}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="left" aria-label="Company">
+    <div class="top">
+      <div class="co"><img data-brand-logo alt=""><div><b data-brand="name"></b><span data-brand="tagline"></span></div></div>
+      <div class="wx" id="wx" hidden aria-label="Weather"></div>
+    </div>
+    <div class="dial">
+    <svg class="gauge" viewBox="0 0 400 400" role="img" aria-label="Clock">
+      <circle cx="200" cy="200" r="196" fill="none" stroke="#FFFFFF" stroke-width="2" opacity=".9"/>
+      <circle cx="200" cy="200" r="186" fill="none" style="stroke:var(--brand)" stroke-width="1" opacity=".22"/>
+      <g id="ticks"></g>
+      <image id="dialLogo" href="" x="178" y="110" width="44" height="32" preserveAspectRatio="xMidYMid meet" opacity=".9"/>
+      <text x="200" y="158" text-anchor="middle" font-family="Saira Condensed" font-weight="500" font-size="13" style="fill:var(--brand)" letter-spacing="2" opacity=".85" id="dialName"></text>
+      <text id="lcd" x="200" y="282" text-anchor="middle" font-family="Saira Condensed" font-weight="500" font-size="24" fill="#1F2D35" letter-spacing="3" opacity=".75">--:--:--</text>
+      <g id="hr"><path d="M200 214 L200 112" stroke="#1F2D35" stroke-width="6" stroke-linecap="round"/></g>
+      <g id="mn"><path d="M200 218 L200 58" stroke="#1F2D35" stroke-width="3.5" stroke-linecap="round"/></g>
+      <g id="sec"><path d="M200 232 L200 44" style="stroke:var(--accent)" stroke-width="1.4" stroke-linecap="round"/><circle cx="200" cy="226" r="4" style="fill:var(--accent)"/><circle cx="200" cy="200" r="6" style="fill:var(--accent)"/></g>
+      <circle cx="200" cy="200" r="2.5" fill="#fff"/>
+    </svg>
+    </div>
+    <div class="dates"><b id="greg">&nbsp;</b><span id="hijri" class="ar" lang="ar" dir="rtl">&nbsp;</span></div>
+    <div class="pray" id="pray" hidden aria-label="Prayer times"></div>
+  </section>
+  <main class="card">
+    <div class="hd"><h1 id="hello">Welcome</h1><p class="hi ar" id="helloAr" lang="ar" dir="rtl"></p></div>
+    <p class="sub">Sign in to the <span data-brand="portalName"></span>: documents, inventory and employees.</p>
+    <div id="msg" class="flash" hidden></div>
+    <form id="f">
+      <div class="field"><label for="u">User ID</label><input id="u" autocomplete="username" autocapitalize="none" spellcheck="false" required autofocus></div>
+      <div class="field"><label for="p">Password</label><div class="pw"><input id="p" type="password" autocomplete="current-password" required><button type="button" id="eye" aria-label="Show password">Show</button></div></div>
+      <p id="err" class="err" role="alert"></p>
+      <button class="btn" id="b">Sign in</button>
+    </form>
+    <div class="demo" id="demo" hidden>
+      <div class="or"><span>or</span></div>
+      <button type="button" class="btn ghost" id="try">Try the demo — no account needed</button>
+      <p class="hint" id="demoNote"></p>
+    </div>
+    <div class="help">Forgot your password? Ask the portal admin to set a new one in Users &amp; Access.</div>
+  </main>
+</div>
+<script>
+(() => {
+  document.getElementById('dialLogo').setAttribute('href', BRAND.logo);
+  document.getElementById('dialName').textContent = BRAND.short;
+  const TZ = 'Asia/Riyadh', LAT = BRAND.lat, LON = BRAND.lon, $ = id => document.getElementById(id), NS = 'http://www.w3.org/2000/svg';
+  const el = (tag, attrs, parent) => { const n = document.createElementNS(NS, tag); Object.entries(attrs).forEach(([k, v]) => n.setAttribute(k, v)); parent.appendChild(n); return n; };
+  const pt = (a, r) => [200 + r * Math.sin(a), 200 - r * Math.cos(a)];
+  // bezel bolts and dial
+  for (let i = 0; i < 60; i++) {
+    const a = i * Math.PI / 30, big = i % 5 === 0, q = i % 15 === 0, [x1, y1] = pt(a, 176), [x2, y2] = pt(a, q ? 156 : big ? 162 : 171);
+    el('line', {x1, y1, x2, y2, stroke: q ? BRAND.colors.brand : '#1F2D35', 'stroke-width': q ? 3 : big ? 1.8 : .8, 'stroke-linecap': 'round', opacity: big ? .9 : .45}, $('ticks'));
+    if (big) { const [tx, ty] = pt(a, 138); const t = el('text', {x: tx, y: ty + 7, 'text-anchor': 'middle', 'font-family': 'Saira Condensed', 'font-weight': 500, 'font-size': q ? 24 : 19, fill: q ? BRAND.colors.brand : '#1F2D35', opacity: q ? 1 : .7}, $('ticks')); t.textContent = i / 5 || 12; }
+  }
+  const P = n => new Intl.DateTimeFormat('en-GB', {timeZone: TZ, hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false, weekday: 'long', year: 'numeric', month: 'numeric', day: 'numeric'})
+    .formatToParts(n).reduce((o, p) => (o[p.type] = p.value, o), {});
+  const fG = new Intl.DateTimeFormat('en-GB', {timeZone: TZ, weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'});
+  let fH; try { fH = new Intl.DateTimeFormat('ar-SA-u-ca-islamic-umalqura-nu-latn', {timeZone: TZ, day: 'numeric', month: 'long', year: 'numeric'}); } catch (e) {}
+  const fHM = new Intl.DateTimeFormat('en-GB', {timeZone: TZ, hour: '2-digit', minute: '2-digit', hour12: false});
+  const smooth = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let lastKey = '';
+
+  // prayer times at the company location (Umm al-Qura), next prayer + countdown
+  const PR = [['fajr', 'Fajr', 'الفجر'], ['dhuhr', 'Dhuhr', 'الظهر'], ['asr', 'Asr', 'العصر'], ['maghrib', 'Maghrib', 'المغرب'], ['isha', 'Isha', 'العشاء']];
+  const times = (y, m, d) => { const a = window.adhan; if (!a) return null; return new a.PrayerTimes(new a.Coordinates(LAT, LON), new Date(y, m - 1, d, 12), a.CalculationMethod.UmmAlQura()); };
+  const dur = ms => { const m = Math.max(1, Math.round(ms / 60000)), h = Math.floor(m / 60); return h ? `${h} h ${m % 60} min` : `${m} min`; };
+  function drawPrayers(now, p) {
+    const today = times(+p.year, +p.month, +p.day); if (!today) return;
+    const fri = p.weekday === 'Friday';
+    let next = PR.find(([k]) => today[k] > now), nextAt;
+    if (next) nextAt = today[next[0]];
+    else { const t = new Date(now.getTime() + 864e5), q = P(t), tm = times(+q.year, +q.month, +q.day); next = PR[0]; nextAt = tm.fajr; }
+    const name = k => k === 'dhuhr' && fri ? ['Jumuah', 'الجمعة'] : PR.find(x => x[0] === k).slice(1);
+    $('pray').innerHTML = `<div class="next"><span>Next prayer: <b>${name(next[0])[0]}</b></span><em>in ${dur(nextAt - now)}</em></div><ol>${PR.map(([k]) => {
+      const [en, ar] = name(k), on = k === next[0] && today[k] > now, past = today[k] <= now;
+      return `<li class="${on ? 'on' : past ? 'past' : ''}"><span class="n">${en}</span><span class="t">${fHM.format(today[k])}</span><span class="a ar" lang="ar">${ar}</span></li>`; }).join('')}</ol>`;
+    $('pray').hidden = false;
+  }
+  function frame() {
+    const now = new Date(), p = P(now), H = +p.hour % 24, M = +p.minute, S = +p.second, ms = smooth ? now.getMilliseconds() : 0;
+    $('hr').setAttribute('transform', `rotate(${(H % 12) * 30 + M / 2 + S / 120} 200 200)`);
+    $('mn').setAttribute('transform', `rotate(${M * 6 + S / 10} 200 200)`);
+    $('sec').setAttribute('transform', `rotate(${(S + ms / 1000) * 6} 200 200)`);
+    const key = `${p.hour}${p.minute}${p.second}`;
+    if (key !== lastKey) {
+      lastKey = key;
+      $('lcd').textContent = `${p.hour}:${p.minute}:${p.second}`;
+      $('greg').textContent = fG.format(now);
+      if (fH) $('hijri').textContent = fH.format(now);
+      const [en, ar] = H < 12 ? ['Good morning', 'صباح الخير'] : H < 17 ? ['Good afternoon', 'مساء الخير'] : ['Good evening', 'مساء الخير'];
+      $('hello').textContent = en; $('helloAr').textContent = ar;
+      if (S === 0 || !$('pray').innerHTML) drawPrayers(now, p);
+    }
+    smooth ? requestAnimationFrame(frame) : setTimeout(frame, 1000 - now.getMilliseconds());
+  }
+  frame();
+
+  // weather at the company location (Open-Meteo, no key); hidden if it cannot load
+  const WX = c => c === 0 ? ['Clear', 'sun'] : c <= 2 ? ['Partly cloudy', 'part'] : c === 3 ? ['Cloudy', 'cloud'] : c <= 48 ? ['Hazy', 'cloud'] : c <= 67 || (c >= 80 && c <= 82) ? ['Rain', 'rain'] : c >= 95 ? ['Thunderstorm', 'rain'] : ['Cloudy', 'cloud'];
+  const ICON = {sun: '<circle cx="16" cy="16" r="6" fill="#E9A23B"/><g stroke="#E9A23B" stroke-width="2" stroke-linecap="round"><path d="M16 3v3M16 26v3M3 16h3M26 16h3M6.8 6.8l2.1 2.1M23.1 23.1l2.1 2.1M6.8 25.2l2.1-2.1M23.1 8.9l2.1-2.1"/></g>',
+    part: '<circle cx="12" cy="12" r="5" fill="#E9A23B"/><path d="M10 24h13a5 5 0 0 0 0-10 7 7 0 0 0-13 2 4 4 0 0 0 0 8z" fill="#B9C6CC"/>',
+    cloud: '<path d="M8 25h16a6 6 0 0 0 0-12 8 8 0 0 0-15 3 4.5 4.5 0 0 0-1 9z" fill="#A9B8BF"/>',
+    rain: '<path d="M8 20h16a6 6 0 0 0 0-12 8 8 0 0 0-15 3 4.5 4.5 0 0 0-1 9z" fill="#9AAAB2"/><path d="M11 23l-2 5M17 23l-2 5M23 23l-2 5" stroke="#3B82C4" stroke-width="2" stroke-linecap="round"/>'};
+  fetch(`https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&current=temperature_2m,relative_humidity_2m,weather_code&timezone=Asia%2FRiyadh`)
+    .then(r => r.ok ? r.json() : Promise.reject()).then(d => {
+      const c = d.current; if (!c) return;
+      const [txt, ic] = WX(c.weather_code);
+      $('wx').innerHTML = `<svg viewBox="0 0 32 32" aria-hidden="true">${ICON[ic]}</svg><b>${Math.round(c.temperature_2m)}°</b><span><i>${txt} in ${BRAND.city}</i>Humidity ${c.relative_humidity_2m}%</span>`;
+      $('wx').hidden = false;
+    }).catch(() => {});
+
+  $('eye').onclick = () => { const p = $('p'), show = p.type === 'password'; p.type = show ? 'text' : 'password'; $('eye').textContent = show ? 'Hide' : 'Show'; $('eye').setAttribute('aria-label', show ? 'Hide password' : 'Show password'); };
+})();
+</script>
+<script>
+(async () => {
+  const C = window.PORTAL_CONFIG, q = new URLSearchParams(location.search);
+  const msg = document.getElementById('msg'), err = document.getElementById('err'), btn = document.getElementById('b');
+  if (!C.SUPABASE_URL || /YOUR-PROJECT/.test(C.SUPABASE_URL)) { err.textContent = 'Setup needed: add the Supabase URL and key to assets/config.js.'; btn.disabled = true; return; }
+  const sb = supabase.createClient(C.SUPABASE_URL, C.SUPABASE_ANON_KEY);
+  const show = t => { msg.textContent = t; msg.hidden = false; };
+  if (q.get('logout')) { await sb.auth.signOut(); show('You have been logged out.'); history.replaceState(null, '', 'login.html'); }
+  if (q.get('msg') === 'blocked') show('Your account has been blocked. Please contact your admin.');
+  if (q.get('msg') === 'notadded') show('This login has not been added to the portal. Ask your admin to add it in Users & Access.');
+  let next = q.get('next') || 'index.html';
+  if (!/^[\w.-]+\.html(#[\w-]*)?$/.test(next)) next = 'index.html';
+
+  // already logged in?
+  const {data: {session}} = await sb.auth.getSession();
+  if (session && !q.get('logout') && !q.get('msg')) { location.replace(next); return; }
+
+  // one-click demo: signs in with the shared demo account from assets/config.js
+  const D = C.DEMO || {};
+  if (D.enabled && D.username) {
+    document.getElementById('demo').hidden = false;
+    document.getElementById('demoNote').textContent = `Sample data only. ${D.resetNote || ''}`;
+    const tryBtn = document.getElementById('try');
+    tryBtn.onclick = async () => {
+      tryBtn.disabled = true; tryBtn.textContent = 'Opening the demo…'; err.textContent = '';
+      try { await signIn(D.username, D.password); }
+      catch (e) { err.textContent = e.message; tryBtn.disabled = false; tryBtn.textContent = 'Try the demo — no account needed'; }
+    };
+    if (q.get('demo') === '1' && !q.get('logout')) tryBtn.click();
+  }
+
+  async function signIn(rawId, password) {
+      const id = rawId.trim().toLowerCase();
+      const email = id.includes('@') ? id : `${id}@${C.LOGIN_DOMAIN || 'portal.local'}`;
+      const {data, error} = await sb.auth.signInWithPassword({email, password});
+      if (error) throw new Error(/invalid/i.test(error.message) ? 'Incorrect User ID or password.'
+                              : /banned/i.test(error.message) ? 'Your account has been blocked.' : error.message);
+      const {data: me, error: e2} = await sb.from('portal_users').select('active').eq('id', data.user.id).maybeSingle();
+      if (e2) throw new Error('Database error: ' + e2.message);
+      if (!me || !me.active) { await sb.auth.signOut(); throw new Error(me ? 'Your account is blocked.' : 'This login has not been added to the portal.'); }
+      location.replace(next);
+  }
+
+  document.getElementById('f').addEventListener('submit', async ev => {
+    ev.preventDefault(); err.textContent = ''; btn.disabled = true; btn.textContent = 'Checking…';
+    try {
+      await signIn(document.getElementById('u').value, document.getElementById('p').value);
+    } catch (e) { err.textContent = e.message; btn.disabled = false; btn.textContent = 'Sign in'; }
+  });
+})();
+</script></body></html>

@@ -1,0 +1,190 @@
+/* Portal — shared shell: design tokens, top bar, module tabs, page header.
+   Loaded on every page by assets/portal.js. Page content styles live in each page / portal.css. */
+:root{
+  --ah-font:'IBM Plex Sans','IBM Plex Sans Arabic','Segoe UI',system-ui,-apple-system,sans-serif;
+  --ah-ink:#1F2D35; --ah-muted:#73818A; --ah-line:#E6EBEE; --ah-bg:#F5F7F9; --ah-panel:#fff;
+  --ah-brand:var(--brand); --ah-brand-d:var(--brand-d); --ah-brand-l:var(--brand-l); --ah-orange:var(--accent);
+  --ah-green:#2E9E6A; --ah-red:#D9475B; --ah-blue:#3B82C4; --ah-purple:#8A5CC2; --ah-amber:#C27A1A;
+  --ah-shadow:0 2px 10px rgba(30,60,80,.06); --ah-shadow-lg:0 12px 36px rgba(30,60,80,.16);
+  --ah-radius:12px;
+}
+body{background:var(--ah-bg)}
+body.ah{font-family:var(--ah-font)}
+
+/* ---------- top bar ---------- */
+#ahbar{background:#fff;border-bottom:1px solid var(--ah-line);position:sticky;top:0;z-index:50;font:14px/1.4 var(--ah-font);color:var(--ah-ink);
+  padding-top:env(safe-area-inset-top,0px)}
+#ahbar *{box-sizing:border-box}
+#ahbar{display:block;gap:0;flex-wrap:nowrap;margin:0;padding:env(safe-area-inset-top,0px) 0 0;border-radius:0;box-shadow:none;max-width:none}
+#ahbar nav{background:none;border-radius:0;box-shadow:none;margin:0 auto}
+#ahbar .row2{flex-wrap:nowrap}
+#ahbar .row2 a{margin:0;border-radius:0;box-shadow:none;background:none}
+#ahbar .row1{display:flex;align-items:center;gap:18px;padding:10px 24px;max-width:1400px;margin:0 auto}
+#ahbar .logo{display:flex;align-items:center;gap:10px;font-weight:600;font-size:15px;color:var(--ah-ink);text-decoration:none;white-space:nowrap}
+#ahbar .logo img{height:30px;width:auto}
+#ahbar .search{position:relative;flex:0 1 420px;margin-left:12px}
+#ahbar .search input{width:100%;border:1px solid transparent;background:var(--ah-bg);border-radius:9px;padding:9px 12px 9px 36px;font:inherit;color:inherit}
+#ahbar .search input:focus{outline:none;border-color:var(--ah-brand);background:#fff;box-shadow:0 0 0 3px var(--ah-brand-l)}
+#ahbar .search svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);width:17px;height:17px;color:var(--ah-muted);pointer-events:none}
+#ahbar .tools{margin-left:auto;display:flex;align-items:center;gap:8px}
+#ahbar .ibtn{position:relative;width:38px;height:38px;border-radius:50%;border:0;background:none;color:#7D8A92;display:grid;place-items:center;cursor:pointer}
+#ahbar .ibtn:hover,#ahbar .ibtn[aria-expanded=true]{background:var(--ah-bg);color:var(--ah-ink)}
+#ahbar .ibtn svg{width:21px;height:21px}
+#ahbar .badge{position:absolute;top:3px;right:2px;min-width:17px;height:17px;border-radius:99px;background:var(--ah-orange);color:#fff;font-size:10.5px;font-weight:600;
+  display:grid;place-items:center;padding:0 4px;border:2px solid #fff}
+#ahbar .badge[hidden]{display:none}
+#ahbar .avatar{width:36px;height:36px;border-radius:50%;border:0;background:var(--ah-brand);color:#fff;font:600 13px var(--ah-font);cursor:pointer}
+#ahbar .avatar:focus-visible,#ahbar .ibtn:focus-visible,#ahbar a:focus-visible{outline:2px solid var(--ah-brand);outline-offset:2px}
+#ahbar .row2{display:flex;gap:4px;padding:0 16px;max-width:1400px;margin:0 auto;overflow-x:auto;scrollbar-width:none}
+#ahbar .row2::-webkit-scrollbar{display:none}
+#ahbar .row2 a{display:flex;align-items:center;gap:8px;padding:12px 14px 11px;color:var(--ah-muted);text-decoration:none;font-weight:500;
+  border-bottom:2px solid transparent;white-space:nowrap}
+#ahbar .row2 a svg{width:18px;height:18px}
+#ahbar .row2 a:hover{color:var(--ah-ink)}
+#ahbar .row2 a.on{color:var(--ah-brand);border-bottom-color:var(--ah-brand)}
+#ahbar .hr{border-top:1px solid var(--ah-line)}
+
+/* dropdowns */
+.ahdrop{position:absolute;top:calc(100% + 8px);background:#fff;border:1px solid var(--ah-line);border-radius:12px;box-shadow:var(--ah-shadow-lg);
+  z-index:60;min-width:300px;max-height:min(70vh,520px);overflow:auto;padding:6px;font:14px/1.4 var(--ah-font);color:var(--ah-ink)}
+.ahdrop[hidden]{display:none}
+.ahdrop.right{right:0}
+.ahdrop h6{margin:8px 10px 4px;font-size:11.5px;font-weight:600;color:var(--ah-muted);letter-spacing:.02em}
+.ahdrop a,.ahdrop button.item{display:flex;align-items:center;gap:10px;width:100%;padding:8px 10px;border-radius:8px;color:inherit;text-decoration:none;
+  background:none;border:0;font:inherit;text-align:left;cursor:pointer}
+.ahdrop a:hover,.ahdrop a.act,.ahdrop button.item:hover{background:var(--ah-bg)}
+.ahdrop .dot{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;color:#fff}
+.ahdrop .dot svg{width:15px;height:15px}
+.ahdrop a > svg,.ahdrop button.item > svg{flex:none;width:18px;height:18px;color:var(--ah-muted)}
+.ahdrop .t{flex:1;min-width:0}
+.ahdrop .t b{display:block;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ahdrop .t span{display:block;color:var(--ah-muted);font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ahdrop .n{font-weight:600;color:var(--ah-muted)}
+.ahdrop .none{padding:16px 12px;color:var(--ah-muted);text-align:center}
+.ahdrop .me{padding:10px 10px 12px;border-bottom:1px solid var(--ah-line);margin-bottom:4px}
+.ahdrop .me b{display:block}.ahdrop .me span{color:var(--ah-muted);font-size:12.5px}
+
+/* ---------- page header (title + pill tabs), used by every module ---------- */
+.ahhead{max-width:1240px;margin:0 auto;padding:24px 28px 4px;font-family:var(--ah-font)}
+.ahhead h1{margin:0;font-size:22px;font-weight:600;color:var(--ah-ink);letter-spacing:0}
+.ahhead p{margin:2px 0 0;color:var(--ah-muted);font-size:14px}
+.ahpills{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 4px}
+.ahpills a,.ahpills button{padding:7px 15px;border-radius:99px;background:#fff;color:var(--ah-muted);font:500 13.5px var(--ah-font);text-decoration:none;
+  border:0;box-shadow:0 1px 4px rgba(30,60,80,.08);cursor:pointer;white-space:nowrap}
+.ahpills a:hover,.ahpills button:hover{color:var(--ah-ink)}
+.ahpills a.on,.ahpills button.on,.ahpills button.active{background:var(--ah-brand);color:#fff}
+
+@media (max-width:760px){
+  #ahbar .row1{padding:8px 14px;gap:10px}
+  #ahbar .logo span{display:none}
+  #ahbar .search{margin-left:0;flex:1}
+  #ahbar .row2{padding:0 6px}
+  #ahbar .row2 a{padding:10px 10px 9px}
+  .ahdrop{position:fixed;left:10px!important;right:10px!important;top:64px;min-width:0}
+  .ahhead{padding:18px 14px 2px}
+}
+@media print{#ahbar{display:none}}
+
+/* ---------- shared look for dialogs on every module ---------- */
+.modal .box h3{font-size:19px!important;font-weight:600;margin:-20px -20px 16px!important;padding:16px 20px;border-bottom:1px solid var(--ah-line)}
+.modal .actions{border-top:1px solid var(--ah-line);margin:18px -20px -20px!important;padding:14px 20px}
+dialog .dlg-h{font-size:19px!important;font-weight:600}
+.dlg-b label.chk{flex-wrap:wrap;align-items:center}
+.dlg-b label.chk .hint{flex-basis:100%;margin-left:26px;margin-top:-4px}
+kbd{font:600 11px var(--ah-font);background:#fff;border:1px solid var(--ah-line);border-bottom-width:2px;border-radius:4px;padding:1px 5px;color:var(--ah-muted)}
+
+/* ---------- phones ---------- */
+@media (max-width:760px){
+  /* module tabs move to a bottom bar, like a phone app */
+  body.ah-bar{padding-bottom:calc(62px + env(safe-area-inset-bottom,0px))}
+  #ahbar .row2{position:fixed;left:0;right:0;bottom:0;z-index:55;background:#fff;border-top:1px solid var(--ah-line);margin:0;max-width:none;
+    justify-content:space-around;gap:0;padding:4px 2px calc(4px + env(safe-area-inset-bottom,0px));box-shadow:0 -4px 16px rgba(30,60,80,.06)}
+  #ahbar .row2 a{flex:1 1 0;min-width:0;flex-direction:column;gap:3px;padding:6px 2px!important;font-size:11px;border-bottom:0;border-radius:10px!important}
+  #ahbar .row2 a svg{width:21px;height:21px}
+  #ahbar .row2 a span{max-width:100%;overflow:hidden;text-overflow:ellipsis}
+  #ahbar .row2 a.on{color:var(--ah-brand);background:var(--ah-brand-l)!important}
+  #ahbar.hr,#ahbar .hr{border-top:0}
+  /* bigger touch targets; 16px inputs stop iPhone from zooming in */
+  .btn,button.btn{min-height:40px}
+  input,select,textarea{font-size:16px!important}
+  /* sticky action bars sit above the bottom tabs */
+  .bar{bottom:calc(62px + env(safe-area-inset-bottom,0px))!important}
+  .toast,#toast{bottom:calc(76px + env(safe-area-inset-bottom,0px))!important}
+  /* tables -> cards */
+  table.ah-cards{min-width:0!important;border-collapse:separate}
+  table.ah-cards thead{display:none}
+  table.ah-cards,table.ah-cards tbody{display:block;width:100%}
+  table.ah-cards tr{display:block;padding:10px 14px;border-bottom:1px solid #EEF2F4;position:relative}
+  table.ah-cards tbody tr:last-child{border-bottom:0}
+  table.ah-cards td{display:flow-root;padding:4px 0!important;border:0!important;text-align:right!important;min-height:0;width:auto!important;white-space:normal;line-height:1.6}
+  table.ah-cards td::before{content:attr(data-label);float:left;max-width:45%;margin-right:12px;text-align:left;color:var(--ah-muted);font-size:12.5px;font-weight:500}
+  table.ah-cards td[data-label=""]::before{display:none}
+  table.ah-cards td:first-child{font-weight:600}
+  table.ah-cards td[colspan]{text-align:center!important;padding:14px 0!important}
+  table.ah-cards td input:not([type=checkbox]):not([type=radio]),table.ah-cards td select,table.ah-cards td textarea{width:55%!important;max-width:55%;text-align:left;display:inline-block;vertical-align:middle}
+  table.ah-cards td .sub{display:block}
+  .table-wrap,.tablewrap,.wrap{overflow-x:visible}
+  /* item editor (quotation, invoice …): each line becomes a card */
+  table.items.ah-cards td.n{text-align:left!important;color:var(--ah-ink);font-weight:600}
+  table.items.ah-cards td.amt{padding-top:6px!important}
+  /* dialogs become bottom sheets */
+  dialog{width:100vw!important;max-width:100vw!important;margin:auto 0 0!important;border-radius:16px 16px 0 0!important;max-height:92vh}
+  .dlg-b{grid-template-columns:1fr!important;max-height:calc(92vh - 140px)}
+  .modal{place-items:end center!important;padding:0!important;z-index:70!important}
+  .modal .box{border-radius:16px 16px 0 0!important;max-height:92vh;padding-bottom:calc(20px + env(safe-area-inset-bottom,0px))}
+  .modal .box [class*=grid],.modal .box .row{grid-template-columns:1fr!important}
+}
+@media print{#ahbar .row2{display:none}}
+@media (max-width:760px){
+  table.items.ah-cards td{text-align:left!important}
+  table.items.ah-cards td::before{float:none;display:block;max-width:none;margin:0 0 2px}
+  table.items.ah-cards td input:not([type=checkbox]),table.items.ah-cards td textarea,table.items.ah-cards td select{width:100%!important;max-width:100%}
+  table.items.ah-cards td.amt{text-align:right!important}
+  table.items.ah-cards td.amt::before{float:left;display:inline}
+}
+#ahmenu{width:300px}
+#ahmenu .t span,#ahmenu .t b{white-space:normal}
+
+/* ---------- polish on every page: entrance, loading skeletons, empty states, toasts ---------- */
+@keyframes ahIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes ahShim{to{background-position:-200% 0}}
+@keyframes ahToast{from{opacity:0;transform:translate(-50%,12px) scale(.96)}to{opacity:1;transform:translate(-50%,0) scale(1)}}
+@media (prefers-reduced-motion:no-preference){
+  .ah-enter{animation:ahIn .38s cubic-bezier(.2,.7,.3,1) both}
+  .ah-stagger>*{animation:ahIn .45s cubic-bezier(.2,.7,.3,1) both}
+  .ah-stagger>*:nth-child(2){animation-delay:.05s}.ah-stagger>*:nth-child(3){animation-delay:.1s}.ah-stagger>*:nth-child(4){animation-delay:.15s}
+  .ah-stagger>*:nth-child(5){animation-delay:.2s}.ah-stagger>*:nth-child(6){animation-delay:.25s}.ah-stagger>*:nth-child(n+7){animation-delay:.3s}
+}
+/* grey placeholder blocks while data loads */
+.ah-skel{display:grid;gap:12px;padding:8px 0}
+.ah-skel i{display:block;height:14px;width:100%;border-radius:7px;background:linear-gradient(90deg,#E8EDF0 0%,#F4F7F8 45%,#E8EDF0 90%);background-size:200% 100%;animation:ahShim 1.3s linear infinite}
+.ah-skel i:first-child{height:40px;width:min(440px,70%);border-radius:10px;margin-bottom:6px}
+.ah-skel i:nth-child(3n){width:84%}.ah-skel i:nth-child(3n+2):not(:first-child){width:92%}
+.ah-skel.rows i{height:46px!important;width:100%!important;border-radius:10px;margin:0}
+.ah-skel.lines i:first-child{height:14px;width:60%;margin:0}
+@media (prefers-reduced-motion:reduce){.ah-skel i{animation:none}}
+/* empty lists: a small picture, and links become a clear button */
+td.empty,div.empty{text-align:center}
+table td.empty::before,table.ah-cards td.empty::before,div.empty::before{content:""!important;display:block!important;float:none!important;max-width:none!important;
+  width:56px;height:56px;margin:2px auto 12px!important;border-radius:16px;
+  background:var(--ah-brand-l) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2373818A' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 13h5l1.5 2.5h5L16 13h5'/%3E%3Cpath d='M5.5 6.5 3 13v5a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-5l-2.5-6.5a1 1 0 0 0-.9-.6H6.4a1 1 0 0 0-.9.6z'/%3E%3C/svg%3E") center/28px no-repeat}
+td.empty a,div.empty a{display:block!important;width:fit-content;margin:12px auto 0!important;background:var(--ah-brand)!important;color:#fff!important;padding:9px 16px!important;border-radius:9px!important;font-weight:600;text-decoration:none!important;box-shadow:0 4px 12px rgba(var(--brand-rgb),.22)}
+td.empty a:hover,div.empty a:hover{background:var(--ah-brand-d)}
+/* notifications at the bottom: a green tick when done, a red mark on a problem */
+body #toast{display:flex;align-items:center;gap:10px;left:50%;transform:translateX(-50%);background:#1F2D35;color:#fff;border-radius:12px;padding:11px 16px 11px 11px;
+  font:500 14px/1.35 var(--ah-font);box-shadow:0 14px 36px rgba(20,40,50,.28);max-width:min(92vw,520px);width:max-content;z-index:80}
+body #toast[hidden],body #toast.hidden{display:none}
+body #toast.bad,body #toast.err{background:#1F2D35;color:#fff}
+body #toast::before{content:"";flex:none;width:24px;height:24px;border-radius:50%;
+  background:#2E9E6A url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/15px no-repeat}
+body #toast.bad::before,body #toast.err::before{background-color:#D9475B;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M12 6.5v7M12 17.5v.2'/%3E%3C/svg%3E")}
+@media (prefers-reduced-motion:no-preference){body #toast{animation:ahToast .3s cubic-bezier(.2,1.3,.4,1)}}
+
+/* demo banner (shown only to the shared demo account) */
+#ahdemo{display:flex;gap:10px;align-items:center;justify-content:center;padding:7px 16px;background:var(--accent-l,#FDF3E1);
+  border-top:1px solid var(--ah-line);font-size:13px;color:var(--ah-ink);text-align:center;flex-wrap:wrap}
+#ahdemo b{background:var(--ah-orange);color:#fff;border-radius:99px;padding:1px 9px;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase}
+#ahdemo button{border:1px solid var(--ah-line);background:#fff;border-radius:99px;padding:3px 11px;font:500 12.5px var(--ah-font);color:var(--ah-ink);cursor:pointer}
+#ahdemo button:hover{border-color:var(--ah-brand);color:var(--ah-brand)}
+@media (max-width:640px){#ahdemo{padding:6px 12px;font-size:12px;gap:8px}#ahdemo span{display:none}#ahdemo::after{content:'Sample data · resets nightly'}#ahdemo button{order:2}}
