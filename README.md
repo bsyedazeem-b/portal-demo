@@ -100,3 +100,5 @@ and open http://localhost:8000.
 
 Free plan: Supabase may pause a free project after a period with no use; open the demos now and then.
 PDF links sent on WhatsApp stay in Storage: empty the `docs` and `certs` buckets once in a while.
+
+
