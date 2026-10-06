@@ -36,6 +36,23 @@ body{font:15px/1.5 'IBM Plex Sans','IBM Plex Sans Arabic','Segoe UI',system-ui,s
   -webkit-backdrop-filter:blur(10px) saturate(1.2);backdrop-filter:blur(10px) saturate(1.2);border:1px solid rgba(255,255,255,.85);
   box-shadow:0 30px 60px -20px rgba(30,60,80,.28),inset 0 1px 0 rgba(255,255,255,.9),inset 0 -12px 30px rgba(var(--brand-rgb),.06)}
 svg.gauge{width:100%;height:auto;display:block}
+/* live world map (BRAND.loginVisual = 'map') instead of the clock */
+.mapcard{width:min(560px,100%);border-radius:22px;padding:14px 14px 12px;background:rgba(255,255,255,.55);-webkit-backdrop-filter:blur(10px) saturate(1.2);backdrop-filter:blur(10px) saturate(1.2);
+  border:1px solid rgba(255,255,255,.85);box-shadow:0 30px 60px -20px rgba(30,60,80,.28),inset 0 1px 0 rgba(255,255,255,.9)}
+.mapsvg{aspect-ratio:640/330;display:grid;place-items:center;color:var(--muted);font-size:13px}
+svg.worldmap{width:100%;height:auto;display:block}
+.maplabel{font:600 12px 'IBM Plex Sans',sans-serif;fill:#1F2D35;paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round}
+.maparc{animation:mapdash 1.2s linear infinite}
+@keyframes mapdash{to{stroke-dashoffset:-20}}
+.mappulse{transform-box:fill-box;transform-origin:center;animation:mappulse 2s ease-out infinite}
+@keyframes mappulse{from{transform:scale(.6);opacity:.9}to{transform:scale(2.4);opacity:0}}
+@media (prefers-reduced-motion:reduce){.maparc,.mappulse{animation:none}}
+.mapfoot{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;padding:8px 6px 0}
+.mapinfo b{display:block;font-weight:600;font-size:14.5px}
+.mapinfo span{color:var(--muted);font-size:13px}.mapinfo i{font-style:normal;color:var(--ink);font-weight:500}
+.maptime{text-align:right;white-space:nowrap}
+.maptime b{display:block;font:500 24px 'Saira Condensed',sans-serif;letter-spacing:2px;color:#1F2D35;line-height:1.1}
+.maptime span{color:var(--muted);font-size:12.5px}
 .dates{text-align:center;line-height:1.4}
 .dates b{display:block;font-weight:500;font-size:16px}
 .dates span{color:var(--muted);font-size:15px}
@@ -80,7 +97,7 @@ svg.gauge{width:100%;height:auto;display:block}
   .card{padding:28px 22px 24px}
   /* phone: sign-in form right after the clock, prayer times below it */
   .left{display:contents}
-  .top{order:1}.dial{order:2;justify-self:center}.dates{order:3}.card{order:4}.pray{order:5;justify-self:center}
+  .top{order:1}.dial,.mapcard{order:2;justify-self:center}.dates{order:3}.card{order:4}.pray{order:5;justify-self:center}
 }
 </style>
 </head>
@@ -104,6 +121,10 @@ svg.gauge{width:100%;height:auto;display:block}
       <g id="sec"><path d="M200 232 L200 44" style="stroke:var(--accent)" stroke-width="1.4" stroke-linecap="round"/><circle cx="200" cy="226" r="4" style="fill:var(--accent)"/><circle cx="200" cy="200" r="6" style="fill:var(--accent)"/></g>
       <circle cx="200" cy="200" r="2.5" fill="#fff"/>
     </svg>
+    </div>
+    <div class="mapcard" id="mapcard" hidden>
+      <div class="mapsvg">Loading map…</div>
+      <div class="mapfoot"><div class="mapinfo" aria-live="polite"></div><div class="maptime"><b id="mapClock">--:--:--</b><span id="mapCity"></span></div></div>
     </div>
     <div class="dates"><b id="greg">&nbsp;</b><span id="hijri" class="ar" lang="ar" dir="rtl">&nbsp;</span></div>
     <div class="pray" id="pray" hidden aria-label="Prayer times"></div>
@@ -129,6 +150,18 @@ svg.gauge{width:100%;height:auto;display:block}
 <script>
 (() => {
   document.getElementById('dialLogo').setAttribute('href', BRAND.logo);
+  // live world map instead of the clock, when the company turns it on in config.js
+  const useMap = BRAND.loginVisual === 'map';
+  if (useMap) {
+    document.querySelector('.dial').hidden = true;
+    const box = document.getElementById('mapcard'); box.hidden = false;
+    document.getElementById('mapCity').textContent = `${BRAND.city} time`;
+    const s = document.createElement('script'); s.src = 'assets/login-map.js';
+    s.onload = () => window.drawLoginMap({box, office: {lonlat: [BRAND.lon, BRAND.lat], city: BRAND.city, label: `${BRAND.short} · ${BRAND.city}`, countryId: BRAND.countryId},
+                                          brand: BRAND.colors.brand, accent: BRAND.colors.accent, officeTz: 'Asia/Riyadh'})
+      .catch(() => { box.querySelector('.mapsvg').textContent = 'Map could not load.'; });
+    document.head.appendChild(s);
+  }
   document.getElementById('dialName').textContent = BRAND.short;
   const TZ = 'Asia/Riyadh', LAT = BRAND.lat, LON = BRAND.lon, $ = id => document.getElementById(id), NS = 'http://www.w3.org/2000/svg';
   const el = (tag, attrs, parent) => { const n = document.createElementNS(NS, tag); Object.entries(attrs).forEach(([k, v]) => n.setAttribute(k, v)); parent.appendChild(n); return n; };
@@ -172,6 +205,7 @@ svg.gauge{width:100%;height:auto;display:block}
     if (key !== lastKey) {
       lastKey = key;
       $('lcd').textContent = `${p.hour}:${p.minute}:${p.second}`;
+      if (useMap) $('mapClock').textContent = `${p.hour}:${p.minute}:${p.second}`;
       $('greg').textContent = fG.format(now);
       if (fH) $('hijri').textContent = fH.format(now);
       const [en, ar] = H < 12 ? ['Good morning', 'صباح الخير'] : H < 17 ? ['Good afternoon', 'مساء الخير'] : ['Good evening', 'مساء الخير'];
