@@ -7,8 +7,8 @@
 // 1) Supabase: Project Settings > API > Project URL and the anon / publishable key.
 //    These two values are safe in a public site; the database rules protect the data.
 window.PORTAL_CONFIG = {
-  SUPABASE_URL: 'https://YOUR-PROJECT.supabase.co',
-  SUPABASE_ANON_KEY: 'PASTE-ANON-KEY-HERE',
+  SUPABASE_URL: 'https://apjkgpjdmxmxrpgtpflz.supabase.co',
+  SUPABASE_ANON_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFwamtncGpkbXhteHJwZ3RwZmx6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTEyODQ0NjEsImV4cCI6MjEwNjg2MDQ2MX0.EEvWe10xIB3Dy5wQetOOVDVcw2qGl3eTVU26FnV_-Ak',
   LOGIN_DOMAIN: 'bunyan.local',       // user "ahmed" signs in as ahmed@bunyan.local
 
   // 2) Demo mode: shows the "Try demo" button and blocks risky actions
