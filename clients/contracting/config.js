@@ -48,6 +48,9 @@ window.BRAND = {
   logo: 'assets/logo.svg',
   letterhead: {header: null, footer: null, stamp: null},
 
+  // sign-in page: 'clock' (default) or 'map' = live world map with day/night, our office and the visitor's location
+  loginVisual: 'map',
+
   modules: {documents: true, inventory: true, employees: true, kiosk: true},
 
   // document types: everything on (job cards = site work orders, material requests from sites)
