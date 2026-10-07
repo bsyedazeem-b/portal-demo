@@ -64,6 +64,23 @@ revoke select on public.hr_employees from authenticated;
 grant select (id, emp_code, name, designation, phone, active, pin_set, created_at) on public.hr_employees to authenticated;
 ```
 
+## Switching a part of the portal on or off (per company)
+
+The switch is in the database, so a part that is off is closed everywhere: menu, pages, data, PDF files,
+kiosk and notifications. Only the project owner can change it (the company's portal admin cannot).
+Nothing is deleted: switching a part back on brings everything back.
+
+Once per project: run `sql/supabase_modules.sql` in that company's Supabase SQL Editor
+(new projects get it inside `supabase_install.sql`). Then, in the SQL Editor:
+
+```sql
+update public.portal_modules set enabled = false where module = 'docs';   -- off
+update public.portal_modules set enabled = true  where module = 'docs';   -- on again
+select * from public.portal_modules order by module;                      -- see all switches
+```
+
+Modules: `docs` (Documents + Certificates), `inventory`, `hr` (Employees), `kiosk` (also needs `hr`).
+
 ## Everyday changes
 
 | I want to… | Edit | Then |
