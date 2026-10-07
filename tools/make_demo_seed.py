@@ -16,7 +16,7 @@ import importlib.util, json, os, random, re, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
-SCHEMA = ['supabase_setup.sql', 'supabase_docs.sql', 'supabase_hr.sql', 'supabase_extras.sql']
+SCHEMA = ['supabase_setup.sql', 'supabase_docs.sql', 'supabase_hr.sql', 'supabase_extras.sql', 'supabase_modules.sql']
 
 
 def words(n):
