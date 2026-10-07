@@ -155,7 +155,13 @@ async function load() {
   if (!sb) { grid.innerHTML = '<p class="msg">Setup needed: add the Supabase URL and key to config.js.</p>'; return; }
   const {data, error} = await sb.rpc('kiosk_employees');
   if (error) { grid.innerHTML = '<p class="msg">Cannot reach the server. Check the internet connection; this page retries every minute.</p>'; return; }
-  list = data || []; render();
+  list = data || [];
+  if (!list.length) {   // empty list: no PINs yet, or the kiosk is switched off for this company
+    const {data: on} = await sb.rpc('module_on', {p_module: 'kiosk'});
+    const {data: hr} = await sb.rpc('module_on', {p_module: 'hr'});
+    if (on === false || hr === false) { grid.innerHTML = '<p class="msg">The check-in kiosk is switched off for this company.</p>'; return; }
+  }
+  render();
 }
 const STATE = {out: 'Tap to check in', in: 'On shift, tap to check out', done: 'Done for today'};
 function render() {
