@@ -381,6 +381,13 @@
     if (M.documents === false) me.docs_role = null;
     if (M.inventory === false) me.inv_role = null;
     if (M.employees === false) me.hr_role = null;
+    // ...and a module switched off in the database (sql/supabase_modules.sql) is closed too.
+    // The database already refuses its data; this only hides its menu and pages.
+    const {data: sw} = await sb.from('portal_modules').select('module, enabled');   // no table yet = nothing switched off
+    const off = new Set((sw || []).filter(r => r.enabled === false).map(r => r.module));
+    if (off.has('docs')) me.docs_role = null;
+    if (off.has('inventory')) me.inv_role = null;
+    if (off.has('hr')) me.hr_role = null;
     C.user = {id: me.id, username: me.username, full_name: me.full_name || me.username, is_admin: !!me.is_admin,
               docs_role: me.docs_role, inv_role: me.inv_role, hr_role: me.hr_role};
     C.isDemo = !!(C.DEMO && C.DEMO.enabled && me.username === C.DEMO.username);
