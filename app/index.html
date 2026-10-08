@@ -133,6 +133,24 @@ a.h-row:hover .tx b{color:var(--ah-brand)}
 }
 </style>
 <link rel="stylesheet" href="assets/dashboard-polish.css">
+
+<style>
+/* Accessible, per-device dashboard presentation preferences */
+.h-controls{display:flex;position:relative;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.h-live{font-size:12px;color:#657790}.h-live span{color:#20a56b;margin-right:6px}
+.h-customize{border:1px solid #dce5ef;border-radius:10px;background:#fff;color:#284666;font:600 12.5px var(--ah-font);padding:10px 15px;cursor:pointer}
+.h-customize:hover{background:#f5f8fc}
+.h-customize:focus-visible{outline:2px solid var(--ah-brand);outline-offset:2px}
+.h-preferences{position:absolute;right:0;top:calc(100% + 6px);z-index:15;background:#fff;
+  border:1px solid #dce5ef;box-shadow:0 15px 35px rgba(20,45,75,.13);border-radius:13px;padding:16px;
+  width:min(290px,92vw)}
+.h-preferences p{margin:0 0 11px;font-size:12px;color:#657790}
+.h-preferences label{display:flex;align-items:center;gap:9px;padding:6px 0;font-size:13px;cursor:pointer}
+.h-preferences input{accent-color:var(--ah-brand);width:16px;height:16px}
+#home .h-pref-hidden,#home .h-pref-empty{display:none!important}
+#home .h-cols:has(>.h-pref-hidden):not(.h-pref-empty){grid-template-columns:minmax(0,1fr)}
+@media(max-width:640px){.h-preferences{left:0;right:auto}.h-live{font-size:11px}}
+</style>
 </head>
 <body>
 <main>
@@ -147,6 +165,20 @@ a.h-row:hover .tx b{color:var(--ah-brand)}
       </div>
       <div class="h-clock"><div class="t" id="clock">--:--</div><div class="z">Riyadh time</div><div class="h-new" id="newbtn"></div></div>
     </section>
+    <div class="h-controls" aria-label="Dashboard options">
+      <span class="h-live"><span aria-hidden="true">●</span> Live company data · access controlled by your role</span>
+      <button type="button" id="hCustomize" class="h-customize" aria-expanded="false" aria-controls="hPreferences">Customize view</button>
+      <div id="hPreferences" class="h-preferences" hidden>
+        <p>Choose panels to show on this device.</p>
+        <label><input type="checkbox" data-panel="pWeek" checked> Document trends</label>
+        <label><input type="checkbox" data-panel="pPeople" checked> Attendance overview</label>
+        <label><input type="checkbox" data-panel="pExp" checked> Payment reminders</label>
+        <label><input type="checkbox" data-panel="pAttn" checked> Needs attention</label>
+        <label><input type="checkbox" data-panel="pAct" checked> Recent activity</label>
+        <label><input type="checkbox" data-panel="pQuick" checked> Quick actions</label>
+        <label><input type="checkbox" data-panel="grid" checked> Portal modules</label>
+      </div>
+    </div>
     <section class="h-kpis ah-stagger" id="kpis" aria-label="Key numbers">
       <div class="h-kpi"><div class="ah-skel lines" style="grid-column:1/-1"><i></i><i></i><i></i></div></div>
       <div class="h-kpi"><div class="ah-skel lines" style="grid-column:1/-1"><i></i><i></i><i></i></div></div>
@@ -193,6 +225,40 @@ a.h-row:hover .tx b{color:var(--ah-brand)}
   const TZ = 'Asia/Riyadh', LAT = BRAND.lat, LON = BRAND.lon;
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
   const $ = id => document.getElementById(id);
+  // Dashboard personalization is visual only: RLS still controls what can be fetched.
+  const prefKey = 'portal:dashboard-panels:v1:' + (BRAND.short || BRAND.name || 'company');
+  let prefs = {};
+  try { prefs = JSON.parse(localStorage.getItem(prefKey) || '{}') || {}; } catch (_) { prefs = {}; }
+  const prefRoot = $('hPreferences'), prefButton = $('hCustomize');
+  const applyPrefs = () => {
+    prefRoot.querySelectorAll('input[data-panel]').forEach(input => {
+      const id = input.dataset.panel, show = prefs[id] !== false;
+      input.checked = show;
+      const el = $(id);
+      if (el) el.classList.toggle('h-pref-hidden', !show);
+    });
+    for (const row of ['rowA', 'rowB', 'rowC']) {
+      const el = $(row);
+      if (el) el.classList.toggle('h-pref-empty', [...el.children].every(c => c.classList.contains('h-pref-hidden') || c.hidden));
+    }
+  };
+  prefButton.addEventListener('click', () => {
+    const next = prefRoot.hidden;
+    prefRoot.hidden = !next; prefButton.setAttribute('aria-expanded', String(next));
+  });
+  prefRoot.addEventListener('change', e => {
+    if (!e.target.matches('input[data-panel]')) return;
+    prefs[e.target.dataset.panel] = e.target.checked;
+    try { localStorage.setItem(prefKey, JSON.stringify(prefs)); } catch (_) {}
+    applyPrefs();
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && !prefRoot.hidden) {
+      prefRoot.hidden = true; prefButton.setAttribute('aria-expanded','false');prefButton.focus();
+    }
+  });
+  applyPrefs();
+
   const today = new Intl.DateTimeFormat('en-CA', {timeZone: TZ}).format(new Date());
   const addDays = (d, n) => { const x = new Date(d + 'T00:00:00Z'); x.setUTCDate(x.getUTCDate() + n); return x.toISOString().slice(0, 10); };
   const dow = d => new Date(d + 'T00:00:00Z').getUTCDay();            // 0 Sun … 6 Sat
