@@ -151,6 +151,10 @@ a.h-row:hover .tx b{color:var(--ah-brand)}
 #home .h-cols:has(>.h-pref-hidden):not(.h-pref-empty){grid-template-columns:minmax(0,1fr)}
 @media(max-width:640px){.h-preferences{left:0;right:auto}.h-live{font-size:11px}}
 </style>
+<style>
+.h-buttons{display:flex;gap:8px;align-items:center}
+.h-status{padding:11px 15px;background:#fff8e8;border:1px solid #f5dfac;border-radius:11px;color:#805c15;font-size:13px}
+</style>
 </head>
 <body>
 <main>
@@ -167,7 +171,7 @@ a.h-row:hover .tx b{color:var(--ah-brand)}
     </section>
     <div class="h-controls" aria-label="Dashboard options">
       <span class="h-live"><span aria-hidden="true">●</span> Live company data · access controlled by your role</span>
-      <button type="button" id="hCustomize" class="h-customize" aria-expanded="false" aria-controls="hPreferences">Customize view</button>
+      <span class="h-buttons"><button type="button" id="hRefresh" class="h-customize" aria-label="Reload dashboard data">↻ Refresh</button> <button type="button" id="hCustomize" class="h-customize" aria-expanded="false" aria-controls="hPreferences">Customize view</button></span>
       <div id="hPreferences" class="h-preferences" hidden>
         <p>Choose panels to show on this device.</p>
         <label><input type="checkbox" data-panel="pWeek" checked> Document trends</label>
@@ -179,6 +183,7 @@ a.h-row:hover .tx b{color:var(--ah-brand)}
         <label><input type="checkbox" data-panel="grid" checked> Portal modules</label>
       </div>
     </div>
+    <div id="hStatus" class="h-status" role="status" aria-live="polite" hidden></div>
     <section class="h-kpis ah-stagger" id="kpis" aria-label="Key numbers">
       <div class="h-kpi"><div class="ah-skel lines" style="grid-column:1/-1"><i></i><i></i><i></i></div></div>
       <div class="h-kpi"><div class="ah-skel lines" style="grid-column:1/-1"><i></i><i></i><i></i></div></div>
@@ -242,6 +247,21 @@ a.h-row:hover .tx b{color:var(--ah-brand)}
       if (el) el.classList.toggle('h-pref-empty', [...el.children].every(c => c.classList.contains('h-pref-hidden') || c.hidden));
     }
   };
+  $('hRefresh').addEventListener('click', () => location.reload());
+  const dashboardStatus = $('hStatus');
+  const showOffline = () => {
+    if (!navigator.onLine) {
+      dashboardStatus.hidden = false;
+      dashboardStatus.textContent = 'You appear to be offline. Live figures may be unavailable. Reconnect and press Refresh.';
+    } else if (dashboardStatus.dataset.offline === '1') {
+      dashboardStatus.hidden = true;
+      dashboardStatus.textContent = '';
+    }
+    dashboardStatus.dataset.offline = navigator.onLine ? '0' : '1';
+  };
+  window.addEventListener('online', showOffline);
+  window.addEventListener('offline', showOffline);
+  showOffline();
   prefButton.addEventListener('click', () => {
     const next = prefRoot.hidden;
     prefRoot.hidden = !next; prefButton.setAttribute('aria-expanded', String(next));
@@ -352,6 +372,12 @@ a.h-row:hover .tx b{color:var(--ah-brand)}
   };
   const R = {}; await Promise.all(Object.entries(jobs).map(async ([k, p]) => { R[k] = p ? await p : null; }));
   const A = R.alerts || {groups: [], stats: {}}, S = A.stats || {};
+  if (Object.entries(R).some(([name, response]) => name !== 'alerts' && response?.error)) {
+    dashboardStatus.hidden = false;
+    dashboardStatus.textContent = 'Some live data could not be loaded. Figures may be incomplete. Use Refresh to try again.';
+    dashboardStatus.dataset.offline = '0';
+  }
+
 
   // who is in today
   let people = null;
