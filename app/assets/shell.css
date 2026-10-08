@@ -188,3 +188,30 @@ body #toast.bad::before,body #toast.err::before{background-color:#D9475B;
 #ahdemo button{border:1px solid var(--ah-line);background:#fff;border-radius:99px;padding:3px 11px;font:500 12.5px var(--ah-font);color:var(--ah-ink);cursor:pointer}
 #ahdemo button:hover{border-color:var(--ah-brand);color:var(--ah-brand)}
 @media (max-width:640px){#ahdemo{padding:6px 12px;font-size:12px;gap:8px}#ahdemo span{display:none}#ahdemo::after{content:'Sample data · resets nightly'}#ahdemo button{order:2}}
+
+
+/* Shared enterprise shell: desktop sidebar on every authenticated module page.
+   The existing mobile bottom navigation remains unchanged. */
+@media (min-width:1100px){
+  body.ah-bar #ahbar .row1{margin-left:234px;max-width:none;padding:13px 30px;min-height:70px}
+  body.ah-bar #ahbar .row2{
+    position:fixed;left:0;top:70px;bottom:0;width:234px;max-width:none;
+    display:flex;flex-direction:column;overflow-y:auto;overflow-x:hidden;gap:6px;
+    padding:17px 12px;background:#fff;border-right:1px solid #e7edf4;
+    box-shadow:4px 0 22px rgba(25,55,92,.025);z-index:48;
+  }
+  body.ah-bar #ahbar .row2 a{
+    display:flex;min-height:46px;width:100%;border:0;border-radius:11px;
+    padding:11px 15px;color:#56657f;font-weight:600
+  }
+  body.ah-bar #ahbar .row2 a.on{
+    background:color-mix(in srgb,var(--ah-brand) 12%,#fff);color:var(--ah-brand)
+  }
+  body.ah-bar #ahbar .row2 a:hover{background:#f2f5fa}
+  body.ah-bar main{margin-left:234px;max-width:none}
+  body.ah-bar .ahhead{margin-left:234px;max-width:none}
+  body.ah-bar #ahdemo{margin-left:234px}
+}
+@media(prefers-reduced-motion:reduce){
+  .ah-enter,[data-count]{animation:none!important;transition:none!important}
+}
