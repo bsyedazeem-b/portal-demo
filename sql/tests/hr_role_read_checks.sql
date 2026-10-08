@@ -3,9 +3,11 @@
 -- Requires one active test user for each HR role: viewer, supervisor, admin, null.
 -- It does NOT prove writes, JWT signature validation, or end-to-end login.
 BEGIN;
-SELECT set_config('request.jwt.claim.sub',(
-  SELECT id::text FROM public.portal_users WHERE active AND hr_role = 'viewer' LIMIT 1
-),true);
+DO $identity$ BEGIN
+  PERFORM set_config('request.jwt.claim.sub',(
+    SELECT id::text FROM public.portal_users WHERE active AND hr_role = 'viewer' LIMIT 1
+  ),true);
+END $identity$;
 SET LOCAL ROLE authenticated;
 DO $test$ BEGIN
   IF public.my_role('hr') IS DISTINCT FROM 'viewer' THEN
@@ -18,9 +20,11 @@ END $test$;
 ROLLBACK;
 
 BEGIN;
-SELECT set_config('request.jwt.claim.sub',(
-  SELECT id::text FROM public.portal_users WHERE active AND hr_role = 'supervisor' LIMIT 1
-),true);
+DO $identity$ BEGIN
+  PERFORM set_config('request.jwt.claim.sub',(
+    SELECT id::text FROM public.portal_users WHERE active AND hr_role = 'supervisor' LIMIT 1
+  ),true);
+END $identity$;
 SET LOCAL ROLE authenticated;
 DO $test$ BEGIN
   IF public.my_role('hr') IS DISTINCT FROM 'supervisor' THEN
@@ -33,9 +37,11 @@ END $test$;
 ROLLBACK;
 
 BEGIN;
-SELECT set_config('request.jwt.claim.sub',(
-  SELECT id::text FROM public.portal_users WHERE active AND hr_role = 'admin' LIMIT 1
-),true);
+DO $identity$ BEGIN
+  PERFORM set_config('request.jwt.claim.sub',(
+    SELECT id::text FROM public.portal_users WHERE active AND hr_role = 'admin' LIMIT 1
+  ),true);
+END $identity$;
 SET LOCAL ROLE authenticated;
 DO $test$ BEGIN
   IF public.my_role('hr') IS DISTINCT FROM 'admin' THEN
@@ -48,9 +54,11 @@ END $test$;
 ROLLBACK;
 
 BEGIN;
-SELECT set_config('request.jwt.claim.sub',(
-  SELECT id::text FROM public.portal_users WHERE active AND hr_role IS NULL LIMIT 1
-),true);
+DO $identity$ BEGIN
+  PERFORM set_config('request.jwt.claim.sub',(
+    SELECT id::text FROM public.portal_users WHERE active AND hr_role IS NULL LIMIT 1
+  ),true);
+END $identity$;
 SET LOCAL ROLE authenticated;
 DO $test$ BEGIN
   IF public.my_role('hr') IS NOT NULL THEN
