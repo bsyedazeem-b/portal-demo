@@ -64,6 +64,8 @@ revoke select on public.hr_employees from authenticated;
 grant select (id, emp_code, name, designation, phone, active, pin_set, created_at) on public.hr_employees to authenticated;
 ```
 
+**Security hardening (October 2026):** The shared `sql/supabase_modules.sql` now defaults a missing or unknown module switch to **off** rather than on. Existing Supabase projects must re-run `sql/supabase_modules.sql` in the SQL Editor to apply the updated function. Generated `clients/<company>/supabase_install.sql` snapshots also need regenerating with `python3 tools/make_demo_seed.py --all` before a fresh database install. This change is not deployed to Supabase simply by merging GitHub code.
+
 ## Switching a part of the portal on or off (per company)
 
 The switch is in the database, so a part that is off is closed everywhere: menu, pages, data, PDF files,
