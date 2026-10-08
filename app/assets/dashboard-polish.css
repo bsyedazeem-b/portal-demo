@@ -1,0 +1,108 @@
+/* Dashboard polish — shared across both demo brands; visual styles only.
+   Keeps existing role-based data fetching, actions, and module configuration. */
+body:has(#home){--ah-bg:#f3f6fb;background:var(--ah-bg)}
+body:has(#home) main{max-width:1510px;padding:28px 30px 64px}
+body:has(#home) .h{gap:19px}
+body:has(#home) .h-hero{
+  min-height:202px;border-radius:22px;padding:28px 32px;
+  background:linear-gradient(108deg,#f9fbff 0%,#e8f2f8 57%,color-mix(in srgb,var(--ah-brand) 30%,#e5f3ff) 100%);
+  color:#14233f;border:1px solid #e1eaf3;box-shadow:0 12px 32px rgba(32,58,100,.055)
+}
+body:has(#home) .h-hero::before{
+  background:radial-gradient(circle at 83% 28%,rgba(255,255,255,.7),transparent 23%),
+             repeating-linear-gradient(135deg,rgba(24,65,110,.035) 0 1px,transparent 1px 26px);
+  opacity:1
+}
+body:has(#home) .h-hero::after{
+  content:"";position:absolute;right:8%;top:-65%;height:380px;width:380px;border-radius:50%;
+  background:radial-gradient(circle,color-mix(in srgb,var(--ah-brand) 17%,transparent),transparent 68%);
+  pointer-events:none
+}
+body:has(#home) .h-eyebrow{color:#536987;font-size:11px;font-weight:700;letter-spacing:.15em}
+body:has(#home) .h-hero h1{color:#14233f;font-family:var(--ah-font);font-weight:700;font-size:clamp(28px,2.8vw,37px);letter-spacing:-.035em;margin:10px 0}
+body:has(#home) .h-dates,body:has(#home) .h-clock .z{color:#5f738e}
+body:has(#home) .h-dates .ar{color:#294a70}
+body:has(#home) .h-clock .t{color:#203454;font:700 clamp(37px,4.1vw,54px)/1 var(--ah-font);letter-spacing:-.04em}
+body:has(#home) .h-clock .t small{color:#526f8b}
+body:has(#home) .h-chip{background:#ffffffa8;border:1px solid #dce7f1;color:#305477;backdrop-filter:blur(8px)}
+body:has(#home) a.h-chip:hover{background:#fff;border-color:#b6cfdf}
+body:has(#home) .h-new a{background:var(--ah-brand);color:#fff;box-shadow:0 5px 18px rgba(26,62,100,.12);border-radius:10px}
+body:has(#home) .h-new a:hover{background:var(--ah-brand-d);color:#fff}
+body:has(#home) .h-kpis{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+body:has(#home) .h-kpi{
+  min-height:136px;padding:19px 20px;border-radius:16px;border:1px solid #e7ecf4;
+  box-shadow:0 7px 20px rgba(25,55,92,.045);background:#fff;gap:8px 10px;
+  transition:transform .18s,box-shadow .18s,border-color .18s
+}
+body:has(#home) .h-kpi:hover{border-color:#cad8e8;box-shadow:0 15px 32px rgba(27,63,104,.095);transform:translateY(-3px)}
+body:has(#home) .h-kpi .lbl{font-size:12.5px;color:#64748b;font-weight:600}
+body:has(#home) .h-kpi .v{font-family:var(--ah-font);font-size:clamp(25px,2.6vw,35px);font-weight:700;letter-spacing:-.035em;color:#17243e}
+body:has(#home) .h-kpi .sub{color:#64748b;font-size:12px}
+body:has(#home) .h-panel{
+  border-radius:17px;padding:21px 23px;border:1px solid #e8edf4;
+  box-shadow:0 7px 24px rgba(25,55,92,.045)
+}
+body:has(#home) .h-ph{align-items:flex-start;margin-bottom:18px}
+body:has(#home) .h-ph h2{font-size:16px;letter-spacing:-.02em;color:#1a2b49;font-weight:700}
+body:has(#home) .h-ph p{font-size:12px;color:#75859a;margin-top:4px}
+body:has(#home) .h-ph a{color:var(--ah-brand);font-weight:600}
+body:has(#home) .h-row{padding:13px 0;border-color:#f0f2f7}
+body:has(#home) .h-row .ic{width:39px;height:39px;border-radius:11px}
+body:has(#home) .h-row .tx b{color:#283751}
+body:has(#home) #quick{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+body:has(#home) #quick .h-row{
+  display:flex;flex-direction:column;text-align:center;justify-content:center;align-items:center;
+  background:#f3f7fd;border:1px solid #e5edf8;border-radius:13px;padding:17px 12px;
+  min-height:130px;gap:10px;transition:background .15s,transform .15s
+}
+body:has(#home) #quick .h-row:nth-child(3n+2){background:#edf9f5;border-color:#def1e7}
+body:has(#home) #quick .h-row:nth-child(3n){background:#fff7ea;border-color:#f5ead6}
+body:has(#home) #quick .h-row:hover{background:#fff;transform:translateY(-2px)}
+body:has(#home) #quick .h-row .tx{flex:none;text-align:center;width:100%}
+body:has(#home) #quick .h-row .tx b{white-space:normal}
+body:has(#home) #quick .h-row time{display:none}
+body:has(#home) .h-mod{padding:21px;border-radius:16px;border-color:#e8edf4;box-shadow:0 7px 20px rgba(25,55,92,.045)}
+body:has(#home) .h-mod .ic{width:46px;height:46px;border-radius:12px}
+body:has(#home) .h-mod h3{font-size:17px;color:#1a2b49}
+body:has(#home) .h-mod p{line-height:1.55}
+body:has(#home) .h-cols{gap:16px}
+body:has(#home) .h-cols:not(.one){grid-template-columns:minmax(0,1.42fr) minmax(0,1fr)}
+/* Desktop SaaS side navigation. Existing links remain fully functional. */
+@media(min-width:1100px){
+  body:has(#home) #ahbar .row1{margin-left:234px;max-width:none;padding:13px 30px;min-height:70px}
+  body:has(#home) #ahbar .row2{
+    position:fixed;left:0;top:70px;bottom:0;width:234px;max-width:none;
+    display:flex;flex-direction:column;overflow-y:auto;overflow-x:hidden;
+    gap:6px;padding:17px 12px;background:#fff;border-right:1px solid #e7edf4;
+    box-shadow:4px 0 22px rgba(25,55,92,.025)
+  }
+  body:has(#home) #ahbar .row2 a{
+    display:flex;min-height:46px;width:100%;border:0;border-radius:11px;padding:11px 15px;
+    color:#56657f;font-weight:600
+  }
+  body:has(#home) #ahbar .row2 a.on{background:color-mix(in srgb,var(--ah-brand) 12%,#fff);color:var(--ah-brand)}
+  body:has(#home) #ahbar .row2 a:hover{background:#f2f5fa}
+  body:has(#home) main{margin-left:234px;max-width:none}
+}
+@media(max-width:1190px){
+  body:has(#home) .h-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:980px){
+  body:has(#home) .h-cols:not(.one){grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:640px){
+  body:has(#home) main{padding:18px 14px 48px}
+  body:has(#home) .h{gap:13px}
+  body:has(#home) .h-hero{padding:20px;min-height:0;border-radius:16px}
+  body:has(#home) .h-hero h1{font-size:25px}
+  body:has(#home) .h-clock .t{font-size:38px}
+  body:has(#home) .h-kpis{gap:9px}
+  body:has(#home) .h-kpi{padding:14px;min-height:120px}
+  body:has(#home) .h-kpi .v{font-size:25px}
+  body:has(#home) .h-panel{padding:16px;border-radius:14px}
+  body:has(#home) #quick{gap:8px}
+  body:has(#home) #quick .h-row{min-height:112px;padding:12px 8px}
+}
+@media(prefers-reduced-motion:reduce){
+  body:has(#home) .h-kpi,body:has(#home) .h-mod,body:has(#home) #quick .h-row{transition:none}
+}
