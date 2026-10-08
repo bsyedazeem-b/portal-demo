@@ -47,9 +47,9 @@ textarea{resize:vertical}
 .mark{flex:none;width:10px;height:38px;background:repeating-linear-gradient(135deg,var(--yellow) 0 6px,var(--steel) 6px 12px)}
 .brand b{display:block;color:#fff;font-size:16px;line-height:1.2}
 .brand small{color:#9DAAB4}
-nav a{display:block;color:#C9D2D9;text-decoration:none;padding:9px 12px;border-radius:4px;font-weight:500;margin-bottom:2px}
-nav a:hover{background:var(--steel2);color:#fff}
-nav a.on{background:var(--steel2);color:#fff;box-shadow:inset 3px 0 var(--yellow)}
+.side nav a{display:block;color:#C9D2D9;text-decoration:none;padding:9px 12px;border-radius:4px;font-weight:500;margin-bottom:2px}
+.side nav a:hover{background:var(--steel2);color:#fff}
+.side nav a.on{background:var(--steel2);color:#fff;box-shadow:inset 3px 0 var(--yellow)}
 .side-foot{margin-top:auto;display:flex;flex-direction:column;gap:10px;padding:0 12px}
 .side-foot a,.side-foot button{color:#9DAAB4;font-size:14px;text-align:left;background:none;border:0;padding:0;cursor:pointer;text-decoration:none}
 .side-foot a:hover,.side-foot button:hover{color:#fff}
@@ -140,8 +140,8 @@ code.url{display:block;background:#F5F7F8;border:1px solid var(--line);padding:8
   .app{grid-template-columns:1fr}
   .side{position:static;height:auto;flex-direction:row;flex-wrap:wrap;align-items:center;gap:6px;padding:10px 12px}
   .brand{padding:0 12px 0 0}
-  nav{display:flex;flex-wrap:wrap;gap:2px}
-  nav a{padding:6px 10px;margin:0}
+  .side nav{display:flex;flex-wrap:wrap;gap:2px}
+  .side nav a{padding:6px 10px;margin:0}
   .side-foot{margin:0 0 0 auto;flex-direction:row;padding:0}
   main{padding:20px 14px 48px}
   .dlg-b{grid-template-columns:1fr}
@@ -193,6 +193,48 @@ dialog{border-radius:14px}
 .bulkbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:#FDF2F3;border:1px solid #F1C7CD;border-radius:10px;padding:8px 12px;margin-bottom:10px;position:sticky;top:64px;z-index:5}
 .bulkbar span{font-weight:600;color:#B4283D;margin-right:auto}
 tr.picked td{background:#FFF7F7}
+/* Employees module has its own section tabs; the global portal sidebar is separate. */
+@media (min-width:1100px){
+  body.ah-bar #app{margin-left:234px}
+  body.ah-bar.ah-side-hidden #app{margin-left:0}
+  body.ah-bar #app .side,
+  body.ah-bar #app main{
+    margin-left:auto;
+    margin-right:auto;
+    max-width:1240px;
+    width:100%;
+  }
+}
+/* Limit Employees tabs to the module's own nav, never the portal-wide menu. */
+body.ah-bar #app .side nav{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin:16px 0 4px;
+}
+body.ah-bar #app .side nav a{
+  display:inline-flex;
+  align-items:center;
+  min-height:38px;
+  width:auto;
+  margin:0;
+  padding:7px 14px;
+  border-radius:99px;
+  text-decoration:none;
+  white-space:nowrap;
+  font-size:13px;
+  line-height:1.4;
+}
+body.ah-bar #app .side nav a.on{
+  background:var(--brand);
+  color:#fff;
+  box-shadow:none;
+}
+@media (max-width:860px){
+  body.ah-bar #app .side{padding:18px 14px 2px}
+  body.ah-bar #app main{padding:14px 14px 90px}
+}
+
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
