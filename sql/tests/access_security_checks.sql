@@ -24,10 +24,6 @@ begin
   if has_function_privilege('authenticated', 'public.portal_push(uuid[],text,text,text,text)', 'EXECUTE') then
     raise exception 'FAIL: clients can invoke internal push function';
   end if;
-  -- Explicitly flag environments where module-switch migration has not been installed.
-  if to_regclass('public.portal_modules') is null then
-    raise notice 'NOT INSTALLED: portal_modules — module-switch tests skipped; apply only after reviewing demo migration';
-  else
   -- SECURITY DEFINER trigger functions must not be exposed as direct RPCs.
   if exists (
     select 1 from pg_proc p join pg_namespace n on n.oid=p.pronamespace
@@ -38,15 +34,15 @@ begin
   ) then
     raise exception 'FAIL: privileged trigger functions have client EXECUTE grants';
   end if;
+  -- When module schema is absent, explicitly fail rather than claiming full PASS.
   if to_regclass('public.portal_modules') is null then
-    raise exception 'FAIL: module-switch schema missing; review and install supabase_modules.sql before complete audit';
+    raise exception 'FAIL: portal_modules missing; module permissions cannot be verified';
   end if;
   -- Module switches must be readable but not editable by signed-in users.
   if has_table_privilege('authenticated', 'public.portal_modules', 'UPDATE')
      or has_table_privilege('authenticated', 'public.portal_modules', 'INSERT')
      or has_table_privilege('authenticated', 'public.portal_modules', 'DELETE') then
     raise exception 'FAIL: portal users can modify module switches';
-  end if;
   end if;
   -- RLS must remain enabled on the tables most sensitive to privilege errors.
   if exists (
