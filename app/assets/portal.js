@@ -282,6 +282,7 @@
     bar.id = 'ahbar';
     bar.innerHTML = `
       <div class="row1">
+        <button type="button" id="ahSideToggle" class="ah-side-toggle" aria-controls="ahSideNav" aria-expanded="true" aria-label="Hide sidebar" title="Hide sidebar">${icon('menu')}</button>
         <a class="logo" href="${L.home}"><img src="${esc(B.logo || 'assets/logo.svg')}" alt=""><span>${esc(B.portalName || 'Portal')}</span></a>
         <div class="search" role="search">${icon('search')}
           <input id="ahq" type="search" placeholder="Search documents, products, employees…" autocomplete="off" aria-label="Search the portal" aria-controls="ahres">
@@ -299,10 +300,28 @@
               <div class="none" style="text-align:left;padding:10px 10px 6px;font-size:12.5px;border-top:1px solid var(--ah-line);margin-top:4px">Shortcuts: <kbd>/</kbd> search · <kbd>Ctrl</kbd>+<kbd>S</kbd> save</div></div></div>
         </div>
       </div>
-      <nav class="row2 hr" aria-label="Portal">${tabs.map(([t, h, ic]) =>
+      <nav id="ahSideNav" class="row2 hr" aria-label="Portal">${tabs.map(([t, h, ic]) =>
         `<a href="${h}"${h === here ? ' class="on" aria-current="page"' : ''}>${icon(ic)}<span>${esc(t === 'Users & Access' ? 'Access' : t)}</span></a>`).join('')}</nav>`;
     document.body.insertBefore(bar, document.body.firstChild);
     document.body.classList.add('ah-bar');
+    // Desktop sidebar visibility is remembered per company and browser.
+    const sideToggle = document.getElementById('ahSideToggle');
+    const sideKey = 'portal:sidebar:hidden:' + (B.short || B.name || 'company');
+    let sideHidden = false;
+    try { sideHidden = localStorage.getItem(sideKey) === '1'; } catch (_) {}
+    const updateSidebar = () => {
+      document.body.classList.toggle('ah-side-hidden', sideHidden);
+      sideToggle.setAttribute('aria-expanded', String(!sideHidden));
+      sideToggle.setAttribute('aria-label', sideHidden ? 'Show sidebar' : 'Hide sidebar');
+      sideToggle.title = sideHidden ? 'Show sidebar' : 'Hide sidebar';
+    };
+    sideToggle.addEventListener('click', () => {
+      sideHidden = !sideHidden;
+      try { localStorage.setItem(sideKey, sideHidden ? '1' : '0'); } catch (_) {}
+      updateSidebar();
+    });
+    updateSidebar();
+
     if (C.isDemo) {
       const n = document.createElement('div'); n.id = 'ahdemo';
       n.innerHTML = `<b>Demo</b><span>You are exploring a live demo with sample data. Change anything you like. ${esc(C.DEMO.resetNote || '')}</span>
