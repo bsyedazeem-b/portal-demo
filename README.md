@@ -66,6 +66,8 @@ grant select (id, emp_code, name, designation, phone, active, pin_set, created_a
 
 **Security hardening (October 2026):** The shared `sql/supabase_modules.sql` now defaults a missing or unknown module switch to **off** rather than on. Existing Supabase projects must re-run `sql/supabase_modules.sql` in the SQL Editor to apply the updated function. Generated `clients/<company>/supabase_install.sql` snapshots also need regenerating with `python3 tools/make_demo_seed.py --all` before a fresh database install. This change is not deployed to Supabase simply by merging GitHub code.
 
+**Safwa demo upgrade verified (2026-10-08):** `sql/supabase_modules.sql` was applied transactionally to Safwa Trading (`cogifqmdvwididdkjsfy`). All four module rows are enabled. The access security smoke test and rollback-safe module-switch regression test both passed. Live end-user workflows and full role-based RLS behavior remain untested. No production database was modified.
+
 ## Switching a part of the portal on or off (per company)
 
 The switch is in the database, so a part that is off is closed everywhere: menu, pages, data, PDF files,
