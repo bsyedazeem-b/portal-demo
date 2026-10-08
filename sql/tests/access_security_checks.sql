@@ -24,11 +24,16 @@ begin
   if has_function_privilege('authenticated', 'public.portal_push(uuid[],text,text,text,text)', 'EXECUTE') then
     raise exception 'FAIL: clients can invoke internal push function';
   end if;
+  -- Explicitly flag environments where module-switch migration has not been installed.
+  if to_regclass('public.portal_modules') is null then
+    raise notice 'NOT INSTALLED: portal_modules — module-switch tests skipped; apply only after reviewing demo migration';
+  else
   -- Module switches must be readable but not editable by signed-in users.
   if has_table_privilege('authenticated', 'public.portal_modules', 'UPDATE')
      or has_table_privilege('authenticated', 'public.portal_modules', 'INSERT')
      or has_table_privilege('authenticated', 'public.portal_modules', 'DELETE') then
     raise exception 'FAIL: portal users can modify module switches';
+  end if;
   end if;
   -- RLS must remain enabled on the tables most sensitive to privilege errors.
   if exists (
