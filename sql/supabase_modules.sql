@@ -38,13 +38,13 @@ create trigger portal_modules_touch before update on public.portal_modules for e
 -- Fail closed: missing/unknown module records must not accidentally grant access.
 -- The install script seeds all four known modules before creating this function.
 create or replace function public.module_on(p_module text)
-returns boolean language sql stable security definer set search_path = public as $
+returns boolean language sql stable security definer set search_path = public as $body$
   select coalesce((
     select enabled from public.portal_modules
      where module = p_module
        and module in ('docs', 'inventory', 'hr', 'kiosk')
   ), false);
-$;
+$body$;
 revoke all on function public.module_on(text) from public;
 grant execute on function public.module_on(text) to anon, authenticated;
 
