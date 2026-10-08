@@ -28,6 +28,19 @@ begin
   if to_regclass('public.portal_modules') is null then
     raise notice 'NOT INSTALLED: portal_modules — module-switch tests skipped; apply only after reviewing demo migration';
   else
+  -- SECURITY DEFINER trigger functions must not be exposed as direct RPCs.
+  if exists (
+    select 1 from pg_proc p join pg_namespace n on n.oid=p.pronamespace
+    where n.nspname = 'public' and p.prorettype = 'pg_catalog.trigger'::regtype
+      and p.prosecdef and
+      (has_function_privilege('anon',p.oid,'EXECUTE')
+       or has_function_privilege('authenticated',p.oid,'EXECUTE'))
+  ) then
+    raise exception 'FAIL: privileged trigger functions have client EXECUTE grants';
+  end if;
+  if to_regclass('public.portal_modules') is null then
+    raise exception 'FAIL: module-switch schema missing; review and install supabase_modules.sql before complete audit';
+  end if;
   -- Module switches must be readable but not editable by signed-in users.
   if has_table_privilege('authenticated', 'public.portal_modules', 'UPDATE')
      or has_table_privilege('authenticated', 'public.portal_modules', 'INSERT')
