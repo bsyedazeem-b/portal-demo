@@ -722,7 +722,7 @@ function itemsPdf(type, r, img) {
     pdf.setPage(i); pdf.setFont('helvetica', 'normal'); pdf.setFontSize(7.5); pdf.setTextColor(...C.muted);
     pdf.text(`${r.doc_no || 'DRAFT'}   |   Page ${i} of ${n}`, W - M, BOTTOM + 4.5, {align: 'right'});
   }
-  return pdf;
+  return window.rabtflowPdfCredit(pdf);
 }
 const SELLER_AR = BRAND.nameAr;
 function zatcaQr(r) {
@@ -1081,7 +1081,7 @@ function certDoc(img, docNo) {
   d.finish = () => { const n = pdf.getNumberOfPages();
     for (let i = 1; i <= n; i++) { pdf.setPage(i); pdf.setFont('helvetica', 'normal'); pdf.setFontSize(7.5); pdf.setTextColor(...C.muted);
       pdf.text(`${docNo || 'DRAFT'}   |   Page ${i} of ${n}`, W - M, H - 5 - ftrH - 2.5, {align: 'right'}); }
-    return pdf; };
+    return window.rabtflowPdfCredit(pdf); };
   return d;
 }
 const RES_COL = {PASS: [[232, 245, 236], [29, 122, 75]], FAIL: [[252, 235, 233], [179, 38, 30]], 'N/A': [[238, 241, 243], [96, 110, 118]]};
@@ -1641,7 +1641,7 @@ function receiptPdf(r, img) {
   pdf.setDrawColor(...C.muted); pdf.setLineWidth(0.2); pdf.setLineDashPattern([2, 1.5], 0); pdf.line(4, 148.5, W - 4, 148.5); pdf.setLineDashPattern([], 0);
   pdf.setFont('helvetica', 'normal'); pdf.setFontSize(6.5); pdf.setTextColor(...C.muted); pdf.text('cut here', W / 2, 147.3, {align: 'center'});
   half(154, 'Copy');
-  return pdf;
+  return window.rabtflowPdfCredit(pdf, true);
 }
 
 async function showReceiptForm(id, copyFrom) {

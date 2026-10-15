@@ -932,7 +932,7 @@ function pdfDoc(title, img, ref) {
       pdf.setFont('helvetica', 'bold'); pdf.setFontSize(8.5); pdf.setTextColor(...PC.slate); pdf.text(t, x, sy + 4.5); });
   };
   d.finish = () => { const n = pdf.getNumberOfPages(); for (let i = 1; i <= n; i++) { pdf.setPage(i); pdf.setFont('helvetica', 'normal'); pdf.setFontSize(7.5); pdf.setTextColor(...PC.muted);
-    pdf.text(`${typeof ref === 'function' ? ref(i) : ref}   |   Page ${i} of ${n}`, W - M, BOTTOM + 4.5, {align: 'right'}); } return pdf; };
+    pdf.text(`${typeof ref === 'function' ? ref(i) : ref}   |   Page ${i} of ${n}`, W - M, BOTTOM + 4.5, {align: 'right'}); } return window.rabtflowPdfCredit(pdf); };
   d.frame();
   return d;
 }

@@ -4,6 +4,7 @@
    ===================================================================== */
 (function () {
   const B = window.BRAND;
+  const PROVIDER = window.RABTFLOW = Object.freeze({name: 'RabtFlow', website: 'https://portfolio.azeemsyedb.workers.dev/', logo: 'assets/rabtflow-logo.svg', pdfLogo: 'assets/rabtflow-logo.png'});
   const hex = h => { h = h.replace('#', ''); return [0, 2, 4].map(i => parseInt(h.substr(i, 2), 16)); };
   const toHex = a => '#' + a.map(v => Math.max(0, Math.min(255, Math.round(v))).toString(16).padStart(2, '0')).join('');
   const mix = (a, b, t) => toHex(hex(a).map((v, i) => v + (hex(b)[i] - v) * t));
@@ -24,9 +25,24 @@
   const s = document.createElement('style'); s.id = 'brand-tokens'; s.textContent = css;
   (document.head || document.documentElement).appendChild(s);
   // the page <title> follows the brand: pages write "Section | {portal}"
-  const fix = () => { document.title = document.title.replace(/\{portal\}/g, B.portalName).replace(/\{company\}/g, B.name).replace(/\{short\}/g, B.short); };
+  const fix = () => { document.title = document.title.replace(/\{portal\}/g, B.portalName).replace(/\{company\}/g, B.name).replace(/\{short\}/g, B.short);
+    if (!document.title.includes('RabtFlow')) document.title += ' · RabtFlow';
+  };
   fix(); document.addEventListener('DOMContentLoaded', () => {
     fix();
+    // Default provider attribution is shared by every client build.
+    if (!document.getElementById('rabtflow-credit')) {
+      const css = document.createElement('style');
+      css.textContent = '.rf-credit{display:flex;justify-content:center;align-items:center;gap:9px;flex-wrap:wrap;margin:24px 16px;padding:14px 8px;font:400 12px/1.5 system-ui,sans-serif;color:#53666e;text-align:center;direction:ltr}.rf-credit a{display:inline-flex;align-items:center;gap:9px;color:inherit;text-decoration:none;max-width:100%}.rf-credit a:hover{text-decoration:underline}.rf-credit img{display:block;width:108px;height:auto;background:#fff;padding:5px 7px;border-radius:5px;box-sizing:content-box}.card .rf-credit{margin:22px 0 0;padding:16px 0 0;border-top:1px solid var(--line,#dbe4e8)}@media print{.rf-credit{display:none}}';
+      document.head.appendChild(css);
+      const credit = document.createElement('footer'); credit.id = 'rabtflow-credit'; credit.className = 'rf-credit';
+      const link = document.createElement('a'); link.href = PROVIDER.website; link.target = '_blank'; link.rel = 'noopener noreferrer'; link.setAttribute('aria-label', 'Powered by RabtFlow — Business Systems & Automation');
+      const label = document.createElement('span'); label.textContent = 'Powered by';
+      const logo = document.createElement('img'); logo.src = PROVIDER.logo; logo.alt = PROVIDER.name; logo.width = 108; logo.height = 24;
+      link.append(label, logo); credit.appendChild(link);
+      const host = /(?:^|\/)login(?:\.html)?$/.test(location.pathname) ? document.querySelector('main.card') : document.body;
+      (host || document.body).appendChild(credit);
+    }
     // any element with data-brand="name|nameAr|short|tagline|portalName|..." gets that text
     document.querySelectorAll('[data-brand]').forEach(el => { const v = B[el.dataset.brand]; if (v != null) el.textContent = v; });
     document.querySelectorAll('img[data-brand-logo]').forEach(el => { el.src = B.logo; });

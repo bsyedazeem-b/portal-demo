@@ -7,6 +7,7 @@
 (function () {
   const B = window.BRAND;
   let cache = null;
+  let providerLogo = null;
 
   const loadImg = src => new Promise((ok, no) => { const i = new Image(); i.onload = () => ok(i); i.onerror = () => no(new Error(src + ' not found')); i.src = src; });
   const toData = (cv, type) => { const d = cv.toDataURL(type, .93); return {dataUrl: d, url: d, w: cv.width, h: cv.height}; };
@@ -95,14 +96,48 @@
     return toData(cv, 'image/png');
   }
 
+  // Extend either the generated or client-supplied footer with a provider strip.
+  async function providerFooter(footer) {
+    const image = await loadImg(footer.dataUrl || footer.url);
+    const W = footer.w, strip = Math.round(W * .046), H = footer.h + strip;
+    const [cv, x] = canvas(W, H, '#FFFFFF');
+    x.drawImage(image, 0, 0, W, footer.h);
+    x.fillStyle = '#53666E'; x.textBaseline = 'middle'; x.textAlign = 'left';
+    x.font = `400 ${Math.round(W * .014)}px ${EN}`;
+    const text = 'Generated with', gap = W * .009, lw = W * .095;
+    const tw = x.measureText(text).width, start = (W - tw - gap - lw) / 2;
+    x.fillText(text, start, footer.h + strip / 2);
+    if (providerLogo) { const lh = lw * providerLogo.naturalHeight / providerLogo.naturalWidth;
+      x.drawImage(providerLogo, start + tw + gap, footer.h + (strip - lh) / 2, lw, lh);
+    } else x.fillText('RabtFlow', start + tw + gap, footer.h + strip / 2);
+    return toData(cv, 'image/jpeg');
+  }
+
+  // Link the provider strip on every PDF page. Receipt copies have no letterhead footer.
+  window.rabtflowPdfCredit = (pdf, draw = false) => {
+    const current = pdf.internal.getCurrentPageInfo().pageNumber;
+    for (let i = 1; i <= pdf.getNumberOfPages(); i++) {
+      pdf.setPage(i);
+      const W = pdf.internal.pageSize.getWidth(), H = pdf.internal.pageSize.getHeight();
+      if (draw) {
+        pdf.setFont('helvetica', 'normal'); pdf.setFontSize(6.5); pdf.setTextColor(83, 102, 110);
+        pdf.text('Generated with RabtFlow', W / 2, H - 5, {align: 'center'});
+      }
+      pdf.link(W / 2 - 27, H - 12, 54, 9, {url: 'https://portfolio.azeemsyedb.workers.dev/'});
+    }
+    pdf.setPage(current);
+    return pdf;
+  };
+
   window.brandLetterhead = () => cache || (cache = (async () => {
     const L = B.letterhead || {};
     await fonts();
+    try { providerLogo = await loadImg(window.RABTFLOW?.pdfLogo || 'assets/rabtflow-logo.png'); } catch (e) {}
     let logo = null; try { logo = await loadImg(B.logo); } catch (e) {}
     const [header, footer, stamp] = await Promise.all([
       L.header ? fromFile(L.header, 'image/jpeg') : drawHeader(logo),
       L.footer ? fromFile(L.footer, 'image/jpeg') : drawFooter(),
       L.stamp ? fromFile(L.stamp, 'image/png') : drawStamp()]);
-    return {header, footer, stamp};
+    return {header, footer: await providerFooter(footer), stamp};
   })().catch(e => { cache = null; throw e; }));
 })();
