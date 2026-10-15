@@ -64,7 +64,7 @@
       const [x, y] = proj(lonlat), g = add('g', {transform: `translate(${x},${y})`});
       if (big) add('circle', {r: 9, fill: color, 'fill-opacity': .25, class: 'mappulse'}, g);
       add('circle', {r: big ? 5 : 4.5, fill: color, stroke: '#fff', 'stroke-width': 2}, g);
-      const t = add('text', {x: x > W - 140 ? -10 : 10, y: -8, 'text-anchor': x > W - 140 ? 'end' : 'start', class: 'maplabel'}, g);
+      const t = add('text', {x: x > W / 2 ? -10 : 10, y: -8, 'text-anchor': x > W / 2 ? 'end' : 'start', class: 'maplabel'}, g);
       t.textContent = label;
       return g;
     };
