@@ -1,8 +1,8 @@
 /* Portal service worker: lets the portal be installed like an app.
    Pages and files come from the network first (so updates show at once);
    the saved copy is only used when there is no internet. Supabase data is never cached. */
-const CACHE = 'portal-__CLIENT__-v3';          // __CLIENT__ is filled in by tools/build.py (one cache per company)
-const CORE = ['demo-home.html', 'index.html', 'login.html', 'documents.html', 'inventory.html', 'employees.html', 'access.html',
+const CACHE = 'portal-__CLIENT__-v4';          // __CLIENT__ is filled in by tools/build.py (one cache per company)
+const CORE = ['demo-inventory-home.html', 'demo-home.html', 'index.html', 'login.html', 'documents.html', 'inventory.html', 'employees.html', 'access.html',
   'assets/portal.css', 'assets/shell.css', 'assets/portal.js', 'assets/config.js', 'assets/logo.svg', 'assets/letterhead.js', 'assets/rabtflow-logo.svg', 'assets/rabtflow-logo.png', 'assets/icon-192.png'];
 
 self.addEventListener('install', e => {

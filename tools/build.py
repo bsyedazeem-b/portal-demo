@@ -41,8 +41,12 @@ def build_company(c, out, derived):
     cdir = os.path.join(CLIENTS, c)
     shutil.copytree(APP, out, ignore=shutil.ignore_patterns('config-derived.js'), dirs_exist_ok=True)
     cfg = open(os.path.join(cdir, 'config.js'), encoding='utf-8').read()
-    if re.search(r"demoFocus\s*:\s*'quotation'", cfg):
-        shutil.copyfile(os.path.join(APP, 'demo-home.html'), os.path.join(out, 'index.html'))
+    focus = re.search(r"demoFocus\s*:\s*'(quotation|inventory)'", cfg)
+    if focus:
+        home = 'demo-inventory-home.html' if focus.group(1) == 'inventory' else 'demo-home.html'
+        shutil.copyfile(os.path.join(APP, home), os.path.join(out, 'index.html'))
+        if home != 'demo-home.html':
+            shutil.copyfile(os.path.join(APP, home), os.path.join(out, 'demo-home.html'))
     open(os.path.join(out, 'assets', 'config.js'), 'w', encoding='utf-8').write(re.sub(r"(?m)^\s*password:\s*'[^']*',?[^\n]*\n", '', cfg).rstrip() + '\n\n' + derived)
     for f in ('logo.svg', 'icon-192.png', 'icon-512.png', 'favicon.png'):
         src = os.path.join(cdir, f)

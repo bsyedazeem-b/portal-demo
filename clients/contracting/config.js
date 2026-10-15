@@ -51,12 +51,12 @@ window.BRAND = {
   // sign-in page: 'clock' (default) or 'map' = live world map with day/night, our office and the visitor's location
   loginVisual: 'map',
 
-  demoFocus: 'quotation',
-  modules: {documents: true, inventory: false, employees: false, kiosk: false},
+  demoFocus: 'inventory',
+  modules: {documents: false, inventory: true, employees: false, kiosk: false},
 
   // document types: everything on (job cards = site work orders, material requests from sites)
   docTypes: {
-    quotation: true, customers: true,
+    quotation: false, customers: false,
     invoice: false, receipt: false, petty: false, dn: false,
     catalog: false, jobcard: false, mr: false, po: false
   },
