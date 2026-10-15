@@ -414,7 +414,17 @@
     // The focused demo has no user-administration interface. Database permissions are unchanged.
     if (B.demoFocus === 'quotation') { me.is_admin = false; C.user.is_admin = false; }
     const allowed = !need || (need === 'admin' ? me.is_admin : !!me[need + '_role']);
-    if (!allowed) { location.replace('index.html?denied=' + need); return never(); }
+    if (!allowed) {
+      // A focused home page requires Documents itself: redirecting home would loop forever.
+      if (B.demoFocus === 'quotation' || pageName() === 'index.html') {
+        if (document.readyState === 'loading') await new Promise(r => document.addEventListener('DOMContentLoaded', r));
+        const disabled = off.has(need) || (need === 'docs' && M.documents === false);
+        const main = document.querySelector('main') || document.body;
+        main.innerHTML = `<section role="alert" style="max-width:640px;margin:48px auto;padding:28px;border:1px solid #dbe4e8;border-radius:16px;background:#fff;font:16px/1.6 system-ui;color:#243541"><h1 style="font-size:24px;margin:0 0 12px">${disabled ? 'This module is currently unavailable' : 'Access is not available'}</h1><p>${disabled ? 'The module needed for this demo has been disabled. Please contact RabtFlow to restore access.' : 'Your account does not have access to this part of the portal. Please contact your portal administrator.'}</p><p><a href="${esc(C.links.logout)}">Sign out</a></p></section>`;
+        return never();
+      }
+      location.replace('index.html?denied=' + need); return never();
+    }
     if (document.readyState === 'loading') await new Promise(r => document.addEventListener('DOMContentLoaded', r));
     drawBar();
     return C.user;
