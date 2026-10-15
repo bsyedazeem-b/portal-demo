@@ -41,7 +41,9 @@ def build_company(c, out, derived):
     cdir = os.path.join(CLIENTS, c)
     shutil.copytree(APP, out, ignore=shutil.ignore_patterns('config-derived.js'), dirs_exist_ok=True)
     cfg = open(os.path.join(cdir, 'config.js'), encoding='utf-8').read()
-    open(os.path.join(out, 'assets', 'config.js'), 'w', encoding='utf-8').write(cfg.rstrip() + '\n\n' + derived)
+    if re.search(r"demoFocus\s*:\s*'quotation'", cfg):
+        shutil.copyfile(os.path.join(APP, 'demo-home.html'), os.path.join(out, 'index.html'))
+    open(os.path.join(out, 'assets', 'config.js'), 'w', encoding='utf-8').write(re.sub(r"(?m)^\s*password:\s*'[^']*',?[^\n]*\n", '', cfg).rstrip() + '\n\n' + derived)
     for f in ('logo.svg', 'icon-192.png', 'icon-512.png', 'favicon.png'):
         src = os.path.join(cdir, f)
         if os.path.exists(src): shutil.copy(src, os.path.join(out, 'assets', f))
@@ -80,7 +82,7 @@ def build():
         cdir = os.path.join(CLIENTS, c)
         if not os.path.isfile(os.path.join(cdir, 'config.js')): continue
         b = build_company(c, os.path.join(DIST, c), derived)
-        demos.append(dict(b, id=c, link=f'{c}/login.html?demo=1', logo=f'{c}/assets/logo.svg'))
+        demos.append(dict(b, id=c, link=f'{c}/login.html', logo=f'{c}/assets/logo.svg'))
         print(f'  {c:14s} {b["name"]}  ({"ready" if b["ready"] else "Supabase not set yet - shown as coming soon"})')
     demos.sort(key=lambda d: (not d['ready'], d['id']))          # ready demos first
     open(os.path.join(DIST, 'demos.js'), 'w', encoding='utf-8').write(

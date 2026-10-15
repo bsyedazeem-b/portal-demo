@@ -11,7 +11,7 @@
   const C = window.PORTAL_CONFIG = window.PORTAL_CONFIG || {};
   const B = window.BRAND || {colors: {}, modules: {}};
   C.LOGIN_DOMAIN = C.LOGIN_DOMAIN || 'portal.local';
-  C.links = {home: 'index.html', documents: 'documents.html', inventory: 'inventory.html', employees: 'employees.html',
+  C.links = {home: B.demoFocus === 'quotation' ? 'demo-home.html' : 'index.html', documents: 'documents.html', inventory: 'inventory.html', employees: 'employees.html',
              kiosk: 'kiosk.html', access: 'access.html', logout: 'login.html?logout=1'};
   C.user = null;
   C.DOCS_READY = true;
@@ -410,7 +410,9 @@
     if (off.has('hr')) me.hr_role = null;
     C.user = {id: me.id, username: me.username, full_name: me.full_name || me.username, is_admin: !!me.is_admin,
               docs_role: me.docs_role, inv_role: me.inv_role, hr_role: me.hr_role};
-    C.isDemo = !!(C.DEMO && C.DEMO.enabled && me.username === C.DEMO.username);
+    C.isDemo = !!(C.DEMO && C.DEMO.enabled);
+    // The focused demo has no user-administration interface. Database permissions are unchanged.
+    if (B.demoFocus === 'quotation') { me.is_admin = false; C.user.is_admin = false; }
     const allowed = !need || (need === 'admin' ? me.is_admin : !!me[need + '_role']);
     if (!allowed) { location.replace('index.html?denied=' + need); return never(); }
     if (document.readyState === 'loading') await new Promise(r => document.addEventListener('DOMContentLoaded', r));

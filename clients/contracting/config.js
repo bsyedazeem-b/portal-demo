@@ -11,7 +11,7 @@ window.PORTAL_CONFIG = {
   SUPABASE_ANON_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFwamtncGpkbXhteHJwZ3RwZmx6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTEyODQ0NjEsImV4cCI6MjEwNjg2MDQ2MX0.EEvWe10xIB3Dy5wQetOOVDVcw2qGl3eTVU26FnV_-Ak',
   LOGIN_DOMAIN: 'bunyan.local',       // user "ahmed" signs in as ahmed@bunyan.local
 
-  // 2) Demo mode: shows the "Try demo" button and blocks risky actions
+  // 2) Demo mode keeps sample-data safeguards; access uses normal sign-in.
   //    (changing passwords, creating users, real WhatsApp / push sends).
   DEMO: {
     enabled: true,
@@ -51,12 +51,14 @@ window.BRAND = {
   // sign-in page: 'clock' (default) or 'map' = live world map with day/night, our office and the visitor's location
   loginVisual: 'map',
 
-  modules: {documents: true, inventory: true, employees: true, kiosk: true},
+  demoFocus: 'quotation',
+  modules: {documents: true, inventory: false, employees: false, kiosk: false},
 
   // document types: everything on (job cards = site work orders, material requests from sites)
   docTypes: {
-    quotation: true, invoice: true, receipt: true, petty: true, dn: true, catalog: true /* price list */, customers: true,
-    jobcard: true, mr: true, po: true
+    quotation: true, customers: true,
+    invoice: false, receipt: false, petty: false, dn: false,
+    catalog: false, jobcard: false, mr: false, po: false
   },
 
   inventory: {

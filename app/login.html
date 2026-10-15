@@ -139,11 +139,7 @@ svg.worldmap{width:100%;height:auto;display:block}
       <p id="err" class="err" role="alert"></p>
       <button class="btn" id="b">Sign in</button>
     </form>
-    <div class="demo" id="demo" hidden>
-      <div class="or"><span>or</span></div>
-      <button type="button" class="btn ghost" id="try">Try the demo — no account needed</button>
-      <p class="hint" id="demoNote"></p>
-    </div>
+    <p class="help">Demo access is provided after contact. <a href="https://wa.me/966531566837?text=Hi%20RabtFlow%2C%20I%20would%20like%20demo%20access." target="_blank" rel="noopener">Request access from RabtFlow</a>.</p>
     <div class="help">Forgot your password? Ask the portal admin to set a new one in Users &amp; Access.</div>
   </main>
 </div>
@@ -249,20 +245,6 @@ svg.worldmap{width:100%;height:auto;display:block}
   // already logged in?
   const {data: {session}} = await sb.auth.getSession();
   if (session && !q.get('logout') && !q.get('msg')) { location.replace(next); return; }
-
-  // one-click demo: signs in with the shared demo account from assets/config.js
-  const D = C.DEMO || {};
-  if (D.enabled && D.username) {
-    document.getElementById('demo').hidden = false;
-    document.getElementById('demoNote').textContent = `Sample data only. ${D.resetNote || ''}`;
-    const tryBtn = document.getElementById('try');
-    tryBtn.onclick = async () => {
-      tryBtn.disabled = true; tryBtn.textContent = 'Opening the demo…'; err.textContent = '';
-      try { await signIn(D.username, D.password); }
-      catch (e) { err.textContent = e.message; tryBtn.disabled = false; tryBtn.textContent = 'Try the demo — no account needed'; }
-    };
-    if (q.get('demo') === '1' && !q.get('logout')) tryBtn.click();
-  }
 
   async function signIn(rawId, password) {
       const id = rawId.trim().toLowerCase();

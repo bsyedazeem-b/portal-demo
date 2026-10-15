@@ -11,7 +11,7 @@ window.PORTAL_CONFIG = {
   SUPABASE_ANON_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNvZ2lmcW1kdndpZGlkZGtqc2Z5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTExMTk1OTIsImV4cCI6MjEwNjY5NTU5Mn0.TSrkf75C4SChjoZhhwmiP7ud1boyzYJGPIPwCs-0rKE',
   LOGIN_DOMAIN: 'safwa.local',        // user "ahmed" signs in as ahmed@safwa.local
 
-  // 2) Demo mode: shows the "Try demo" button and blocks risky actions
+  // 2) Demo mode keeps sample-data safeguards; access uses normal sign-in.
   //    (changing passwords, creating users, real WhatsApp / push sends).
   DEMO: {
     enabled: true,
@@ -50,12 +50,14 @@ window.BRAND = {
   letterhead: {header: null, footer: null, stamp: null},
 
   // modules: set any to false to hide it everywhere (home, top bar, search)
-  modules: {documents: true, inventory: true, employees: true, kiosk: true},
+  demoFocus: 'quotation',
+  modules: {documents: true, inventory: false, employees: false, kiosk: false},
 
   // document types: a trading company does not need job cards or material requests
   docTypes: {
-    quotation: true, invoice: true, receipt: true, petty: true, dn: true, catalog: true /* price list */, customers: true,
-    jobcard: false, mr: false, po: true
+    quotation: true, customers: true,
+    invoice: false, receipt: false, petty: false, dn: false,
+    catalog: false, jobcard: false, mr: false, po: false
   },
 
   // inventory: product categories (with the short code that starts new SKUs) and units

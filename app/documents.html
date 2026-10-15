@@ -864,7 +864,7 @@ async function showIForm(type, id, copyFrom, fromQuote) {
         <span class="share"><button class="btn sec" type="button" id="sh">Share</button></span>
         ${waFormBtn(type)}
         ${rec && CAN_EDIT ? `<a class="btn sec" href="#${type}/copy/${rec.id}">Copy as new</a>` : ''}
-        ${rec && CAN_EDIT && type === 'quotation' ? `<a class="btn sec" href="#invoice/fromquote/${rec.id}">Make Invoice</a>` : ''}
+        ${rec && CAN_EDIT && type === 'quotation' && window.BRAND?.docTypes?.invoice !== false ? `<a class="btn sec" href="#invoice/fromquote/${rec.id}">Make Invoice</a>` : ''}
         ${approvalButtons(rec)}
         <span class="grow"></span>
         ${rec && CAN_DELETE ? '<button class="btn danger" type="button" id="del">Delete</button>' : ''}
@@ -1970,6 +1970,7 @@ async function route() {
   ROUTE_SEQ++;
   const h = location.hash.replace(/^#/, '') || 'quotation';
   const [type, a, b] = h.split('/');
+  if ((window.BRAND?.docTypes || {})[type] === false) { location.hash = '#quotation'; return; }
   if (!['quotation', 'invoice', 'dn', 'po', 'jobcard', 'mr', 'receipt', 'petty', 'catalog', 'customers'].includes(type)) { location.hash = '#quotation'; return; }
   $$('#tabs a').forEach(x => x.classList.toggle('on', x.dataset.t === type));
   const grp = $(`#tabs a[data-t="${type}"]`)?.dataset.g || 'sales';

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Business Portal — live demo</title>
-<meta name="description" content="Quotations, invoices with ZATCA QR, stock, attendance and payroll for any company. Try the live demo.">
+<meta name="description" content="Quotations, invoices with ZATCA QR, stock, attendance and payroll for any company. Request a guided demo.">
 <link rel="icon" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;600&display=swap">
@@ -149,21 +149,21 @@ footer{padding:30px 0 40px;color:var(--muted);font-size:13.5px;text-align:center
 <header class="top"><div class="wrap">
   <a class="logo" href="#"><img data-brand-logo alt=""><span id="pName">Business Portal</span></a>
   <nav aria-label="Page"><a href="#demos">Demos</a><a href="#modules">Modules</a><a href="#screens">Screens</a><a href="#pdfs">Sample PDFs</a><a href="#brand">Your brand</a><a href="#contact">Contact</a></nav>
-  <a class="btn dark" href="#demos">Open live demo</a>
+  <a class="btn dark" href="#demos">Request a demo</a>
 </div></header>
 
 <section class="hero" style="padding:0">
   <div class="wrap">
     <div style="padding-bottom:72px">
-      <span class="eyebrow"><i></i>Live demo · no sign-up</span>
+      <span class="eyebrow"><i></i>Demo access on request</span>
       <h1>Run your business from <em>one link</em>.</h1>
       <p class="lead" id="pTag">Quotations, invoices, stock and staff for any company, in one simple web app.</p>
       <div class="cta">
-        <a class="btn main" href="#demos">Try a live demo
+        <a class="btn main" href="#demos">Request a demo
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <a class="btn line" href="#pdfs">See sample PDFs</a>
       </div>
-      <small>Pick a demo company below: no sign-up needed. All companies and data are invented and reset every night.</small>
+      <small>Choose a sector example and contact RabtFlow for access. All companies and data are invented.</small>
     </div>
     <div class="shots" aria-hidden="true">
       <div class="browser"><div class="bar"><i></i><i></i><i></i></div><img src="assets/shots/home.jpg" alt=""></div>
@@ -183,9 +183,9 @@ footer{padding:30px 0 40px;color:var(--muted);font-size:13.5px;text-align:center
 
 <section id="demos" class="demos"><div class="wrap">
   <div class="sec-h"><span class="k">Live demos</span><h2>One portal, set up for different businesses</h2>
-    <p>Same software, different company: each demo has its own name, logo, colours, documents and sample data. Open the one closest to your business.</p></div>
+    <p>Same software, different company: each demo has its own name, logo, colours, documents and sample data. Request a walkthrough for the one closest to your business.</p></div>
   <div class="demo-grid" id="demoList"></div>
-  <p class="demo-note">The demo login opens automatically. Kiosk PIN for every employee: <b>1234</b>. Change anything you like: the data resets every night.</p>
+  <p class="demo-note">Demo access is provided after contact. Both examples use the same quotation and customer workflow. Sample data resets every night.</p>
 </div></section>
 
 <section id="modules"><div class="wrap">
@@ -250,7 +250,7 @@ window.BRAND = {
 
 <section id="contact"><div class="wrap">
   <div class="contact">
-    <div><h2>Want this for your company?</h2><p>Try the demo first, then message me with what your team does every day. Setup usually takes a few days.</p></div>
+    <div><h2>Want this for your company?</h2><p>Tell RabtFlow what your team does every day. We will arrange a relevant demo and agree the implementation scope and timeline.</p></div>
     <div class="cta"><a class="btn wa" id="wa" href="#" target="_blank" rel="noopener">WhatsApp</a><a class="btn ghost" id="mail" href="#">Email</a><a class="btn dark" href="#demos">Live demo</a></div>
   </div>
 </div></section>
@@ -288,7 +288,7 @@ window.BRAND = {
   $('demoList').innerHTML = (window.DEMOS || []).map(d => `<article class="demo" style="--d:${esc(d.brand)};--d-deep:${esc(mixDark(d.brand, .4))}">
     <div class="head"><img src="${esc(d.logo)}" alt=""><div><span class="ind">${esc(d.industry)}</span><b>${esc(d.name)}</b><span>${esc(d.tagline)}</span></div></div>
     <div class="body"><ul>${(DT[d.id] || []).map(x => `<li>${esc(x)}</li>`).join('')}</ul>
-      ${d.ready ? `<a class="btn go" href="${esc(d.link)}">Open ${esc(d.short || d.name)} demo
+      ${d.ready ? `<a class="btn go" href="https://wa.me/966531566837?text=${encodeURIComponent('Hi RabtFlow, I would like to request the ' + (d.short || d.name) + ' demo.')}">Request ${esc(d.short || d.name)} demo
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>`
                : `<span class="btn go" aria-disabled="true">Coming soon</span>`}</div></article>`).join('');
 
