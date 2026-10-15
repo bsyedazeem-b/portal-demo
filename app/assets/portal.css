@@ -1,9 +1,9 @@
 /* Components for Home, Documents, Users & Access and Login (tokens come from shell.css) */
-:root{--teal:var(--brand);--teal-dark:var(--brand-d);--orange:var(--accent);--bg:#F5F7F9;--card:#fff;--text:#1F2D35;--muted:#73818A;--border:#E6EBEE;--red:#D9475B;--green:#2E9E6A;
+:root{--teal:var(--brand);--teal-dark:var(--brand-d);--orange:var(--accent);--bg:#F5F7F9;--card:#fff;--text:#1F2D35;--muted:#596B75;--border:#E6EBEE;--red:#D9475B;--green:#2E9E6A;
   --font:'IBM Plex Sans','IBM Plex Sans Arabic','Segoe UI',system-ui,-apple-system,sans-serif}
 *{box-sizing:border-box}
 html,body{margin:0}
-body{background:var(--bg);color:var(--text);font:14.5px/1.5 var(--font);font-variant-numeric:tabular-nums}
+body{background:var(--bg);color:var(--text);font:15px/1.5 var(--font);font-variant-numeric:tabular-nums}
 a{color:var(--teal)}
 [hidden]{display:none!important}
 main{max-width:1240px;margin:0 auto;padding:24px 28px 60px}
@@ -21,7 +21,7 @@ h2{color:var(--text);font-size:19px;font-weight:600;margin:0 0 6px}
 .btn.danger:hover{background:#FDF2F3}
 .btn:disabled{opacity:.55;cursor:default}
 .field{display:grid;gap:5px;margin-bottom:14px}
-.field label{font-weight:500;font-size:13px;color:#4E5D65}
+.field label{font-weight:500;font-size:14px;color:#4E5D65}
 input,select,textarea{font:inherit;padding:9px 11px;border:1px solid var(--border);border-radius:8px;background:#fff;color:inherit;max-width:100%}
 input:focus,select:focus,textarea:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px var(--brand-l)}
 .btn:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
