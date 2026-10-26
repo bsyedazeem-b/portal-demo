@@ -305,23 +305,58 @@
         `<a href="${h}"${h === here ? ' class="on" aria-current="page"' : ''}>${icon(ic)}<span>${esc(t === 'Users & Access' ? 'Access' : t)}</span></a>`).join('')}</nav>`;
     document.body.insertBefore(bar, document.body.firstChild);
     document.body.classList.add('ah-bar');
-    // Desktop sidebar visibility is remembered per company and browser.
+    // Safwa uses an expanding rail; other client navigation keeps its settings.
     const sideToggle = document.getElementById('ahSideToggle');
-    const sideKey = 'portal:sidebar:hidden:' + (B.short || B.name || 'company');
-    let sideHidden = false;
-    try { sideHidden = localStorage.getItem(sideKey) === '1'; } catch (_) {}
-    const updateSidebar = () => {
-      document.body.classList.toggle('ah-side-hidden', sideHidden);
-      sideToggle.setAttribute('aria-expanded', String(!sideHidden));
-      sideToggle.setAttribute('aria-label', sideHidden ? 'Show sidebar' : 'Hide sidebar');
-      sideToggle.title = sideHidden ? 'Show sidebar' : 'Hide sidebar';
-    };
-    sideToggle.addEventListener('click', () => {
-      sideHidden = !sideHidden;
-      try { localStorage.setItem(sideKey, sideHidden ? '1' : '0'); } catch (_) {}
+    if (document.documentElement.dataset.dashboardTheme === 'safwa-glass') {
+      const rail = bar.querySelector('.row2');
+      const desktop = window.matchMedia('(min-width:1100px)');
+      let pinned = false, hovered = false;
+      rail.id = 'ahSidebar';
+      sideToggle.setAttribute('aria-controls', rail.id);
+      rail.querySelectorAll('a').forEach(link => {
+        link.setAttribute('aria-label', link.textContent.trim());
+        link.title = link.textContent.trim();
+      });
+      const update = () => {
+        const open = pinned || hovered || rail.contains(document.activeElement);
+        document.body.classList.remove('ah-side-hidden');
+        document.body.classList.add('ah-hover-rail');
+        document.body.classList.toggle('ah-rail-open', open);
+        sideToggle.setAttribute('aria-expanded', String(desktop.matches && open));
+        sideToggle.setAttribute('aria-label', pinned ? 'Unpin sidebar' : 'Pin sidebar open');
+        sideToggle.title = pinned ? 'Unpin sidebar' : 'Pin sidebar open';
+      };
+      rail.addEventListener('mouseenter', () => { hovered = true; update(); });
+      rail.addEventListener('mouseleave', () => { hovered = false; update(); });
+      rail.addEventListener('focusin', update);
+      rail.addEventListener('focusout', () => setTimeout(update, 0));
+      sideToggle.addEventListener('click', () => { pinned = !pinned; update(); });
+      document.addEventListener('keydown', e => {
+        if (e.key !== 'Escape') return;
+        pinned = hovered = false;
+        if (rail.contains(document.activeElement)) sideToggle.focus();
+        update();
+      });
+      desktop.addEventListener('change', () => { pinned = hovered = false; update(); });
+      update();
+    } else {
+      const sideKey = 'portal:sidebar:hidden:' + (B.short || B.name || 'company');
+      let sideHidden = false;
+      try { sideHidden = localStorage.getItem(sideKey) === '1'; } catch (_) {}
+      const updateSidebar = () => {
+        document.body.classList.toggle('ah-side-hidden', sideHidden);
+        sideToggle.setAttribute('aria-expanded', String(!sideHidden));
+        sideToggle.setAttribute('aria-label', sideHidden ? 'Show sidebar' : 'Hide sidebar');
+        sideToggle.title = sideHidden ? 'Show sidebar' : 'Hide sidebar';
+      };
+      sideToggle.addEventListener('click', () => {
+        sideHidden = !sideHidden;
+        try { localStorage.setItem(sideKey, sideHidden ? '1' : '0'); } catch (_) {}
+        updateSidebar();
+      });
       updateSidebar();
-    });
-    updateSidebar();
+  
+    }
 
     if (C.isDemo) {
       const n = document.createElement('div'); n.id = 'ahdemo';
