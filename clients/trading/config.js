@@ -67,3 +67,6 @@ window.BRAND = {
     units: ['carton', 'bag', 'tin', 'pack', 'pcs', 'kg', 'ltr']
   }
 };
+
+// Client-specific dashboard appearance; shared portals keep their existing theme.
+document.documentElement.dataset.dashboardTheme = 'safwa-glass';
