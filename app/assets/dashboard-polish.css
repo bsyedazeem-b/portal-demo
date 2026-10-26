@@ -114,3 +114,59 @@ body:has(#home) .h-cols:not(.one){grid-template-columns:minmax(0,1.42fr) minmax(
   body.ah-bar.ah-side-hidden:has(#home) #ahbar .row1{margin-left:0}
   body.ah-bar.ah-side-hidden:has(#home) main{margin-left:0}
 }
+
+/* Safwa: bright frosted glass dashboard. Theme is selected by client config. */
+html[data-dashboard-theme="safwa-glass"] body:has(#home){
+  --ah-bg:#edf8f6;--ah-ink:#163c3b;--ah-muted:#476966;
+  background:
+    radial-gradient(ellipse at 12% 12%,#a4e4d9 0,transparent 43%),
+    radial-gradient(ellipse at 86% 30%,#c5eaf2 0,transparent 44%),
+    radial-gradient(ellipse at 72% 88%,#eae7cd 0,transparent 42%),#edf8f6;
+  background-attachment:fixed;
+}
+html[data-dashboard-theme="safwa-glass"] body:has(#home) :is(.h-hero,.h-kpi,.h-panel,.h-mod){
+  background:rgba(255,255,255,.66);border:1px solid rgba(255,255,255,.9);
+  box-shadow:0 12px 35px rgba(30,89,81,.075),inset 0 1px 0 rgba(255,255,255,.95);
+  -webkit-backdrop-filter:blur(18px) saturate(130%);backdrop-filter:blur(18px) saturate(130%);
+}
+html[data-dashboard-theme="safwa-glass"] body:has(#home) .h-hero{
+  background:linear-gradient(120deg,rgba(255,255,255,.8),rgba(232,253,247,.48));
+  border-radius:24px;
+}
+html[data-dashboard-theme="safwa-glass"] body:has(#home) .h-hero::before{
+  background:radial-gradient(ellipse at 90% 0,rgba(112,218,195,.25),transparent 65%);
+}
+html[data-dashboard-theme="safwa-glass"] body:has(#home) .h-hero::after{opacity:.45}
+html[data-dashboard-theme="safwa-glass"] body:has(#home) :is(.h-hero h1,.h-clock .t,.h-kpi .v,.h-ph h2,.h-mod h3){color:#183f3c}
+html[data-dashboard-theme="safwa-glass"] body:has(#home) :is(.h-eyebrow,.h-dates,.h-clock .z,.h-kpi .lbl,.h-kpi .sub,.h-ph p){color:#476966}
+html[data-dashboard-theme="safwa-glass"] body:has(#home) #ahbar{
+  background:rgba(250,255,253,.82);border-color:rgba(255,255,255,.95);
+  -webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);
+}
+html[data-dashboard-theme="safwa-glass"] body:has(#home) #ahbar .row2{
+  background:rgba(244,255,251,.8);border-color:rgba(255,255,255,.95);
+  -webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);
+}
+html[data-dashboard-theme="safwa-glass"] body:has(#home) #ahbar .row2 a.on{
+  background:linear-gradient(115deg,#d4efe5,#eafaf3);color:#165b49;
+  box-shadow:inset 0 1px 0 #fff,0 4px 10px #164d3d09;
+}
+html[data-dashboard-theme="safwa-glass"] body:has(#home) .h-chip{
+  background:#ffffffad;border-color:#fff;color:#2b6056;
+}
+html[data-dashboard-theme="safwa-glass"] body:has(#home) #quick .h-row{
+  background:#ffffff9c;border-color:#ffffffeb;box-shadow:inset 0 1px 0 #fff;
+}
+html[data-dashboard-theme="safwa-glass"] body:has(#home) #quick .h-row:nth-child(3n+2){background:#e7f9f0c9}
+html[data-dashboard-theme="safwa-glass"] body:has(#home) #quick .h-row:nth-child(3n){background:#fff7e7c9}
+html[data-dashboard-theme="safwa-glass"] body:has(#home) :is(.h-kpi,.h-mod):hover{
+  background:rgba(255,255,255,.86);border-color:#fff;box-shadow:0 18px 35px rgba(30,89,81,.13);
+}
+html[data-dashboard-theme="safwa-glass"] body:has(#home) :is(.h-row,.h-ph){border-color:#d9ebe6}
+html[data-dashboard-theme="safwa-glass"] body:has(#home) :is(input,select,textarea,table){background:#fff}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  html[data-dashboard-theme="safwa-glass"] body:has(#home) :is(.h-hero,.h-kpi,.h-panel,.h-mod,#ahbar,#ahbar .row2){background:#f8fdfa}
+}
+@media(prefers-reduced-motion:reduce){
+  html[data-dashboard-theme="safwa-glass"] body:has(#home) :is(.h-kpi,.h-mod){transform:none}
+}
