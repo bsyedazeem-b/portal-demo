@@ -177,3 +177,36 @@ html[data-dashboard-theme="safwa-glass"] body:has(.demo-home) #ahbar .row1{
   }
   html[data-dashboard-theme="safwa-glass"] body.ah-bar.ah-side-hidden:has(.demo-home) main.demo-home{margin-left:0}
 }
+
+/* Reference direction: lighter, floating glass with a compact navigation rail. */
+html[data-dashboard-theme="safwa-glass"] body:has(.demo-home){
+ background:radial-gradient(ellipse at 2% 8%,#9cdacc 0,transparent 43%),radial-gradient(ellipse at 90% 25%,#a7d5ee 0,transparent 46%),radial-gradient(ellipse at 55% 92%,#dad5ee 0,transparent 46%),#eaf5f4;
+ background-attachment:fixed;
+}
+html[data-dashboard-theme="safwa-glass"] .demo-home :is(.welcome,.stat){
+ background:linear-gradient(130deg,#ffffff9c,#ffffff54);
+ border:1px solid #ffffffd9;box-shadow:0 14px 38px #254b6312,inset 0 1px 0 #fffffff0;
+ -webkit-backdrop-filter:blur(22px) saturate(145%);backdrop-filter:blur(22px) saturate(145%);
+}
+html[data-dashboard-theme="safwa-glass"] .demo-home .recent{background:#ffffffb8}
+html[data-dashboard-theme="safwa-glass"] .demo-home .stat{
+ position:relative;overflow:hidden;min-height:144px;display:flex;flex-direction:column;justify-content:center;
+}
+html[data-dashboard-theme="safwa-glass"] .demo-home .stat::after{
+ content:"";position:absolute;right:-26px;top:-38px;width:125px;height:125px;border-radius:50%;
+ background:radial-gradient(circle,#ffffff9c,transparent 72%);pointer-events:none;
+}
+html[data-dashboard-theme="safwa-glass"] .demo-home .stat strong{letter-spacing:-.04em;font-size:40px}
+html[data-dashboard-theme="safwa-glass"] .demo-home .stat span{margin-top:8px}
+html[data-dashboard-theme="safwa-glass"] .demo-home .welcome{padding:30px 32px}
+html[data-dashboard-theme="safwa-glass"] .demo-home .welcome h1{font-size:clamp(28px,3vw,36px)}
+html[data-dashboard-theme="safwa-glass"] .demo-home .welcome p{line-height:1.65}
+@media(min-width:1100px){
+ html[data-dashboard-theme="safwa-glass"] body.ah-bar:has(.demo-home) #ahbar .row2{
+  left:14px;top:84px;bottom:18px;width:210px;border:1px solid #ffffffed;border-radius:20px;
+  background:#f4fffaad;box-shadow:0 12px 32px #214b3e12;
+ }
+}
+@media(prefers-reduced-transparency:reduce){
+ html[data-dashboard-theme="safwa-glass"] .demo-home :is(.welcome,.stat,.recent){background:#f8fdfa;-webkit-backdrop-filter:none;backdrop-filter:none}
+}
