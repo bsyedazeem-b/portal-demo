@@ -159,3 +159,21 @@ html[data-dashboard-theme="safwa-glass"] body:has(.demo-home) #ahbar .row2 a.on{
 @media(prefers-reduced-motion:reduce){
  html[data-dashboard-theme="safwa-glass"] .demo-home :is(.stat,.actions a){transition:none;transform:none}
 }
+
+/* Keep fixed navigation relative to the viewport: backdrop-filter on its
+   ancestor otherwise creates a containing block and clips the sidebar. */
+html[data-dashboard-theme="safwa-glass"] body:has(.demo-home) #ahbar{
+  -webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(248,255,250,.96);
+}
+html[data-dashboard-theme="safwa-glass"] body:has(.demo-home) #ahbar .row1{
+  background:rgba(248,255,250,.7);
+}
+@media(min-width:1100px){
+  html[data-dashboard-theme="safwa-glass"] body.ah-bar:has(.demo-home) #ahbar .row2{
+    top:70px;bottom:0;height:auto;z-index:51;
+  }
+  html[data-dashboard-theme="safwa-glass"] body.ah-bar:has(.demo-home) main.demo-home{
+    margin-left:234px;margin-right:0;max-width:none;
+  }
+  html[data-dashboard-theme="safwa-glass"] body.ah-bar.ah-side-hidden:has(.demo-home) main.demo-home{margin-left:0}
+}
