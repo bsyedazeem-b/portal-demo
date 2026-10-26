@@ -290,16 +290,16 @@ body #toast.bad::before,body #toast.err::before{background-color:#D9475B;
 @media screen and (min-width:1100px){
  /* Specificity exceeds both the legacy dashboard and shared sidebar rules. */
  html[data-dashboard-theme="safwa-glass"] body.ah-bar.ah-hover-rail.ah-hover-rail #ahbar .row2{
-  display:flex;position:fixed;left:14px;top:84px;bottom:18px;width:72px;height:auto;
-  z-index:51;padding:14px 8px;gap:8px;overflow-x:hidden;overflow-y:auto;
-  background:#f7fffae8;border:1px solid #ffffffef;border-radius:20px;
-  box-shadow:0 12px 32px #214b3e18;
+  display:flex;position:fixed;left:0;top:70px;bottom:0;width:80px;height:auto;
+  z-index:51;padding:16px 10px;gap:8px;overflow-x:hidden;overflow-y:auto;
+  background:rgba(244,253,248,.68);border:0;border-right:1px solid rgba(255,255,255,.85);border-radius:0;
+  box-shadow:inset -1px 0 0 rgba(57,105,85,.06);
   -webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);
   transition:width .24s cubic-bezier(.2,.7,.2,1),box-shadow .24s;
  }
- html[data-dashboard-theme="safwa-glass"] body.ah-bar.ah-hover-rail.ah-hover-rail.ah-rail-open #ahbar .row2{width:234px;box-shadow:0 18px 45px #173b3429}
+ html[data-dashboard-theme="safwa-glass"] body.ah-bar.ah-hover-rail.ah-hover-rail.ah-rail-open #ahbar .row2{width:234px;background:rgba(246,255,250,.96);box-shadow:10px 0 28px #173b341a}
  html[data-dashboard-theme="safwa-glass"] body.ah-bar.ah-hover-rail.ah-hover-rail #ahbar .row2 a{
-  flex:none;min-width:0;width:100%;min-height:48px;padding:12px 17px;gap:16px;
+  flex:none;min-width:0;width:100%;min-height:48px;padding:12px 19px;gap:16px;
   border-radius:12px;white-space:nowrap;color:#49665d;
  }
  html[data-dashboard-theme="safwa-glass"] body.ah-bar.ah-hover-rail.ah-hover-rail #ahbar .row2 a svg{width:20px;height:20px;flex:none}
@@ -310,8 +310,8 @@ body #toast.bad::before,body #toast.err::before{background-color:#D9475B;
  html[data-dashboard-theme="safwa-glass"] body.ah-bar.ah-hover-rail.ah-hover-rail main,
  html[data-dashboard-theme="safwa-glass"] body.ah-bar.ah-hover-rail.ah-hover-rail:has(.demo-home) main.demo-home,
  html[data-dashboard-theme="safwa-glass"] body.ah-bar.ah-hover-rail.ah-hover-rail .ahhead,
- html[data-dashboard-theme="safwa-glass"] body.ah-bar.ah-hover-rail.ah-hover-rail #ahdemo{margin-left:104px;margin-right:0;max-width:none}
- html[data-dashboard-theme="safwa-glass"] body.ah-bar.ah-hover-rail.ah-hover-rail #ahbar .row1{margin-left:104px;max-width:none}
+ html[data-dashboard-theme="safwa-glass"] body.ah-bar.ah-hover-rail.ah-hover-rail #ahdemo{margin-left:80px;margin-right:0;max-width:none}
+ html[data-dashboard-theme="safwa-glass"] body.ah-bar.ah-hover-rail.ah-hover-rail #ahbar .row1{margin-left:80px;max-width:none;padding-left:28px;padding-right:28px}
 }
 @media screen and (max-width:760px){
  html[data-dashboard-theme="safwa-glass"] body.ah-bar main .tools{padding:12px}
