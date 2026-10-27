@@ -99,6 +99,88 @@ svg.worldmap{width:100%;height:auto;display:block}
   .left{display:contents}
   .top{order:1}.dial,.mapcard{order:2;justify-self:center}.dates{order:3}.card{order:4}.pray{order:5;justify-self:center}
 }
+
+/* Safwa login: same warm glass workspace design as the portal. */
+.sf-login-intro{display:none}
+html[data-dashboard-theme="safwa-glass"] body{
+ --ink:#1b1e1b;--muted:#60675d;--paper:#ffffff85;--field:#ffffffcf;--line:#d7ddcf;
+ background:radial-gradient(ellipse at 4% 4%,#efd6c4 0,transparent 48%),
+ radial-gradient(ellipse at 80% 3%,#f3ebc9 0,transparent 48%),
+ radial-gradient(ellipse at 95% 95%,#d5e2d2 0,transparent 50%),#eae8e0;
+ background-attachment:fixed;
+}
+html[data-dashboard-theme="safwa-glass"] .wrap{
+ max-width:1240px;padding:42px 36px;gap:64px;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);
+}
+html[data-dashboard-theme="safwa-glass"] .left{gap:20px}
+html[data-dashboard-theme="safwa-glass"] .top{align-items:flex-start;flex-wrap:wrap;gap:16px}
+html[data-dashboard-theme="safwa-glass"] .co{align-items:center;max-width:100%}
+html[data-dashboard-theme="safwa-glass"] .co img{height:42px;border-radius:12px;box-shadow:none;background:#ffffff9c;padding:5px}
+html[data-dashboard-theme="safwa-glass"] .co b{font-size:15px;white-space:normal;letter-spacing:-.02em}
+html[data-dashboard-theme="safwa-glass"] .co span{font-size:12px;white-space:normal;margin-top:3px}
+html[data-dashboard-theme="safwa-glass"] .wx{background:#ffffff7a;border:1px solid #ffffffba;border-radius:99px;box-shadow:none;padding:8px 12px}
+html[data-dashboard-theme="safwa-glass"] .sf-login-intro{display:block;width:100%;padding:12px 0 0}
+html[data-dashboard-theme="safwa-glass"] .sf-login-intro small{font-size:11px;color:#646b5d;letter-spacing:.12em;text-transform:uppercase}
+html[data-dashboard-theme="safwa-glass"] .sf-login-intro h2{font-size:clamp(32px,3.6vw,46px);font-weight:500;line-height:1.07;letter-spacing:-.045em;margin:12px 0 14px;max-width:480px}
+html[data-dashboard-theme="safwa-glass"] .sf-login-intro p{font-size:14px;line-height:1.65;color:#5c6657;max-width:420px;margin:0}
+html[data-dashboard-theme="safwa-glass"] :is(.dial,.mapcard,.pray){
+ background:linear-gradient(135deg,#ffffff94,#ffffff45);border:1px solid #ffffffd9;
+ box-shadow:0 18px 38px #414d3010,inset 0 1px 0 #ffffff8c;
+ -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);
+}
+html[data-dashboard-theme="safwa-glass"] .dial{width:min(268px,70%);justify-self:start}
+html[data-dashboard-theme="safwa-glass"] .mapcard{width:100%;border-radius:24px}
+html[data-dashboard-theme="safwa-glass"] .dates{width:100%;text-align:left}
+html[data-dashboard-theme="safwa-glass"] .dates b{font-size:14px}
+html[data-dashboard-theme="safwa-glass"] .dates span{font-size:13px}
+html[data-dashboard-theme="safwa-glass"] .pray{width:100%;border-radius:22px;padding:12px}
+html[data-dashboard-theme="safwa-glass"] .pray .next{font-size:12px}
+html[data-dashboard-theme="safwa-glass"] .pray li.on{background:#305e50;border-radius:14px}
+html[data-dashboard-theme="safwa-glass"] .card{
+ width:min(470px,100%);padding:42px 38px 30px;border:1px solid #ffffffe0;border-radius:28px;
+ background:linear-gradient(140deg,#ffffffa8,#ffffff73);
+ box-shadow:0 24px 55px #414d3014,inset 0 1px 0 #ffffff9c;
+ -webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);
+}
+html[data-dashboard-theme="safwa-glass"] .card .hd{align-items:flex-start;flex-direction:column;gap:8px;margin-bottom:16px}
+html[data-dashboard-theme="safwa-glass"] .card h1{font-size:34px;font-weight:500;letter-spacing:-.04em;line-height:1.1}
+html[data-dashboard-theme="safwa-glass"] .card .hi{font-size:17px;color:#305e50}
+html[data-dashboard-theme="safwa-glass"] .card p.sub{font-size:14px;margin-bottom:30px;line-height:1.6}
+html[data-dashboard-theme="safwa-glass"] .field{gap:8px;margin-bottom:20px}
+html[data-dashboard-theme="safwa-glass"] .field label{font-size:13px;color:#47513e}
+html[data-dashboard-theme="safwa-glass"] .field input{min-height:50px;padding:13px 16px;border:1px solid #d1d9c8;border-radius:14px;box-shadow:inset 0 1px 2px #253c1510}
+html[data-dashboard-theme="safwa-glass"] .field input:focus{border-color:#315e50;box-shadow:0 0 0 4px #315e501c;background:#fff}
+html[data-dashboard-theme="safwa-glass"] .pw input{padding-right:70px}
+html[data-dashboard-theme="safwa-glass"] .pw button{color:#315e50;border-radius:99px;padding:8px 10px}
+html[data-dashboard-theme="safwa-glass"] .btn{background:#1b1e1b;border:1px solid #1b1e1b;border-radius:99px;min-height:50px;font-size:14px;font-weight:500;margin-top:8px;transition:background .18s,transform .18s}
+html[data-dashboard-theme="safwa-glass"] .btn:hover:not(:disabled){background:#305e50;border-color:#305e50;transform:translateY(-1px)}
+html[data-dashboard-theme="safwa-glass"] .help{font-size:12px;line-height:1.65;color:#626b59;margin-top:24px;border-color:#d6ddcd}
+html[data-dashboard-theme="safwa-glass"] .help a{color:#24523f;font-weight:600;text-underline-offset:3px}
+html[data-dashboard-theme="safwa-glass"] :is(a,button):focus-visible{outline:2px solid #315e50;outline-offset:4px}
+html[data-dashboard-theme="safwa-glass"] .flash{background:#fff5e3;border-color:#ddcda7;color:#704c1b}
+@media(max-width:920px){
+ html[data-dashboard-theme="safwa-glass"] .wrap{grid-template-columns:1fr;max-width:590px;padding:24px 18px 36px;gap:22px}
+ html[data-dashboard-theme="safwa-glass"] .top{order:1}
+ html[data-dashboard-theme="safwa-glass"] .sf-login-intro{order:2;padding-top:4px}
+ html[data-dashboard-theme="safwa-glass"] .sf-login-intro h2{font-size:32px;max-width:340px}
+ html[data-dashboard-theme="safwa-glass"] .card{order:3;width:100%;padding:30px 26px}
+ html[data-dashboard-theme="safwa-glass"] .dial,html[data-dashboard-theme="safwa-glass"] .mapcard{order:4;justify-self:center}
+ html[data-dashboard-theme="safwa-glass"] .dial{width:210px}
+ html[data-dashboard-theme="safwa-glass"] .dates{order:5;text-align:center}
+ html[data-dashboard-theme="safwa-glass"] .pray{order:6}
+}
+@media(max-width:400px){
+ html[data-dashboard-theme="safwa-glass"] .card{padding:28px 20px}
+ html[data-dashboard-theme="safwa-glass"] .card h1{font-size:30px}
+ html[data-dashboard-theme="safwa-glass"] .wrap{padding:20px 14px 30px}
+}
+@media(prefers-reduced-motion:reduce){
+ html[data-dashboard-theme="safwa-glass"] .btn{transition:none;transform:none!important}
+}
+@media(prefers-reduced-transparency:reduce){
+ html[data-dashboard-theme="safwa-glass"] :is(.card,.dial,.mapcard,.pray){background:#fafbf4;-webkit-backdrop-filter:none;backdrop-filter:none}
+}
+
 </style>
 </head>
 <body>
@@ -108,6 +190,7 @@ svg.worldmap{width:100%;height:auto;display:block}
       <div class="co"><img data-brand-logo alt=""><div><b data-brand="name"></b><span data-brand="tagline"></span></div></div>
       <div class="wx" id="wx" hidden aria-label="Weather"></div>
     </div>
+    <div class="sf-login-intro"><small>Your business, connected</small><h2>A simpler way<br>to work.</h2><p>Documents, customers and daily operations. Welcome to your workspace.</p></div>
     <div class="dial">
     <svg class="gauge" viewBox="0 0 400 400" role="img" aria-label="Clock">
       <circle cx="200" cy="200" r="196" fill="none" stroke="#FFFFFF" stroke-width="2" opacity=".9"/>
