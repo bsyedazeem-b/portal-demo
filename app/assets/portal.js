@@ -311,6 +311,36 @@
       const rail = bar.querySelector('.row2');
       const desktop = window.matchMedia('(min-width:1100px)');
       let pinned = false, hovered = false;
+
+      // Horizontal section navigation plus an expandable quick-action dock.
+      const topnav = document.createElement('nav');
+      topnav.className = 'sf-topnav'; topnav.setAttribute('aria-label', 'Sections');
+      const sections = [[C.links.home, 'Overview']];
+      if (B.modules.documents) sections.push(['documents.html#quotation', 'Quotations'], ['documents.html#customers', 'Customers']);
+      if (B.modules.inventory) sections.push(['inventory.html', 'Inventory']);
+      if (B.modules.employees) sections.push(['employees.html', 'Employees']);
+      topnav.innerHTML = sections.map(([href, label]) => '<a href="' + href + '">' + esc(label) + '</a>').join('');
+      bar.querySelector('.row1').insertBefore(topnav, bar.querySelector('.tools'));
+      const syncSections = () => {
+        topnav.querySelectorAll('a').forEach(a => {
+          const url = new URL(a.href);
+          const current = new URL(location.href);
+          const match = url.pathname.replace(/\\.html$/, '') === current.pathname.replace(/\\.html$/, '') &&
+            (!url.hash || current.hash.startsWith(url.hash));
+          const home = a.textContent === 'Overview' && ['index.html', 'demo-home.html'].includes(pageName());
+          a.classList.toggle('on', match || home);
+          if (match || home) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+        });
+      };
+      window.addEventListener('hashchange', syncSections); syncSections();
+      if (B.modules.documents) {
+        const quick = [['documents.html#quotation/new', 'Create quotation', '+'], ['documents.html#customers', 'Customers', '◉'], ['documents.html#quotation', 'Quotation history', '↗']];
+        quick.forEach(([href, label, glyph]) => {
+          const a = document.createElement('a'); a.href = href;
+          a.innerHTML = '<i class="sf-dock-icon" aria-hidden="true">' + glyph + '</i><span>' + label + '</span>';
+          rail.appendChild(a);
+        });
+      }
       rail.id = 'ahSidebar';
       sideToggle.setAttribute('aria-controls', rail.id);
       rail.querySelectorAll('a').forEach(link => {
